@@ -78,7 +78,10 @@
 
                                         <!-- Title -->
                                         <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="0">
-                                            <TextBlock FontFamily="{StaticResource MyriadBold}" Foreground="{StaticResource TitleBrush}" Text="SaleManager" FontSize="{StaticResource FontSizeRegular}"/>
+                                            <TextBlock FontFamily="{StaticResource MyriadBold}" FontSize="{StaticResource FontSizeRegular}">
+                                                <Run Text="Sales" Foreground="{StaticResource TitleBrush1}"></Run>
+                                                <Run Text="Manager" Foreground="{StaticResource TitleBrush2}"></Run>
+                                            </TextBlock>
                                         </Viewbox>
 
                                         <!-- Window Buttons -->

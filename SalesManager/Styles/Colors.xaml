@@ -17,10 +17,10 @@
     <Color x:Key="ForegroundLight">#ffffff</Color>
     <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLight}" />
 
-    <Color x:Key="Title"> #8c6239 </Color>
-    <SolidColorBrush x:Key="TitleBrush" Color="{StaticResource Title}"/>
+    <Color x:Key="Title1"> #8c6239 </Color>
+    <SolidColorBrush x:Key="TitleBrush1" Color="{StaticResource Title1}"/>
 
-    <Color x:Key="Toolbar">#fffbf5</Color>
-    <SolidColorBrush x:Key="ToolbarBrush" Color="{StaticResource Toolbar}"/>
+    <Color x:Key="Title2">#823900</Color>
+    <SolidColorBrush x:Key="TitleBrush2" Color="{StaticResource Title2}"/>
 
 </ResourceDictionary>
