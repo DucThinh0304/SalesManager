@@ -16,7 +16,12 @@ namespace SalesManager
             {
                 case ApplicationPage.Home:
                     return new Home();
-
+                case ApplicationPage.NhapHang_Question:
+                    return new NhapHang_Question();
+                case ApplicationPage.NhapHangMoi:
+                    return new NhapHangMoi();
+                case ApplicationPage.NhapLoaiHangMoi:
+                    return new NhapLoaiHangMoi();
                 default:
                     Debugger.Break();
                     return null;

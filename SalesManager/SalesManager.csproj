@@ -86,6 +86,15 @@
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\NhapHangMoi.xaml.cs">
+      <DependentUpon>NhapHangMoi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NhapHang_Question.xaml.cs">
+      <DependentUpon>NhapHang_Question.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NhapLoaiHangMoi.xaml.cs">
+      <DependentUpon>NhapLoaiHangMoi.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
@@ -105,6 +114,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NhapHangMoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NhapHang_Question.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NhapLoaiHangMoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
