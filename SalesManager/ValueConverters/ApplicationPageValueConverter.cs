@@ -22,6 +22,12 @@ namespace SalesManager
                     return new NhapHangMoi();
                 case ApplicationPage.NhapLoaiHangMoi:
                     return new NhapLoaiHangMoi();
+                case ApplicationPage.DangNhap:
+                    return new Pages.DangNhap();
+                case ApplicationPage.DangKy:
+                    return new Pages.DangKy();
+                case ApplicationPage.QuenMatKhau:
+                    return new Pages.QuenMatKhau();
                 default:
                     Debugger.Break();
                     return null;
