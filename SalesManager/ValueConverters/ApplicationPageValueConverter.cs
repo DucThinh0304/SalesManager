@@ -28,6 +28,14 @@ namespace SalesManager
                     return new Pages.DangKy();
                 case ApplicationPage.QuenMatKhau:
                     return new Pages.QuenMatKhau();
+                case ApplicationPage.ThongKeDoanhThu:
+                    return new ThongKeDoanhThu();
+                case ApplicationPage.DanhSachNhanVien:
+                    return new DanhSachNhanVien();
+                case ApplicationPage.ThemNhanVien:
+                    return new ThemNhanVien();
+                case ApplicationPage.ThongTinNhanVien:
+                    return new ThongTinNhanVien();
                 default:
                     Debugger.Break();
                     return null;

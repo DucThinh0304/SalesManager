@@ -117,7 +117,7 @@ namespace SalesManager
         /// </summary>
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
 
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.NhapLoaiHangMoi;
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.ThongKeDoanhThu;
 
         #endregion
 
