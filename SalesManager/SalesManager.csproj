@@ -107,11 +107,20 @@
     <Compile Include="Pages\QuenMatKhau.xaml.cs">
       <DependentUpon>QuenMatKhau.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\TaoMaNhanVien.xaml.cs">
+      <DependentUpon>TaoMaNhanVien.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ThemNhanVien.xaml.cs">
       <DependentUpon>ThemNhanVien.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ThongKeDoanhThu.xaml.cs">
       <DependentUpon>ThongKeDoanhThu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ThongTinChinhSuaDanhSach.xaml.cs">
+      <DependentUpon>ThongTinChinhSuaDanhSach.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ThongTinDanhSachHangHoa.xaml.cs">
+      <DependentUpon>ThongTinDanhSachHangHoa.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ThongTinNhanVien.xaml.cs">
       <DependentUpon>ThongTinNhanVien.xaml</DependentUpon>
@@ -166,11 +175,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\TaoMaNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ThemNhanVien.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ThongKeDoanhThu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ThongTinChinhSuaDanhSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ThongTinDanhSachHangHoa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
