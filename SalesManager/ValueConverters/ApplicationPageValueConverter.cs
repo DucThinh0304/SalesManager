@@ -23,11 +23,11 @@ namespace SalesManager
                 case ApplicationPage.NhapLoaiHangMoi:
                     return new NhapLoaiHangMoi();
                 case ApplicationPage.DangNhap:
-                    return new Pages.DangNhap();
+                    return new DangNhap();
                 case ApplicationPage.DangKy:
-                    return new Pages.DangKy();
+                    return new DangKy();
                 case ApplicationPage.QuenMatKhau:
-                    return new Pages.QuenMatKhau();
+                    return new QuenMatKhau();
                 case ApplicationPage.ThongKeDoanhThu:
                     return new ThongKeDoanhThu();
                 case ApplicationPage.DanhSachNhanVien:

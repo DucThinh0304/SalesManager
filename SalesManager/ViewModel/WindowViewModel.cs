@@ -39,12 +39,12 @@ namespace SalesManager
         /// <summary>
         /// The smallest width the window can go to
         /// </summary>
-        public double WindowMinimumWidth { get; set; } = 400;
+        public double WindowMinimumWidth { get; set; } = 900;
 
         /// <summary>
         /// The smallest height the window can go to
         /// </summary>
-        public double WindowMinimumHeight { get; set; } = 400;
+        public double WindowMinimumHeight { get; set; } = 600;
 
         /// <summary>
         /// True if the window should be borderless because it is docked or maximized
@@ -117,7 +117,7 @@ namespace SalesManager
         /// </summary>
         public GridLength TitleHeightGridLength { get { return new GridLength(TitleHeight + ResizeBorder); } }
 
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.ThongKeDoanhThu;
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.DangNhap;
 
         #endregion
 

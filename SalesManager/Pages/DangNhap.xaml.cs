@@ -13,16 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SalesManager.Pages
+namespace SalesManager
 {
     /// <summary>
     /// Interaction logic for DangNhap.xaml
     /// </summary>
-    public partial class DangNhap : Page
+    public partial class DangNhap : BasePage
     {
         public DangNhap()
         {
             InitializeComponent();
+        }
+
+        private void DangKy_Click(object sender, RoutedEventArgs e)
+        {
+            this.AnimateOut();
+        }
+
+        private void DangNhap_Click(object sender, RoutedEventArgs e)
+        {
+            this.AnimateOut();
         }
     }
 }
