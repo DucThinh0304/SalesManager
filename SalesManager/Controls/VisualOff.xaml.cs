@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SalesManager
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for VisualOff.xaml
     /// </summary>
-    public partial class Home : BasePage
+    public partial class VisualOff : Page
     {
-        public Home()
+        public VisualOff()
         {
             InitializeComponent();
         }

@@ -6,6 +6,7 @@
     <FontFamily x:Key="MyriadBold">pack://appliction;,,,/Fonts/#Myriad Pro Bold</FontFamily>
     <FontFamily x:Key="MyriadRegular">pack://appliction;,,,/Fonts/#Myriad Pro Regular</FontFamily>
     <FontFamily x:Key="MyriadLight">pack://appliction;,,,/Fonts/#Myriad Pro Light</FontFamily>
+    <FontFamily x:Key="FontAwesome">pack://appliction;,,,/Fonts/#FontAwesome</FontFamily>
 
     <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
         <Setter Property="FontFamily" Value="{StaticResource MyriadRegular}" />
@@ -24,5 +25,9 @@
     <system:Double x:Key="FontSizeRegular">20</system:Double>
     <system:Double x:Key="FontSizeSmall">14</system:Double>
     <system:Double x:Key="FontSizeLarge">30</system:Double>
-    
+
+    <system:String x:Key="FontAwesomeManagerIcon">&#xf0b1;</system:String>
+    <system:String x:Key="FontAwesomeStaffIcon">&#xf0c0;</system:String>
+    <system:String x:Key="FontAwesomeCogIcon">&#xf013;</system:String>
+
 </ResourceDictionary>

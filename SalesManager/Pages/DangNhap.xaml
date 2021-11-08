@@ -80,7 +80,7 @@
                             Content="Đăng ký" />   
                     </Grid>
                     <Grid Grid.Row="5">
-                        <TextBlock Text="Quên mật khẩu?" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="Quên mật khẩu?" Cursor="Hand"  VerticalAlignment="Center" HorizontalAlignment="Center" MouseDown="ForgotPassword_Click"></TextBlock>
                     </Grid>
                 </Grid>
             </Border>

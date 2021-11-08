@@ -18,11 +18,16 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for DangKy.xaml
     /// </summary>
-    public partial class DangKy : Page
+    public partial class DangKy : BasePage
     {
         public DangKy()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
         }
     }
 }

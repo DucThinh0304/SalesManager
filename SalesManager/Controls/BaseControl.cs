@@ -10,14 +10,14 @@ namespace SalesManager
     /// <summary>
     /// A base page for all pages to gain base functionality
     /// </summary>
-    public class BasePage : Page
+    public class BaseControl : Page
     {
         #region Public Properties
 
         /// <summary>
         /// The animation the play when the page is first loaded
         /// </summary>
-        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromRight;
+        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromLeft;
 
         /// <summary>
         /// The animation the play when the page is unloaded
@@ -36,14 +36,14 @@ namespace SalesManager
         /// <summary>
         /// Default constructor
         /// </summary>
-        public BasePage()
+        public BaseControl()
         {
             // If we are animating in, hide to begin with
             if (this.PageLoadAnimation != PageAnimation.None)
                 this.Visibility = Visibility.Collapsed;
 
             // Listen out for the page loading
-            this.Loaded += BasePage_Loaded;
+            this.Loaded += BaseControl_Loaded;
         }
 
         #endregion
@@ -55,7 +55,7 @@ namespace SalesManager
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private async void BaseControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             // Animate the page in
             await AnimateIn();
@@ -73,10 +73,10 @@ namespace SalesManager
 
             switch (this.PageLoadAnimation)
             {
-                case PageAnimation.SlideAndFadeInFromRight:
+                case PageAnimation.SlideAndFadeInFromLeft:
 
                     // Start the animation
-                    await this.SlideAndFadeInFromRight(this.SlideSeconds);
+                    await this.SlideAndFadeInFromLeft(this.SlideSeconds);
 
                     break;
             }

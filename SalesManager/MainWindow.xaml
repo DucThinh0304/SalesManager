@@ -12,7 +12,7 @@
         x:Name="AppWindow"
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
-        Title="LOGIN" Height="600" Width="900">
+        Title="LOGIN" Height="600" Width="1200">
 
     <Window.Resources>
         <Style TargetType="{x:Type local:MainWindow}">
@@ -139,7 +139,16 @@
     </WindowChrome.WindowChrome>
 
     <Grid Background="{StaticResource ForegroundLightBrush}">
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Frame  Width="Auto" NavigationUIVisibility="Hidden"
+                Content="{Binding SideMenu, Converter={local:ApplicationPageValueConverter}}">
+
+        </Frame>
+        <Frame Grid.Column="1" NavigationUIVisibility="Hidden"
+               x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
     </Grid>
 
 </Window>

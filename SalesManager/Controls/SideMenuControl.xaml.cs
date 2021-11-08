@@ -16,13 +16,19 @@ using System.Windows.Shapes;
 namespace SalesManager
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for SideMenuControl.xaml
     /// </summary>
-    public partial class Home : BasePage
+    public partial class SideMenuControl : BaseControl
     {
-        public Home()
+        public SideMenuControl()
         {
             InitializeComponent();
+        }
+
+        private void Setting_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.VisualOff;
         }
     }
 }

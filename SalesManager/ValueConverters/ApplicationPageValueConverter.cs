@@ -42,6 +42,10 @@ namespace SalesManager
                     return new ThongTinDanhSachHangHoa();
                 case ApplicationPage.ThongTinChinhSuaDanhSach:
                     return new ThongTinChinhSuaDanhSach();
+                case ApplicationPage.SideMenuControl:
+                    return new SideMenuControl();
+                case ApplicationPage.VisualOff:
+                    return new VisualOff();
                 default:
                     Debugger.Break();
                     return null;

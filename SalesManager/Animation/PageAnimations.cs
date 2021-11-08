@@ -63,5 +63,25 @@ namespace SalesManager
             // Wait for it to finish
             await Task.Delay((int)(seconds * 1000));
         }
+        public static async Task SlideAndFadeInFromLeft(this Page page, float seconds)
+        {
+            // Create the storyboard
+            var sb = new Storyboard();
+
+            // Add slide from right animation
+            sb.AddSlideFromLeft(seconds, page.WindowWidth);
+
+            // Add fade in animation
+            sb.AddFadeIn(seconds);
+
+            // Start animating
+            sb.Begin(page);
+
+            // Make page visible
+            page.Visibility = Visibility.Visible;
+
+            // Wait for it to finish
+            await Task.Delay((int)(seconds * 1000));
+        }
     }
 }

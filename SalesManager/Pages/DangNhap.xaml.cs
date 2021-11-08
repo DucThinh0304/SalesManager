@@ -27,12 +27,21 @@ namespace SalesManager
 
         private void DangKy_Click(object sender, RoutedEventArgs e)
         {
-            this.AnimateOut();
+
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangKy;
+            
         }
 
         private void DangNhap_Click(object sender, RoutedEventArgs e)
+        {  
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
+
+        }
+
+        private void ForgotPassword_Click(object sender, MouseButtonEventArgs e)
         {
-            this.AnimateOut();
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.QuenMatKhau;
         }
     }
 }

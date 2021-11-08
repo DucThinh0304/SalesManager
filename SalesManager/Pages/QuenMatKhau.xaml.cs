@@ -18,11 +18,16 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for QuenMatKhau.xaml
     /// </summary>
-    public partial class QuenMatKhau : Page
+    public partial class QuenMatKhau : BasePage
     {
         public QuenMatKhau()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
         }
     }
 }
