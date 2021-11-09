@@ -44,7 +44,7 @@
                 <ContentPresenter Grid.Row="1" />
                 <StackPanel Grid.Row="1">
                     <TextBlock x:Name="Staff_TextBlock" Text="Staff" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource WordBlueBrush}"/>
-                    <Button Content="Tạo Mã Nhân Viên"/>
+                    <Button Content="Tạo Mã Nhân Viên" Click="Button_Click"/>
                     <Button Content="Thinh2"/>
                 </StackPanel>
             </Grid>

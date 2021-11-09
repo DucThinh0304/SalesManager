@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace SalesManager
 {
@@ -23,6 +25,19 @@ namespace SalesManager
         public Home()
         {
             InitializeComponent();
+        }
+        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            con.Open();
+            var cmd = new SqlCommand("SELECT TAIKHOAN FROM ACCOUNT",con);
+            var dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                TextBlock1.Text = dr.GetValue(0).ToString();
+            }
+            con.Close();
         }
     }
 }

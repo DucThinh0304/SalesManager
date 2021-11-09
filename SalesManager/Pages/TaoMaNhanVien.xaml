@@ -1,4 +1,4 @@
-﻿<Page x:Class="SalesManager.TaoMaNhanVien"
+﻿<local:BasePage x:Class="SalesManager.TaoMaNhanVien"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -69,4 +69,4 @@
             Margin="382,250,0,0"
             Width="200"/>
     </Grid>
-</Page>
+</local:BasePage>

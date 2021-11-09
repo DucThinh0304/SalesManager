@@ -18,7 +18,7 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for TaoMaNhanVien.xaml
     /// </summary>
-    public partial class TaoMaNhanVien : Page
+    public partial class TaoMaNhanVien : BasePage
     {
         public TaoMaNhanVien()
         {

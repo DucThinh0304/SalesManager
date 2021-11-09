@@ -9,6 +9,7 @@
       Title="Home">
 
     <Grid>
-        <TextBlock Text="HOME" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock x:Name="TextBlock1" Text="HOME" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Content="Test" Height="50" HorizontalAlignment="Left" Click="Button_Click"/>
     </Grid>
 </local:BasePage>
