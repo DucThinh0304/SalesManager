@@ -34,7 +34,7 @@
                     VerticalAlignment="Center"
                     FontSize="24" Margin="23.6,14,0,14.6" Foreground="#FF1DB7A4"
                     />
-                <TextBox 
+                <TextBox x:Name="textMaHang" 
                     Grid.ColumnSpan="2"
                     Grid.Column="2"
                     HorizontalAlignment="Left"
@@ -43,7 +43,7 @@
                     TextWrapping="Wrap"
                     FontSize="24"
                     Width="520"
-                    Margin="0 0 0 14.6"/>
+                    Margin="0 0 0 14.6" PreviewTextInput="textMaHang_PreviewTextInput"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -59,7 +59,7 @@
                     VerticalAlignment="Center"
                     FontSize="24" Margin="23.6,14,0,14.6" Foreground="#FF1DB7A4"
                     />
-                <TextBox 
+                <TextBox x:Name="textTenHang" 
                     Grid.ColumnSpan="2"
                     Grid.Column="2"
                     HorizontalAlignment="Left"
@@ -84,7 +84,7 @@
                     VerticalAlignment="Center"
                     FontSize="24" Margin="23.6,14,0,14.6" Foreground="#FF1DB7A4"
                     />
-                <ComboBox
+                <ComboBox x:Name="comBoxDVT"
                
                     Grid.ColumnSpan="2"
                     Grid.Column="2"
@@ -120,7 +120,7 @@
                     FontSize="24"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
-                    Width="180" Height="54" Margin="66.6,10,67,0"/>
+                    Width="180" Height="54" Margin="66.6,10,67,0" Click="Nhap_Click"/>
             </Grid>
         </StackPanel>
     </Grid>

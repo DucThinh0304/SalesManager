@@ -24,5 +24,10 @@ namespace SalesManager
         {
             InitializeComponent();
         }
+
+        private void NhapHangMoi_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapLoaiHangMoi;
+        }
     }
 }
