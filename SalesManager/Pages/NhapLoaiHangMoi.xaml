@@ -108,12 +108,12 @@
                     <ColumnDefinition Width="86*"/>
                 </Grid.ColumnDefinitions>
                 <Button 
-                    Content="Hủy"
+                    Content="Trở về"
                     Grid.Column="2"
                     FontSize="24"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
-                    Width="180" Height="54" Margin="66.6,10,67,0"/>
+                    Width="180" Height="54" Margin="66.6,10,67,0" Click="Trove_click"/>
                 <Button 
                     Content="Nhập hàng"
                     Grid.Column="1"
