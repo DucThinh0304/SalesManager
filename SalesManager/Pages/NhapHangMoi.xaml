@@ -34,15 +34,14 @@
                     VerticalAlignment="Center"
                     FontSize="24" Margin="23.6,14,0,14.6" Foreground="#FF1DB7A4"
                     />
-                <TextBox 
+                <ComboBox x:Name="comMaHang" 
                     Grid.ColumnSpan="2"
                     Grid.Column="2"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Height="39"
-                    TextWrapping="Wrap"
                     FontSize="24"
-                    Width="520"/>
+                    Width="520" IsEditable="True"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -58,7 +57,7 @@
                     VerticalAlignment="Center"
                     FontSize="24" Margin="23.6,14,0,14.6" Foreground="#FF1DB7A4"
                     />
-                <DatePicker 
+                <DatePicker x:Name="NgayNhapHang" 
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="24"
@@ -80,7 +79,7 @@
                     VerticalAlignment="Center"
                     FontSize="24" Margin="23.6,14,0,14.6" Foreground="#FF1DB7A4"
                     />
-                <DatePicker 
+                <DatePicker x:Name="HSD" 
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     FontSize="24"
@@ -101,7 +100,7 @@
                     VerticalAlignment="Center"
                     FontSize="24" Margin="23.6,14,0,14.6" Foreground="#FF1DB7A4"
                     />
-                <TextBox 
+                <TextBox x:Name="textSL" 
                     Grid.ColumnSpan="2"
                     Grid.Column="2"
                     HorizontalAlignment="Left"
@@ -110,7 +109,7 @@
                     TextWrapping="Wrap"
                     FontSize="24"
                     Width="520"
-                    Margin="0,4,0,14.6" />
+                    Margin="0,4,0,14.6" PreviewTextInput="Check_SoLuong" />
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -126,7 +125,7 @@
                     VerticalAlignment="Center"
                     FontSize="24" Margin="23.6,14,0,14.6" Foreground="#FF1DB7A4"
                     />
-                <TextBox 
+                <TextBox x:Name="textDonGia" 
                     Grid.ColumnSpan="2"
                     Grid.Column="2"
                     HorizontalAlignment="Left"
@@ -134,7 +133,7 @@
                     Height="39"
                     TextWrapping="Wrap"
                     FontSize="24"
-                    Width="520" Margin="0,4,0,14.6"/>
+                    Width="520" Margin="0,4,0,14.6" PreviewTextInput="Check_DonGia"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -144,19 +143,19 @@
                     <ColumnDefinition Width="86*"/>
                 </Grid.ColumnDefinitions>
                 <Button 
-                    Content="Hủy"
+                    Content="Trở về"
                     Grid.Column="2"
                     FontSize="24"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
-                    Width="180" Height="54" Margin="66.6,10,67,0"/>
+                    Width="180" Height="54" Margin="66.6,10,67,0" Click="TroVe_Click"/>
                 <Button 
                     Content="Nhập hàng"
                     Grid.Column="1"
                     FontSize="24"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
-                    Width="180" Height="54" Margin="66.6,10,67,0"/>
+                    Width="180" Height="54" Margin="66.6,10,67,0" Click="NhapHang_Click"/>
 
             </Grid>
         </StackPanel>

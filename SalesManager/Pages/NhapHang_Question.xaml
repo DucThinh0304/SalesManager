@@ -22,13 +22,13 @@
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"
             Width="300" 
-            Height="90" Background="#FFACEDEC" Foreground="#FF0536C0" FontSize="24" Margin="0 0 0 50"/>
+            Height="90" Background="#FFACEDEC" Foreground="#FF0536C0" FontSize="24" Margin="0 0 0 50" Click="ThemHangDaCo_Click"/>
             <Button 
             Content="TRỞ VỀ" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"
             Width="300" 
-            Height="90" Background="#FFACEDEC" Foreground="#FF0536C0" FontSize="24" Margin="0 0 0 100"/>
+            Height="90" Background="#FFACEDEC" Foreground="#FF0536C0" FontSize="24" Margin="0 0 0 100" Click="TroVe_Click"/>
         </StackPanel>
     </Grid>
 </Page>

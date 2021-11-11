@@ -87,8 +87,9 @@ namespace SalesManager
                     textMaHang.Text = "";
                     textTenHang.Text = "";
                     comBoxDVT.Text = "Cái";
-                }    
-            }    
+                }
+                sqlConn.Close();
+            }
         }
 
         private void textMaHang_PreviewTextInput(object sender, TextCompositionEventArgs e)
