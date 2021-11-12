@@ -72,5 +72,12 @@ namespace SalesManager
             ThongKe_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeDoanhThu;
         }
+        private void Danhsach_1(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            var bc = new BrushConverter();
+            Danhsach_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinDanhSachHangHoa;
+        }
     }
 }

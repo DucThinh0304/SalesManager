@@ -10,7 +10,7 @@
 
     <Grid>
         <Label 
-                Content="CHỈNH SỬA DANH SÁCH HÀNG HÓA" 
+                Content="DANH SÁCH HÀNG HÓA" 
                 HorizontalAlignment="Center" 
                 FontWeight="Bold" 
                 FontSize="36" 
@@ -18,24 +18,26 @@
                 Margin="20 20 20 20"   />
 
         <Button
-            Content="LƯU"                
+            Content="CHỈNH SỬA"  
+            HorizontalAlignment="Left"
                 FontWeight="Bold" 
                 FontSize="15" 
                 Foreground="White"
                 Margin="108,384,492,33.6"   />
         <Button
-            Content="TRỞ LẠI"                
+            Content="TRỞ LẠI"
+            HorizontalAlignment="Right"
                 FontWeight="Bold" 
                 FontSize="15" 
                 Foreground="White"
-                Margin="489,384,111,33.6" />
+                Margin="489,384,111,33.6" Click="Button_Click" />
         <DataGrid
             AutoGenerateColumns="False"
           EnableRowVirtualization="True"
-          Height = "243"
-          HorizontalAlignment="Left"
+          Height = "230"
+          HorizontalAlignment="Center"
           ItemsSource="{Binding}"
-          Margin = "10,116,0,0" 
+          Margin = "15,116,5,0" 
           Name="dataGrid"
           RowDetailsVisibilityMode="VisibleWhenSelected"
           VerticalAlignment="Top"

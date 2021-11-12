@@ -9,66 +9,78 @@
       Title="TaoMaNhanVien">
 
     <Grid>
+        
         <Label 
-                Content="TẠO MÃ NHÂN VIÊN" 
+                Content="SỬA MẬT KHẨU NHÂN VIÊN" 
                 HorizontalAlignment="Center" 
                 FontWeight="Bold" 
                 FontSize="36" 
                 Foreground="#FF0536C0"
-                Margin="218,20,218,380"   />
+                Margin="143,28,145,371.6" Width="512"   />
         <Label 
-                Content="MÃ NHÂN VIÊN"  
-                FontFamily="{StaticResource MyriadBold}"
+                Content="MÃ NHÂN VIÊN"                
                 FontWeight="Bold" 
                 FontSize="15" 
                 Foreground="#FF1DB7A4"
-                Margin="160,150,500,270"  />
+                Margin="160,120,500,300.6"  />
         <Label 
                 Content="TÊN NHÂN VIÊN"                
                 FontWeight="Bold" 
-                FontFamily="{StaticResource MyriadBold}"
                 FontSize="15" 
                 Foreground="#FF1DB7A4"
-                Margin="160,200,500,220"  />
-        <Label 
-                Content="TẠO PASS NHÂN VIÊN"                
+                Margin="160,164,500,255.6"  />
+        <Label  
+                Content="PASS NHÂN VIÊN"                
                 FontWeight="Bold" 
                 FontSize="15" 
                 Foreground="#FF1DB7A4"
-                Margin="160,250,463,170"  />
-        <Button
-            Content="THÊM"                
+                Margin="160,213,463,206.6"  />
+        <Label  
+                Content="REPASS NHÂN VIÊN"                
                 FontWeight="Bold" 
                 FontSize="15" 
-                Foreground="White"
-                Margin="100 319 500 100"   />
+                Foreground="#FF1DB7A4"
+                Margin="160,257,463,160.6"  />
         <Button
-            Content="HỦY"                
-                FontWeight="Bold" 
-                FontSize="15" 
-                Foreground="White"
-                Margin="500 319 100 100" />
-        <TextBox 
+            Content="LƯU"   
             HorizontalAlignment="Left" 
-            Height="23" 
-            TextWrapping="Wrap" 
+                FontWeight="Bold" 
+                FontSize="15" 
+                Foreground="White"
+                Margin="100,319,0,98.6" Click="Button_Click_1" Width="135" RenderTransformOrigin="0.497,1.818"   />
+        <Button
+            Content="HỦY"     
+            HorizontalAlignment="Right" 
+                FontWeight="Bold" 
+                FontSize="15" 
+                Foreground="White"
+                Margin="0,319,100,98.6" Click="Button_Click" Width="128" />
+        <ComboBox x:Name="manv"
+            HorizontalAlignment="Center" 
+            Height="23"  
             VerticalAlignment="Top" 
-            Margin="382,157,0,0"
+            Margin="491,126,109,0"
             Width="200"/>
-        <TextBox 
-            HorizontalAlignment="Left" 
+        <TextBox x:Name="tennv" 
+            HorizontalAlignment="Center" 
             Height="23" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
-             Margin="382,203,0,0"
+             Margin="491,171,109,0"
+            Width="200" RenderTransformOrigin="0.501,-0.933"/>
+
+        <PasswordBox x:Name="pass"
+            HorizontalAlignment="Center" 
+            Height="23" 
+            VerticalAlignment="Top" 
+            Margin="491,220,109,0"
             Width="200"/>
 
-        <TextBox 
-            HorizontalAlignment="Left" 
+        <PasswordBox x:Name="repass"
+            HorizontalAlignment="Center" 
             Height="23" 
-            TextWrapping="Wrap" 
             VerticalAlignment="Top" 
-            Margin="382,250,0,0"
+            Margin="491,266,109,0"
             Width="200"/>
     </Grid>
 </local:BasePage>

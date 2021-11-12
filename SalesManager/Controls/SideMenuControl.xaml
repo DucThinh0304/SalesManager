@@ -48,6 +48,7 @@
                     <Button x:Name= "DanhSachNV_Button" Content="Danh Sách Nhân Viên" Click="DSNV_Click"  Foreground="White"/>
                     <Button x:Name= "ThemSuaNV_Button" Content="Thêm/Sửa Nhân Viên" Click="ThemNV_Click" Foreground="White" />
                     <Button x:Name= "ThongKe_Button" Content="Thống Kê Doanh Thu" Click="ThongKeDT_Click"  Foreground="White"/>
+                    <Button x:Name= "Danhsach_Button" Content="Danh Sách Hàng Hóa" Click="Danhsach_1"  Foreground="White" />
                 </StackPanel>
             </Grid>
         </Border>
