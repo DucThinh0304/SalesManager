@@ -18,11 +18,17 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for ThongKeDoanhThu.xaml
     /// </summary>
-    public partial class ThongKeDoanhThu : Page
+    public partial class ThongKeDoanhThu : BasePage
     {
         public ThongKeDoanhThu()
         {
             InitializeComponent();
+        }
+
+        private void thoat_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<Page x:Class="SalesManager.ThongTinNhanVien"
+﻿<local:BasePage x:Class="SalesManager.ThongTinNhanVien"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -108,55 +108,35 @@
                     FontSize="28" Margin="62,9,0,14" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
                     />
         </Grid>
-        <Grid Margin="0,270,0,130" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="530*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                    HorizontalAlignment="Left"
-                    TextWrapping="Wrap"
-                    Text="Số điện thoại: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="62,9,0,14" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
-                    />
-        </Grid>
         <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Width="140"
-                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="250,351,10,97.8" Grid.Column="1">
+                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="250,300,10,97.8" Grid.Column="1" Click="suaNV_Click">
+            SỬA THÔNG TIN
+        </Button>
+        <Button
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="140"
+                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="250,381,10,67.8" Grid.Column="1" Click="XoaNV_Click">
             XÓA NHÂN VIÊN
         </Button>
         <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Width="140"
-                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="251,420,9,28.8" Grid.Column="1">
-            SỬA THÔNG TIN
+                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="250,439,10,9.8" Grid.Column="1" Click="taoPass_Click">
+            TẠO MẬT KHẨU
         </Button>
         <ListView HorizontalAlignment = "Center" 
-                  Height = "170" 
+                  Height = "205" 
                   VerticalAlignment = "Top"  
                   Width = "641" 
-                  Margin="0,311,159,-0.2"
+                  Margin="0,276,159,-0.2"
                   x:Name="lvUsers" Grid.ColumnSpan="2"
                    FontSize="20">
 
             <ListView.View>
 
                 <GridView>
-
-                    <GridViewColumn Header = "STT" 
-                                    DisplayMemberBinding = "{Binding stt}" 
-                                    Width = "100"
-                                    >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding stt}" 
-                                           TextAlignment="Center" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
                     <GridViewColumn Header = "Mã Hóa Đơn"
                   DisplayMemberBinding = "{Binding MAHD}" Width = "200">
                         <GridViewColumn.CellTemplate>
@@ -175,8 +155,19 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    <GridViewColumn Header = "Trị giá" 
+                                    DisplayMemberBinding = "{Binding stt}" 
+                                    Width = "150"
+                                    >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding stt}" 
+                                           TextAlignment="Center" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
     </Grid>
-</Page>
+</local:BasePage>

@@ -18,11 +18,27 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for DanhSachNhanVien.xaml
     /// </summary>
-    public partial class DanhSachNhanVien : Page
+    public partial class DanhSachNhanVien : BasePage
     {
         public DanhSachNhanVien()
         {
             InitializeComponent();
+        }
+
+        private void ThemNV_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
+        }
+
+        private void XemThongTin_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinNhanVien;
+        }
+
+        private void Thoat_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
         }
     }
 }

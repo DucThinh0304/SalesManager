@@ -39,5 +39,20 @@ namespace SalesManager
         {
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapHang_Question;
         }
+
+        private void DSNV_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
+        }
+
+        private void ThemNV_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
+        }
+
+        private void ThongKeDT_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeDoanhThu;
+        }
     }
 }
