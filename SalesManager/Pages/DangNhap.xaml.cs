@@ -28,6 +28,7 @@ namespace SalesManager
             InitializeComponent();
         }
 
+
         private void DangKy_Click(object sender, RoutedEventArgs e)
         {
 
@@ -60,25 +61,30 @@ namespace SalesManager
         }
         private void DangNhap_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-            sqlConn.Open();
-            string MatKhauMaHoa = Encrypt(MatKhau.Password);
-            var sqlCommand = new SqlCommand("SELECT CMND,MATKHAU FROM NHANVIEN WHERE CMND='" + CMND.Text + "'and MATKHAU ='" + MatKhauMaHoa + "'", sqlConn);
-            var reader = sqlCommand.ExecuteReader();
-            if (reader.Read() == true)
-            {
-                sqlConn.Close();
+            if (!(CMND.Text == "" || MatKhau.Password== "" )) {
+                SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                sqlConn.Open();
+                string MatKhauMaHoa = Encrypt(MatKhau.Password);
+                var sqlCommand = new SqlCommand("SELECT CMND,MATKHAU FROM NHANVIEN WHERE CMND='" + CMND.Text + "'and MATKHAU ='" + MatKhauMaHoa + "'", sqlConn);
+                var reader = sqlCommand.ExecuteReader();
+                if (reader.Read() == true)
+                {
+                    sqlConn.Close();
+                    reader.Close();
+                    NhapHangMoi.MaNV = CMND.Text;
+                    Home.CMND = CMND.Text;
+                    ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+                    ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
+                }
+                else
+                {
+                    CMND.Clear();
+                    MatKhau.Clear();
+                    MessageBox.Show("Đăng nhập thất bại");
+                }
                 reader.Close();
-                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
-                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
             }
-            else
-            {
-                CMND.Clear();
-                MatKhau.Clear();
-                MessageBox.Show("Đăng nhập thất bại");
-            }
-            reader.Close();
+            MessageBox.Show("Xin hãy điền đầy đủ thông tin");
 
         }
 

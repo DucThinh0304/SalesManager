@@ -43,12 +43,11 @@
                 <!-- The user content -->
                 <ContentPresenter Grid.Row="1" />
                 <StackPanel Grid.Row="1">
-                    <TextBlock x:Name="Staff_TextBlock" Text="Staff" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource WordBlueBrush}"/>
-                    <Button Content="Tạo Mã Nhân Viên" Click="Button_Click"/>
-                    <Button Content="Thêm hàng" Click="ThemHang_Click"/>
-                    <Button Content="Danh Sách Nhân Viên" Click="DSNV_Click" />
-                    <Button Content="Thêm/Sửa Nhân Viên" Click="ThemNV_Click"  />
-                    <Button Content="Thống Kê Doanh Thu" Click="ThongKeDT_Click"  />
+                    <TextBlock x:Name="Staff_TextBlock" Text="Staff" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
+                    <Button x:Name= "ThemHang_Button" Content="Thêm hàng" Click="ThemHang_Click" Foreground="White"/>
+                    <Button x:Name= "DanhSachNV_Button" Content="Danh Sách Nhân Viên" Click="DSNV_Click"  Foreground="White"/>
+                    <Button x:Name= "ThemSuaNV_Button" Content="Thêm/Sửa Nhân Viên" Click="ThemNV_Click" Foreground="White" />
+                    <Button x:Name= "ThongKe_Button" Content="Thống Kê Doanh Thu" Click="ThongKeDT_Click"  Foreground="White"/>
                 </StackPanel>
             </Grid>
         </Border>

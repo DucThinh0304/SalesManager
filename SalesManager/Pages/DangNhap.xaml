@@ -71,6 +71,7 @@
                             Height="Auto" Margin="20 10 20 10"
                             Content="Đăng Nhập" 
                             FontFamily="{StaticResource MyriadRegular}"
+                            Foreground="White"
                             FontSize="20"
                             />
                         <Button Grid.Column="1"
@@ -78,6 +79,7 @@
                             Height="Auto" Margin="20 10 20 10"
                             FontFamily="{StaticResource MyriadRegular}"
                             FontSize="20" 
+                            Foreground="White"
                             Content="Đăng ký" />
                     </Grid>
                     <Grid Grid.Row="5">

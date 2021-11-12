@@ -18,7 +18,7 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for NhapHang_Question.xaml
     /// </summary>
-    public partial class NhapHang_Question : Page
+    public partial class NhapHang_Question : BasePage
     {
         public NhapHang_Question()
         {

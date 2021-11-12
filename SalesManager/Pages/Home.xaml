@@ -9,7 +9,7 @@
       Title="Home">
 
     <Grid>
-        <TextBlock x:Name="TextBlock1" Text="HOME" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Content="Test" Height="50" HorizontalAlignment="Left" Click="Button_Click"/>
+        <TextBlock x:Name="TextBlock1" Text="Xin chào" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Name="LiveTimeLabel" Content="" HorizontalAlignment="Right" VerticalAlignment="Top" Height="55" Width="149" FontSize="36" FontWeight="Bold" Foreground="Red" />
     </Grid>
 </local:BasePage>

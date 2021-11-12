@@ -20,7 +20,7 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for NhapLoaiHangMoi.xaml
     /// </summary>
-    public partial class NhapLoaiHangMoi : Page
+    public partial class NhapLoaiHangMoi : BasePage
     {
         public NhapLoaiHangMoi()
         {

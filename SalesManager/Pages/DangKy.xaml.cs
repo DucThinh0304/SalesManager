@@ -94,6 +94,7 @@ namespace SalesManager
                     reader.Close();
                     return;
                 }
+
                 reader.Close();
                 string MatKhauMaHoa = Encrypt(MatKhau.Password);
                 string CH = "insert into CUAHANG values ('" + MaCuHang.Text + "',N'" + TenCuaHang.Text + "','" + MaQuanLi.Text + "','" + NgayThanhLap.Text + "')";

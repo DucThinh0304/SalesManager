@@ -20,12 +20,13 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for NhapHangMoi.xaml
     /// </summary>
-    public partial class NhapHangMoi : Page
+    public partial class NhapHangMoi : BasePage
     {
-        public static string MaNV = "NV001";
+        public static string MaNV;
         public NhapHangMoi()
         {
             InitializeComponent();
+
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
             var cmd = new SqlCommand("SELECT MAHANG FROM LOAIHANG", con);
@@ -35,6 +36,15 @@ namespace SalesManager
                 comMaHang.Items.Add(dr.GetString(0));
             }
             dr.Close();
+
+            var cmd2 = new SqlCommand("SELECT MANV FROM NHANVIEN WHERE CMND = "+ MaNV, con);
+            var dr2 = cmd2.ExecuteReader();
+            while (dr2.Read())
+            {
+                MaNV = dr2.GetString(0);
+            }
+            dr2.Close();
+
             con.Close();
             NgayNhapHang.SelectedDate = DateTime.Now;
         }

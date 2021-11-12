@@ -181,7 +181,7 @@
                         Style="{StaticResource 
                         MaterialDesignRaisedDarkButton}"
                         Width="100"
-                        ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                        
                         Background  ="#3CACE8" Margin="162,21,318,21"
                         Click="HoanTat_Click"
                         x:Name="HoanTat">
@@ -192,7 +192,7 @@
                         MaterialDesignRaisedDarkButton}"
                         Width="100"
                         Click="Huy_Click"
-                        ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                        
                         Background="#3CACE8" Margin="320,21,160,21"
                         x:Name="Thoat">
                         Hủy

@@ -17,22 +17,24 @@
                 Foreground="#FF0536C0"
                 Margin="218,20,218,380"   />
         <Label 
-                Content="MÃ NHÂN VIÊN"                
+                Content="MÃ NHÂN VIÊN"  
+                FontFamily="{StaticResource MyriadBold}"
                 FontWeight="Bold" 
                 FontSize="15" 
-                Foreground="Black"
+                Foreground="#FF1DB7A4"
                 Margin="160,150,500,270"  />
         <Label 
                 Content="TÊN NHÂN VIÊN"                
                 FontWeight="Bold" 
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize="15" 
-                Foreground="Black"
+                Foreground="#FF1DB7A4"
                 Margin="160,200,500,220"  />
         <Label 
                 Content="TẠO PASS NHÂN VIÊN"                
                 FontWeight="Bold" 
                 FontSize="15" 
-                Foreground="Black"
+                Foreground="#FF1DB7A4"
                 Margin="160,250,463,170"  />
         <Button
             Content="THÊM"                
