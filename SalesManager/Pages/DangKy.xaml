@@ -51,7 +51,12 @@
                                Grid.Row="2"></TextBlock>
                     <TextBox
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="154,-8,50,0" Height="auto" VerticalAlignment="Top"/>
+                        Margin="154,-17,50,10" 
+                        Height="auto" 
+                        VerticalAlignment="Top"
+                        x:Name="TenCuaHang"
+                        FontSize="17"
+                        />
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -63,83 +68,104 @@
                                Margin="50,10,10,10"
                                FontSize="15"/>
                     <TextBox Grid.Column="0"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="152,-10,10,10"/>
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="152,-17,10,10"
+                             x:Name="MaCuHang"
+                             FontSize="17"/>
                     <TextBlock Grid.Column="1"
                     Text="Ngày thành lập:"
                     Margin="0,10,10,10"
                       FontSize="15"/>
-                    <DatePicker
-                        Margin="115,-10,50,10"
-                       Grid.Column="1"
-                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  />
+                    <DatePicker Margin="115,-16,186,10"
+                                Grid.Column="1"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  
+                                x:Name="NgayThanhLap"
+                                FontSize="17"/>
                 </Grid>
                 <Grid Grid.Row="3">
-                    <TextBlock Text="Tên quản lí:"
+                    <TextBlock Text="Tên nhân viên quản lí:"
                                Margin="50,10,10,10"
                                FontSize="15" 
                                Grid.Row="2"></TextBlock>
-                    <TextBox
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="142,-8,50,0" Height="auto" VerticalAlignment="Top"/>
+                    <TextBox   Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                               Margin="204,-17,50,0" 
+                               Height="auto" 
+                               VerticalAlignment="Top"
+                               x:Name="TenQuanLi"
+                               FontSize="17"/>
                 </Grid>
                 <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="21*"/>
+                        <ColumnDefinition Width="79*"/>
+                        <ColumnDefinition Width="100*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
-                               Text="Mã quản lí:"
+                               Text="Mã nhân viên quản lí:"
                                Margin="50,10,10,10"
-                               FontSize="15" 
+                               FontSize="15" Grid.ColumnSpan="2" 
                               ></TextBlock>
-                    <TextBox Grid.Column="0"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="142,-10,10,10"/>
-                    <TextBlock Grid.Column="1"
+                    <TextBox Grid.Column="1"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="120,-17,10,10"
+                             x:Name="MaQuanLi"
+                             FontSize="17"/>
+                    <TextBlock Grid.Column="2"
                                Text="Ngày sinh:"
                                Margin="0,10,10,10"
                                FontSize="15" 
                                ></TextBlock>
-                    <DatePicker Grid.Column="1"
+                    <DatePicker Grid.Column="2"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
-                                Margin="80,-10,50,10" />
+                                Margin="80,-16,220,10" 
+                                x:Name="NgaySinh"
+                                FontSize="17"/>
                 </Grid>
                 <Grid Grid.Row="5">
-                    
+
                     <TextBlock Text="Số điện thoại:"
                                Margin="50,10,10,10"
                                FontSize="15" 
                                Grid.Row="2"></TextBlock>
-                    <TextBox
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="154,-8,50,0" Height="auto" VerticalAlignment="Top"/>
+                    <TextBox   Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                               Margin="154,-17,50,10" 
+                               Height="auto" 
+                               VerticalAlignment="Top"
+                               x:Name="SDT"
+                               FontSize="17"/>
                 </Grid>
                 <Grid Grid.Row="6">
                     <TextBlock Text="Địa chỉ:"
                                Margin="50,10,10,10"
                                FontSize="15" 
                                Grid.Row="2"></TextBlock>
-                    <TextBox
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="116,-8,50,0" Height="auto" VerticalAlignment="Top"/>
+                    <TextBox Style="{StaticResource 
+                             MaterialDesignFloatingHintTextBox}" 
+                             Margin="116,-17,50,10" 
+                             Height="auto" VerticalAlignment="Top"
+                             x:Name="DiaChi"
+                             FontSize="17"/>
                 </Grid>
                 <Grid Grid.Row="7">
-                    <TextBlock Text="CMND/CCCD (Tên đăng nhâp):"
+                    <TextBlock Text="CMND/CCCD :"
                                Margin="50,10,10,10"
                                FontSize="15" 
                                Grid.Row="2"></TextBlock>
-                    <TextBox
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="268,-8,50,0" Height="auto" VerticalAlignment="Top"/>
+                    <TextBox Style="{StaticResource 
+                             MaterialDesignFloatingHintTextBox}" 
+                             Margin="162,-17,50,10" 
+                             Height="auto" 
+                             VerticalAlignment="Top"
+                             x:Name="CMND"
+                             FontSize="17"/>
                 </Grid>
                 <Grid Grid.Row="8">
                     <TextBlock Text="Mật khẩu:"
                                Margin="50,10,10,10"
                                FontSize="15" 
                                Grid.Row="2"></TextBlock>
-                    <PasswordBox
-                        Margin="129,2,50,10"/>
+                    <PasswordBox Margin="129,2,50,10"
+                                 x:Name="MatKhau"/>
 
                 </Grid>
                 <Grid Grid.Row="9">
@@ -147,8 +173,8 @@
                                Margin="50,10,10,10"
                                FontSize="15" 
                                Grid.Row="2"></TextBlock>
-                    <PasswordBox
-                        Margin="189,2,50,10"/>
+                    <PasswordBox Margin="189,2,50,10"
+                                 x:Name="XNMatKhau"/>
                 </Grid>
                 <Grid Grid.Row="10">
                     <Button
@@ -157,16 +183,18 @@
                         Width="100"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
                         Background  ="#3CACE8" Margin="162,21,318,21"
-                        Click="Button_Click">
+                        Click="HoanTat_Click"
+                        x:Name="HoanTat">
                         Hoàn tất
                     </Button>
                     <Button
                         Style="{StaticResource 
                         MaterialDesignRaisedDarkButton}"
                         Width="100"
-                        Click="Button_Click"
+                        Click="Huy_Click"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
-                        Background="#3CACE8" Margin="320,21,160,21">
+                        Background="#3CACE8" Margin="320,21,160,21"
+                        x:Name="Thoat">
                         Hủy
                     </Button>
                 </Grid>

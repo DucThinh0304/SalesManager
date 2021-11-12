@@ -33,35 +33,38 @@
                         FontWeight="Bold" 
                         Foreground="#0288D1"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Center" Margin="220,74,220,33">
                         Quên mật khẩu
                     </TextBlock>
                     <TextBlock
                     Style="{StaticResource MaterialDesignBody1TextBlock}"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Bottom"
-                        Margin="0 0 0 30">
-                    Nhập mã cửa hàng và cmnd/cccd của bạn để xác nhận lấy lại mật khẩu.
+                        VerticalAlignment="Bottom"       
+                        Width="638"
+                        FontSize="22">
+                    Nhập mã cửa hàng và mã nhân viên quản lí để xác nhận lấy lại mật khẩu.
 
                     </TextBlock>
                 </Grid>
                 <Grid Grid.Row="1">
                     <TextBlock Text="Mã cửa hàng:"
-                               Margin="120,34,-60,-14"
+                               Margin="206,34,-146,-14"
                                FontSize="25" 
                               ></TextBlock>
                     <TextBox
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="280,25,152,28"/>
+                        FontSize="20"
+                        Margin="368,10,152,10"/>
                 </Grid>
                 <Grid Grid.Row="2">
-                    <TextBlock Text="CMND/CCCD:"
+                    <TextBlock Text="Mã nhân viên quản lí:"
                                Margin="120,34,-60,-14"
-                               FontSize="25" 
+                               FontSize   ="25" 
                               ></TextBlock>
                     <TextBox
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="280,25,152,28"/>
+                        FontSize="20"
+                        Margin="368,10,152,10"/>
                 </Grid>
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
@@ -71,18 +74,20 @@
                     <Button
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
-                        Background="#3CACE8" Margin="30,10,30,10"
+                        Background="#3CACE8" Margin="165,59,30,86"
                         FontSize="20"
-                        Grid.Column="0">
+                        Grid.Column="0" 
+                        Height="Auto"
+                        Click="GetPass_Click">
                         Lấy lại mật khẩu
                     </Button>
                     <Button
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
-                        Background="#3CACE8" Margin="30,10,30,10"
+                        Background="#3CACE8" Margin="30,59,165,86"
                         FontSize="20"
                         Grid.Column="1"
-                        Click="Button_Click">
+                        Click="Back_Click" Height="Auto">
                         Quay lại đăng nhập
                     </Button>
                 </Grid>

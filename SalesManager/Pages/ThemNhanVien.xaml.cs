@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Security.Cryptography;
-using System.Text;
+
 namespace SalesManager
 {
     /// <summary>
