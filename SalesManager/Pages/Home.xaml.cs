@@ -28,6 +28,7 @@ namespace SalesManager
         {
             InitializeComponent();
 
+
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
             var cmd = new SqlCommand("SELECT HOTEN FROM NHANVIEN WHERE CMND = "+ CMND , con);

@@ -33,6 +33,7 @@ namespace SalesManager
             DanhSachNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThemSuaNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThongKe_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            Danhsach_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
         }
 
         private void Setting_Click(object sender, RoutedEventArgs e)

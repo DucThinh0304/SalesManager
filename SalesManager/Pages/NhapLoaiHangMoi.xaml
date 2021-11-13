@@ -100,7 +100,7 @@
                     <ComboBoxItem Content="Chục"/>
                 </ComboBox>
             </Grid>
-            <Grid>
+            <Grid Margin="0 50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="86*"/>
                     <ColumnDefinition Width="314*"/>
@@ -111,6 +111,7 @@
                     Content="Trở về"
                     Grid.Column="2"
                     FontSize="24"
+                    Foreground="{StaticResource ForegroundLightBrush}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Width="180" Height="54" Margin="66.6,10,67,0" Click="Trove_click"/>
@@ -118,6 +119,7 @@
                     Content="Nhập hàng"
                     Grid.Column="1"
                     FontSize="24"
+                    Foreground="{StaticResource ForegroundLightBrush}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Width="180" Height="54" Margin="66.6,10,67,0" Click="Nhap_Click"/>

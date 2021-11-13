@@ -84,7 +84,8 @@ namespace SalesManager
                 }
                 reader.Close();
             }
-            MessageBox.Show("Xin hãy điền đầy đủ thông tin");
+            else
+                 MessageBox.Show("Xin hãy điền đầy đủ thông tin");
 
         }
 

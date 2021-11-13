@@ -193,6 +193,8 @@
         <Button
             Style="{StaticResource MaterialDesignRaisedButton}"
             Width="100"
+            FontWeight="Bold"
+            Foreground="{StaticResource ForegroundLightBrush}"
             ToolTip="Resource name: MaterialDesignRaisedButton" 
             Margin="221,427,479,-9.4" Click="Them_Click">
             THÊM
@@ -200,6 +202,8 @@
         <Button
             Style="{StaticResource MaterialDesignRaisedButton}"
             Width="100"
+            FontWeight="Bold"
+            Foreground="{StaticResource ForegroundLightBrush}"
             ToolTip="Resource name: MaterialDesignRaisedButton" 
             Margin="480,427,220,-9.4" Click="Huy_Click">
             HỦY

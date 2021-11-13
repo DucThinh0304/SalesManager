@@ -44,11 +44,11 @@
                 <ContentPresenter Grid.Row="1" />
                 <StackPanel Grid.Row="1">
                     <TextBlock x:Name="Staff_TextBlock" Text="Staff" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
-                    <Button x:Name= "ThemHang_Button" Content="Thêm hàng" Click="ThemHang_Click" Foreground="White"/>
-                    <Button x:Name= "DanhSachNV_Button" Content="Danh Sách Nhân Viên" Click="DSNV_Click"  Foreground="White"/>
-                    <Button x:Name= "ThemSuaNV_Button" Content="Thêm/Sửa Nhân Viên" Click="ThemNV_Click" Foreground="White" />
-                    <Button x:Name= "ThongKe_Button" Content="Thống Kê Doanh Thu" Click="ThongKeDT_Click"  Foreground="White"/>
-                    <Button x:Name= "Danhsach_Button" Content="Danh Sách Hàng Hóa" Click="Danhsach_1"  Foreground="White" />
+                    <Button x:Name= "ThemHang_Button" Height="40" FontSize="20" Content="Thêm hàng" Click="ThemHang_Click" Foreground="{StaticResource ForegroundLightBrush}"/>
+                    <Button x:Name= "DanhSachNV_Button"  Height="40" FontSize="20"  Content="Danh Sách Nhân Viên" Click="DSNV_Click"  Foreground="{StaticResource ForegroundLightBrush}"/>
+                    <Button x:Name= "ThemSuaNV_Button"  Height="40" FontSize="20"  Content="Thêm/Sửa Nhân Viên" Click="ThemNV_Click" Foreground="{StaticResource ForegroundLightBrush}" />
+                    <Button x:Name= "ThongKe_Button"  Height="40" FontSize="20"  Content="Thống Kê Doanh Thu" Click="ThongKeDT_Click"  Foreground="{StaticResource ForegroundLightBrush}"/>
+                    <Button x:Name= "Danhsach_Button"  Height="40" FontSize="20"  Content="Danh Sách Hàng Hóa" Click="Danhsach_1"  Foreground="{StaticResource ForegroundLightBrush}" />
                 </StackPanel>
             </Grid>
         </Border>

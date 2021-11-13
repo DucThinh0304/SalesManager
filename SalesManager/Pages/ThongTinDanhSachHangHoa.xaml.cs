@@ -18,7 +18,7 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for ThongTinDanhSachHangHoa.xaml
     /// </summary>
-    public partial class ThongTinDanhSachHangHoa : Page
+    public partial class ThongTinDanhSachHangHoa : BasePage
     {
         public ThongTinDanhSachHangHoa()
         {

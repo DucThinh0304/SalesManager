@@ -74,12 +74,14 @@
             </ListView.View>
         </ListView>
         <Button
+                Foreground="{StaticResource ForegroundLightBrush}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="130"
                 ToolTip="Resource name: MaterialDesignRaisedButton" Margin="662,162,8,255.6">
             XEM HÓA ĐƠN
         </Button>
         <Button
+                Foreground="{StaticResource ForegroundLightBrush}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="130"
                 ToolTip="Resource name: MaterialDesignRaisedButton" 
@@ -87,6 +89,7 @@
             THỐNG KÊ
         </Button>
         <Button
+                Foreground="{StaticResource ForegroundLightBrush}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="130"
                 ToolTip="Resource name: MaterialDesignRaisedButton" 

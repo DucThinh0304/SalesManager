@@ -145,12 +145,14 @@
                 <Button 
                     Content="Trở về"
                     Grid.Column="2"
+                    Foreground="{StaticResource ForegroundLightBrush}"
                     FontSize="24"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Width="180" Height="54" Margin="66.6,10,67,0" Click="TroVe_Click"/>
                 <Button 
                     Content="Nhập hàng"
+                    Foreground="{StaticResource ForegroundLightBrush}"
                     Grid.Column="1"
                     FontSize="24"
                     HorizontalAlignment="Center"
