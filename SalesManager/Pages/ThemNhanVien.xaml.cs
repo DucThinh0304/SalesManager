@@ -55,10 +55,12 @@ namespace SalesManager
 
         private void Them_Click(object sender, RoutedEventArgs e)
         {
-            if (tbMANV.Text == "" || tbHOTEN.Text == "" || ngSinh.Text == "" || tbCMND.Text == "" || tbDIACHI.Text == "" || ngVL.Text == "" || tbMK.Text == "") MessageBox.Show("Vui lòng nhập đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            if (tbMANV.Text == "" || tbHOTEN.Text == "" || ngSinh.Text == "" || tbCMND.Text == "" || tbDIACHI.Text == "" || ngVL.Text == "" || tbGT.Text == "" || tbMK.Password == "" || tbRMK.Password == "") MessageBox.Show("Vui lòng nhập đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+            else if (tbMK.Password != tbRMK.Password) MessageBox.Show("Mật khẩu nhập lại không chính xác. Vui lòng thử lại!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
-                string pass = Encrypt(tbMK.Text);
+                string pass = Encrypt(tbMK.Password);
                 var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();
                 var sqlCommand = new SqlCommand("SELECT MANV FROM NHANVIEN", sqlConn);
@@ -78,7 +80,7 @@ namespace SalesManager
                     MessageBoxResult reSult = MessageBox.Show("Nhân viên đã tồn tại trong hệ thống, bạn có muốn ghi đè dữ liệu đang có không?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                     if (reSult == MessageBoxResult.Yes)
                     {
-                        sqlCommand.CommandText = "UPDATE NHANVIEN SET HOTEN = @HOTEN, NGSINH = @NGSINH, CMND=@CMND, DIACHI= @DIACHI, NGVAOLAM=@NGVAOLAM, MATKHAU=@MATKHAU WHERE MANV = @MANV";
+                        sqlCommand.CommandText = "UPDATE NHANVIEN SET HOTEN = @HOTEN, NGSINH = @NGSINH, CMND=@CMND, DIACHI= @DIACHI, NGVAOLAM=@NGVAOLAM, GIOITINH=@GIOITINH, MATKHAU=@MATKHAU WHERE MANV = @MANV";
                         sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
                         sqlCommand.Parameters["@MANV"].Value = tbMANV.Text;
                         sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
@@ -91,6 +93,8 @@ namespace SalesManager
                         sqlCommand.Parameters["@DIACHI"].Value = tbDIACHI.Text;
                         sqlCommand.Parameters.Add("@NGVAOLAM", System.Data.SqlDbType.SmallDateTime);
                         sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.Text;
+                        sqlCommand.Parameters.Add("@GIOITINH", System.Data.SqlDbType.NVarChar);
+                        sqlCommand.Parameters["@GIOITINH"].Value = tbGT.Text;
                         sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
                         sqlCommand.Parameters["@MATKHAU"].Value = pass;
                         sqlCommand.ExecuteNonQuery();
@@ -102,14 +106,14 @@ namespace SalesManager
                         tbCMND.Text = "";
                         tbDIACHI.Text = "";
                         ngVL.Text = "";
-                        tbMK.Text = "";
+                        tbMK.Password = "";
                         ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
                     }
                 }
                 else
                 {
                     reader.Close();
-                    sqlCommand.CommandText = "INSERT INTO NHANVIEN (MANV,HOTEN,NGSINH,CMND,DIACHI,NGVAOLAM,MATKHAU) VALUES " + "(@MANV,@HOTEN,@NGSINH,@CMND,@DIACHI,@NGVAOLAM,@MATKHAU)";
+                    sqlCommand.CommandText = "INSERT INTO NHANVIEN (MANV,HOTEN,NGSINH,CMND,DIACHI,NGVAOLAM,GIOITINH,MATKHAU) VALUES " + "(@MANV,@HOTEN,@NGSINH,@CMND,@DIACHI,@NGVAOLAM,@GIOITINH,@MATKHAU)";
                     sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
                     sqlCommand.Parameters["@MANV"].Value = tbMANV.Text;
                     sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
@@ -122,6 +126,8 @@ namespace SalesManager
                     sqlCommand.Parameters["@DIACHI"].Value = tbDIACHI.Text;
                     sqlCommand.Parameters.Add("@NGVAOLAM", System.Data.SqlDbType.SmallDateTime);
                     sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.Text;
+                    sqlCommand.Parameters.Add("@GIOITINH", System.Data.SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@GIOITINH"].Value = tbGT.Text;
                     sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
                     sqlCommand.Parameters["@MATKHAU"].Value = pass;
                     sqlCommand.ExecuteNonQuery();
@@ -133,7 +139,7 @@ namespace SalesManager
                     tbCMND.Text = "";
                     tbDIACHI.Text = "";
                     ngVL.Text = "";
-                    tbMK.Text = "";
+                    tbMK.Password = "";
                     ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
                 }
             }
@@ -143,5 +149,6 @@ namespace SalesManager
         {
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
         }
+
     }
 }

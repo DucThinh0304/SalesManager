@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:SalesManager"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -23,7 +24,7 @@
                 Foreground="{StaticResource ForegroundLightBrush}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
-                ToolTip="Resource name: MaterialDesignRaisedButton" Margin="650,162,0,255.6" Click="ThemNV_Click">
+                ToolTip="Resource name: MaterialDesignRaisedButton" Margin="650,255,0,162.6" Click="ThemNV_Click">
             THÊM NHÂN VIÊN
         </Button>
         <Button
@@ -31,7 +32,7 @@
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
                 ToolTip="Resource name: MaterialDesignRaisedButton" 
-                Margin="650,242,0,175.6" Click="XemThongTin_Click">
+                Margin="650,321,0,96.6" Click="XemThongTin_Click">
             XEM THÔNG TIN
         </Button>
         <Button
@@ -39,58 +40,17 @@
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
                 ToolTip="Resource name: MaterialDesignRaisedButton" 
-                Margin="650,317,0,100.6" Click="Thoat_Click">
+                Margin="650,385,0,32.6" Click="Thoat_Click">
             THOÁT
         </Button>
-        <ListView HorizontalAlignment = "Center" 
-                  Height = "390" 
-                  VerticalAlignment = "Top"  
-                  Width = "640" 
-                  Margin="0,60,160,-0.4"
-                  x:Name="lvUsers"
-                  FontSize="20">
-
+        <ListView Margin="50,68,234,9.6" Name="lvUsers" >
             <ListView.View>
-                <GridView>
-                    <GridViewColumn>
-                        <GridViewColumn.Header>
-                            Chọn
-                        </GridViewColumn.Header>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox Margin="7" Tag="{Binding Number}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn >
-                    <GridViewColumn x:Name="gvc_ID" Header = "ID"
-                  DisplayMemberBinding = "{Binding ID}" Width = "150">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding ID}" 
-                                           TextAlignment="Center" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="gvc_HoTen" Header = "Họ Tên" 
-                  DisplayMemberBinding = "{Binding name}" Width = "250">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding name}" 
-                                           TextAlignment="Center" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn x:Name="gvc_SDT" Header = "SĐT" 
-                                    DisplayMemberBinding = "{Binding stt}" 
-                                    Width = "100"
-                                    >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding stt}" 
-                                           TextAlignment="Center" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                <GridView >
+                    <GridViewColumn Header = "STT"  DisplayMemberBinding = "{Binding STT}" Width = "90"></GridViewColumn>
+                    <GridViewColumn Header = "ID" DisplayMemberBinding = "{Binding MANV}" Width = "100"></GridViewColumn>
+                    <GridViewColumn Header = "Họ Tên" DisplayMemberBinding = "{Binding HOTEN}" Width = "180"></GridViewColumn>
+                    <GridViewColumn Header = "Địa chỉ" DisplayMemberBinding = "{Binding DIACHI}" Width = "140"></GridViewColumn>
+                    <GridViewColumn Header = "Giới tính" DisplayMemberBinding = "{Binding GIOITINH}" Width = "110"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

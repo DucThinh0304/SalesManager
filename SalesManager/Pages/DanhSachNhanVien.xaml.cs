@@ -12,7 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+using System.ComponentModel;
 namespace SalesManager
 {
     /// <summary>
@@ -23,6 +26,30 @@ namespace SalesManager
         public DanhSachNhanVien()
         {
             InitializeComponent();
+            LoadListNV();
+        }
+        public class User
+        {
+            public string STT { get; set; }
+            public string MANV { get; set; }
+            public string HOTEN { get; set; }
+            public string DIACHI { get; set; }
+            public string GIOITINH { get; set; }
+        }
+        void LoadListNV()
+        {
+            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            var sqlCommand = new SqlCommand("SELECT STT,MANV, HOTEN, DIACHI, GIOITINH FROM NHANVIEN", sqlConn);
+            var reader = sqlCommand.ExecuteReader();
+            List<User> items = new List<User>();
+            while (reader.Read())
+            {
+                items.Add(new User() { STT = reader[0].ToString(), MANV = reader.GetString(1), HOTEN = reader.GetString(2), DIACHI = reader.GetString(3), GIOITINH = reader.GetString(4) });
+                lvUsers.ItemsSource = items;
+            }
+            reader.Close();
+            sqlConn.Close();
         }
 
         private void ThemNV_Click(object sender, RoutedEventArgs e)
