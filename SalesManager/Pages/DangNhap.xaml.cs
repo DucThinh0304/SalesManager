@@ -61,7 +61,7 @@ namespace SalesManager
         }
         private void DangNhap_Click(object sender, RoutedEventArgs e)
         {
-            if (!(CMND.Text == "" || MatKhau.Password== "" )) {
+            /*if (!(CMND.Text == "" || MatKhau.Password== "" )) {
                 SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();
                 string MatKhauMaHoa = Encrypt(MatKhau.Password);
@@ -70,12 +70,13 @@ namespace SalesManager
                 if (reader.Read() == true)
                 {
                     sqlConn.Close();
-                    reader.Close();
-                    NhapHangMoi.MaNV = CMND.Text;
+                    reader.Close();*/
+                    NhapHangMoi.CMND = CMND.Text;
                     Home.CMND = CMND.Text;
+                    TaoHoaDon.CMND = CMND.Text;
                     ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
                     ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
-                }
+                /*}
                 else
                 {
                     CMND.Clear();
@@ -85,7 +86,7 @@ namespace SalesManager
                 reader.Close();
             }
             else
-                 MessageBox.Show("Xin hãy điền đầy đủ thông tin");
+                 MessageBox.Show("Xin hãy điền đầy đủ thông tin");*/
 
         }
 

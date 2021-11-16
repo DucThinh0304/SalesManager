@@ -49,6 +49,7 @@
                     <Button x:Name= "ThemSuaNV_Button"  Height="40" FontSize="20"  Content="Thêm/Sửa Nhân Viên" Click="ThemNV_Click" Foreground="{StaticResource ForegroundLightBrush}" />
                     <Button x:Name= "ThongKe_Button"  Height="40" FontSize="20"  Content="Thống Kê Doanh Thu" Click="ThongKeDT_Click"  Foreground="{StaticResource ForegroundLightBrush}"/>
                     <Button x:Name= "Danhsach_Button"  Height="40" FontSize="20"  Content="Danh Sách Hàng Hóa" Click="Danhsach_1"  Foreground="{StaticResource ForegroundLightBrush}" />
+                    <Button x:Name= "TaoHoaDon_Button"  Height="40" FontSize="20"  Content="Tạo hóa đơn" Click="TaoHoaDon_Click"  Foreground="{StaticResource ForegroundLightBrush}" />
                 </StackPanel>
             </Grid>
         </Border>

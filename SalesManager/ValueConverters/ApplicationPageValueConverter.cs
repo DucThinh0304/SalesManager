@@ -44,6 +44,8 @@ namespace SalesManager
                     return new ThongTinChinhSuaDanhSach();
                 case ApplicationPage.SideMenuControl:
                     return new SideMenuControl();
+                case ApplicationPage.TaoHoaDon:
+                    return new TaoHoaDon();
                 case ApplicationPage.VisualOff:
                     return new VisualOff();
                 default:

@@ -22,7 +22,7 @@ namespace SalesManager
     /// </summary>
     public partial class NhapHangMoi : BasePage
     {
-        public static string MaNV;
+        public static string MaNV, CMND;
         public NhapHangMoi()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace SalesManager
             }
             dr.Close();
 
-            var cmd2 = new SqlCommand("SELECT MANV FROM NHANVIEN WHERE CMND = "+ MaNV, con);
+            var cmd2 = new SqlCommand("SELECT MANV FROM NHANVIEN WHERE CMND = "+ CMND, con);
             var dr2 = cmd2.ExecuteReader();
             while (dr2.Read())
             {
@@ -87,7 +87,7 @@ namespace SalesManager
                 else
                 {
                     reader.Close();
-                    sqlCommand.CommandText = "SELECT MAX(MALO) FROM NHAPHANG WHERE MAHANG = " + comMaHang.Text;
+                    sqlCommand.CommandText = "SELECT MAX(MALO) FROM NHAPHANG WHERE MAHANG = " + "'" + comMaHang.Text + "'";
                     reader = sqlCommand.ExecuteReader();
                     int MaLo = 0;
                     if (reader.Read())

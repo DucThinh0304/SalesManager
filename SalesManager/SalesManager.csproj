@@ -137,6 +137,9 @@
     <Compile Include="Pages\ThongTinNhanVien.xaml.cs">
       <DependentUpon>ThongTinNhanVien.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\TaoHoaDon.xaml.cs">
+      <DependentUpon>TaoHoaDon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
@@ -236,6 +239,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\Fonts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TaoHoaDon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

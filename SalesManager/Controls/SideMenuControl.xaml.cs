@@ -34,6 +34,7 @@ namespace SalesManager
             ThemSuaNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThongKe_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             Danhsach_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
         }
 
         private void Setting_Click(object sender, RoutedEventArgs e)
@@ -79,6 +80,14 @@ namespace SalesManager
             var bc = new BrushConverter();
             Danhsach_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinDanhSachHangHoa;
+        }
+
+        private void TaoHoaDon_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            var bc = new BrushConverter();
+            TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoHoaDon;
         }
     }
 }
