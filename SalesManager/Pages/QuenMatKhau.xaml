@@ -15,7 +15,7 @@
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MyriadLight}">
     <Grid>
-        <Border Height="500"
+        <Border Height="450"
                     Background="AliceBlue"
                     CornerRadius="10"
                     Width="800">
@@ -47,8 +47,8 @@
                     </TextBlock>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBlock Text="Mã cửa hàng:"
-                               Margin="206,34,-146,-14"
+                    <TextBlock Text="CMND:"
+                               Margin="280,34,-146,-14"
                                FontSize="25" 
                               ></TextBlock>
                     <TextBox
@@ -57,8 +57,8 @@
                         Margin="368,10,152,10"/>
                 </Grid>
                 <Grid Grid.Row="2">
-                    <TextBlock Text="Mã nhân viên quản lí:"
-                               Margin="120,34,-60,-14"
+                    <TextBlock Text="Mật khẩu mới:"
+                               Margin="200,34,-60,-14"
                                FontSize   ="25" 
                               ></TextBlock>
                     <TextBox
@@ -72,8 +72,9 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Button
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Background="#3CACE8" Margin="165,59,30,86"
+                        Foreground="{StaticResource ForegroundLightBrush}"
+                        FontFamily="{StaticResource MyriadBold}"
+                        Margin="165,59,30,60"
                         FontSize="20"
                         Grid.Column="0" 
                         Height="Auto"
@@ -81,8 +82,9 @@
                         Lấy lại mật khẩu
                     </Button>
                     <Button
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        Background="#3CACE8" Margin="30,59,165,86"
+                        Foreground="{StaticResource ForegroundLightBrush}"
+                        FontFamily="{StaticResource MyriadBold}"
+                        Margin="30,59,160,60"
                         FontSize="20"
                         Grid.Column="1"
                         Click="Back_Click" Height="Auto">

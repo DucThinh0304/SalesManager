@@ -178,22 +178,20 @@
                 </Grid>
                 <Grid Grid.Row="10">
                     <Button
-                        Style="{StaticResource 
-                        MaterialDesignRaisedDarkButton}"
+                        Foreground="{StaticResource ForegroundLightBrush}"
                         Width="100"
-                        
-                        Background  ="#3CACE8" Margin="162,21,318,21"
+                        FontFamily="{StaticResource MyriadBold}"
+                        Margin="162,21,318,21"
                         Click="HoanTat_Click"
                         x:Name="HoanTat">
                         Hoàn tất
                     </Button>
                     <Button
-                        Style="{StaticResource 
-                        MaterialDesignRaisedDarkButton}"
+                        Foreground="{StaticResource ForegroundLightBrush}"
                         Width="100"
+                        FontFamily="{StaticResource MyriadBold}"
                         Click="Huy_Click"
-                        
-                        Background="#3CACE8" Margin="320,21,160,21"
+                        Margin="320,21,160,21"
                         x:Name="Thoat">
                         Hủy
                     </Button>
