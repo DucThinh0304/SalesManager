@@ -140,7 +140,7 @@ namespace SalesManager
                 MaHD += DateTime.Now.Day.ToString();
                 MaHD += DateTime.Now.Month.ToString();
                 MaHD += DateTime.Now.Year.ToString();
-                string NgayHD = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+                DateTime NgayHD = DateTime.Now;
                 var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();
                 int SoHD = 0;

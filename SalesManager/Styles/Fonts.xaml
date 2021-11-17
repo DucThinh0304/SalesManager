@@ -29,5 +29,6 @@
     <system:String x:Key="FontAwesomeManagerIcon">&#xf0b1;</system:String>
     <system:String x:Key="FontAwesomeStaffIcon">&#xf0c0;</system:String>
     <system:String x:Key="FontAwesomeCogIcon">&#xf013;</system:String>
+    <system:String x:Key="FontAwesomeHomeIcon">&#xf015;</system:String>
 
 </ResourceDictionary>

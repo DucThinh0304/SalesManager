@@ -25,12 +25,13 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="50" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
                     <!-- Main buttons -->
                     <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeHomeIcon}" Click="Home_Click" />
                         <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeManagerIcon}" />
                         <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeStaffIcon}" />
                     </StackPanel>

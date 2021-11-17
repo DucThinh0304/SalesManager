@@ -89,5 +89,10 @@ namespace SalesManager
             TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoHoaDon;
         }
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+        }
     }
 }

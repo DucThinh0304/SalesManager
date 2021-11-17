@@ -36,7 +36,7 @@ namespace SalesManager
             while (dr.Read())
             {
                 string HoTen = dr.GetString(0);
-                TextBlock1.Text = $"Xin chào {HoTen}";
+                Usr.Text = $"{HoTen}";
             }
             dr.Close();
             con.Close();

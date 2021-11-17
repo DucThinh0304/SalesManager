@@ -101,9 +101,9 @@ namespace SalesManager
                     sqlCommand.Parameters.Add("@MALO", System.Data.SqlDbType.Int);
                     sqlCommand.Parameters["@MALO"].Value = MaLo + 1;
                     sqlCommand.Parameters.Add("@NGNHAP", System.Data.SqlDbType.SmallDateTime);
-                    sqlCommand.Parameters["@NGNHAP"].Value = NgayNhapHang.SelectedDate.ToString();
+                    sqlCommand.Parameters["@NGNHAP"].Value = NgayNhapHang.SelectedDate;
                     sqlCommand.Parameters.Add("@HANSD", System.Data.SqlDbType.SmallDateTime);
-                    sqlCommand.Parameters["@HANSD"].Value = HSD.SelectedDate.ToString();
+                    sqlCommand.Parameters["@HANSD"].Value = HSD.SelectedDate;
                     sqlCommand.Parameters.Add("@SOLUONG", System.Data.SqlDbType.Int);
                     sqlCommand.Parameters["@SOLUONG"].Value = Convert.ToInt32(textSL.Text);
                     sqlCommand.Parameters.Add("@DONGIA", System.Data.SqlDbType.Money);
