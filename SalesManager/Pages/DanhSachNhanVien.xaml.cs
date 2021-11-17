@@ -30,22 +30,20 @@ namespace SalesManager
         }
         public class User
         {
-            public string STT { get; set; }
             public string MANV { get; set; }
             public string HOTEN { get; set; }
             public string DIACHI { get; set; }
-            public string GIOITINH { get; set; }
         }
         void LoadListNV()
         {
             var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             sqlConn.Open();
-            var sqlCommand = new SqlCommand("SELECT STT,MANV, HOTEN, DIACHI, GIOITINH FROM NHANVIEN", sqlConn);
+            var sqlCommand = new SqlCommand("SELECT MANV, HOTEN, DIACHI FROM NHANVIEN", sqlConn);
             var reader = sqlCommand.ExecuteReader();
             List<User> items = new List<User>();
             while (reader.Read())
             {
-                items.Add(new User() { STT = reader[0].ToString(), MANV = reader.GetString(1), HOTEN = reader.GetString(2), DIACHI = reader.GetString(3), GIOITINH = reader.GetString(4) });
+                items.Add(new User() { MANV = reader.GetString(0), HOTEN = reader.GetString(1), DIACHI = reader.GetString(2)});
                 lvUsers.ItemsSource = items;
             }
             reader.Close();

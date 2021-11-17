@@ -43,14 +43,12 @@
                 Margin="650,385,0,32.6" Click="Thoat_Click">
             THOÁT
         </Button>
-        <ListView Margin="50,68,234,9.6" Name="lvUsers" >
+        <ListView Margin="120,68,296,9.6" Name="lvUsers" >
             <ListView.View>
                 <GridView >
-                    <GridViewColumn Header = "STT"  DisplayMemberBinding = "{Binding STT}" Width = "90"></GridViewColumn>
                     <GridViewColumn Header = "ID" DisplayMemberBinding = "{Binding MANV}" Width = "100"></GridViewColumn>
                     <GridViewColumn Header = "Họ Tên" DisplayMemberBinding = "{Binding HOTEN}" Width = "180"></GridViewColumn>
                     <GridViewColumn Header = "Địa chỉ" DisplayMemberBinding = "{Binding DIACHI}" Width = "140"></GridViewColumn>
-                    <GridViewColumn Header = "Giới tính" DisplayMemberBinding = "{Binding GIOITINH}" Width = "110"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
