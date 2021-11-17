@@ -48,6 +48,8 @@ namespace SalesManager
                     return new TaoHoaDon();
                 case ApplicationPage.VisualOff:
                     return new VisualOff();
+                case ApplicationPage.XuatHoaDon:
+                    return new XuatHoaDon();
                 default:
                     Debugger.Break();
                     return null;

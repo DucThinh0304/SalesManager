@@ -140,19 +140,19 @@ namespace SalesManager
                 MaHD += DateTime.Now.Day.ToString();
                 MaHD += DateTime.Now.Month.ToString();
                 MaHD += DateTime.Now.Year.ToString();
-                string NgayHD = DateTime.Now.ToString("dd/MM/yyyy");
+                string NgayHD = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
                 var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();
                 int SoHD = 0;
-                var sqlCommand = new SqlCommand("SELECT COUNT(*) FROM HOADON WHERE NGHOADON = @NGHOADON", sqlConn);
-                sqlCommand.Parameters.Add("@NGHOADON", System.Data.SqlDbType.SmallDateTime);
-                sqlCommand.Parameters["@NGHOADON"].Value = NgayHD;
+                var sqlCommand = new SqlCommand("SELECT COUNT(*) FROM HOADON WHERE " +
+                                                "YEAR(NGHOADON) = "+DateTime.Now.Year.ToString() +
+                                                " AND MONTH(NGHOADON) = "+DateTime.Now.Month.ToString() +
+                                                " AND DAY(NGHOADON) = "+DateTime.Now.Day.ToString(), sqlConn);
                 var reader = sqlCommand.ExecuteReader();
                 while (reader.Read())
                 {
                     SoHD = reader.GetInt32(0);
                 }
-                sqlCommand.Parameters.Clear();
                 MaHD += (SoHD + 1).ToString();
                 reader.Close();
                 sqlCommand.CommandText = "INSERT INTO HOADON VALUES ('" +
@@ -168,13 +168,16 @@ namespace SalesManager
                     sqlCommand.CommandText = "INSERT INTO CTHD VALUES ('" +
                                               MaHD + "','" +
                                               list[i].MH + "'," +
-                                              Convert.ToString(list[i].SoLuong) + ")";
+                                              Convert.ToString(list[i].SoLuong) + "," +
+                                              Convert.ToString(list[i].MaLo) + ")";
                     sqlCommand.ExecuteNonQuery();
                 }
                 MessageBox.Show("Tạo thành công hóa đơn\nMã hóa đơn " + MaHD);
+                XuatHoaDon.MaHoaDon = MaHD;
                 HangMua.Items.Clear();
                 list = new List<MatHang>();
                 ThanhTien.Text = "0";
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.XuatHoaDon;
             }
         }
 
