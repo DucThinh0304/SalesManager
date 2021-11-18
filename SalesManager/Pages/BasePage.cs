@@ -12,6 +12,10 @@ namespace SalesManager
     /// </summary>
     public class BasePage : Page
     {
+        #region Public Variable
+        public static string manv = "";
+        #endregion
+
         #region Public Properties
 
         /// <summary>

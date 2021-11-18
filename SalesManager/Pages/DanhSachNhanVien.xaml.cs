@@ -18,6 +18,7 @@ using System.Data;
 using System.ComponentModel;
 namespace SalesManager
 {
+
     /// <summary>
     /// Interaction logic for DanhSachNhanVien.xaml
     /// </summary>
@@ -43,25 +44,49 @@ namespace SalesManager
             List<User> items = new List<User>();
             while (reader.Read())
             {
-                items.Add(new User() { MANV = reader.GetString(0), HOTEN = reader.GetString(1), DIACHI = reader.GetString(2)});
+                items.Add(new User() { MANV = reader.GetString(0), HOTEN = reader.GetString(1), DIACHI = reader.GetString(2) });
                 lvUsers.ItemsSource = items;
             }
             reader.Close();
             sqlConn.Close();
         }
 
+        private void SelectCurrentItem(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ListViewItem item = (ListViewItem)sender;
+            item.IsSelected = true;
+        }
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            manv = ((User)lvUsers.SelectedItem).MANV;
+        }
+
+        private void SuaNV_Click(object sender, RoutedEventArgs e)
+        {
+            if (manv == "") MessageBox.Show("Nháy đúp chọn nhân viên trước khi sửa thông tin!");
+            else
+            {
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
+            }
+        }
         private void ThemNV_Click(object sender, RoutedEventArgs e)
         {
+            manv = "";
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
         }
 
         private void XemThongTin_Click(object sender, RoutedEventArgs e)
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinNhanVien;
+            if (manv == "") MessageBox.Show("Nháy đúp chọn nhân viên trước khi xem thông tin!");
+            else
+            {
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinNhanVien;
+            }
         }
 
         private void Thoat_Click(object sender, RoutedEventArgs e)
         {
+            manv = "";
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
         }

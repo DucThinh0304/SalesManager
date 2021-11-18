@@ -167,36 +167,7 @@
                     Width="220"
                     />
         </Grid>
-
-        <Grid Margin="0,280,0,120">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="530*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                    HorizontalAlignment="Left"
-                    TextWrapping="Wrap"
-                    Text="Giới tính: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="62,9,0,14" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
-                    />
-            <ComboBox 
-                    x:Name="tbGT"
-                    Grid.ColumnSpan="4"
-                    Grid.Column="1"
-                    VerticalAlignment="Center"
-                    Height="40"
-                    FontSize="24" 
-                    Margin="206.8,0,0,11.6" 
-                    HorizontalAlignment="Left" 
-                    Width="150">
-                <ComboBoxItem>Nam</ComboBoxItem>
-                <ComboBoxItem>Nữ</ComboBoxItem>
-            </ComboBox>
-
-        </Grid>
-        <Grid Margin="0,322,0,77.6">
+        <Grid Margin="0,286,0,113.6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="63*"/>
                 <ColumnDefinition Width="208*"/>
@@ -220,7 +191,7 @@
                     HorizontalAlignment="Left" 
                     Width="520"/>
         </Grid>
-        <Grid Margin="0,364,0,35.6">
+        <Grid Margin="2,332,-2,67.6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="63*"/>
                 <ColumnDefinition Width="208*"/>

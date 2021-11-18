@@ -24,7 +24,14 @@
                 Foreground="{StaticResource ForegroundLightBrush}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
-                ToolTip="Resource name: MaterialDesignRaisedButton" Margin="650,255,0,162.6" Click="ThemNV_Click">
+                ToolTip="Resource name: MaterialDesignRaisedButton" Margin="650,130,0,287.6" Click="SuaNV_Click">
+            SỬA THÔNG TIN
+        </Button>
+        <Button
+                Foreground="{StaticResource ForegroundLightBrush}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="150"
+                ToolTip="Resource name: MaterialDesignRaisedButton" Margin="650,271,0,146.6" Click="ThemNV_Click">
             THÊM NHÂN VIÊN
         </Button>
         <Button
@@ -32,7 +39,7 @@
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
                 ToolTip="Resource name: MaterialDesignRaisedButton" 
-                Margin="650,321,0,96.6" Click="XemThongTin_Click">
+                Margin="650,202,0,215.6" Click="XemThongTin_Click">
             XEM THÔNG TIN
         </Button>
         <Button
@@ -40,17 +47,37 @@
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="150"
                 ToolTip="Resource name: MaterialDesignRaisedButton" 
-                Margin="650,385,0,32.6" Click="Thoat_Click">
+                Margin="650,342,0,75.6" Click="Thoat_Click">
             THOÁT
         </Button>
-        <ListView Margin="120,68,296,9.6" Name="lvUsers" >
+        <ListView Margin="54,68,312,-0.4" Name="lvUsers" FontSize="18" >
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="IsSelected" Value="True"/>
+                        </Trigger>
+                    </Style.Triggers>
+                    <EventSetter Event="PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>
+                    <Setter Property="Height" Value="30" />
+                    <Setter Property="BorderBrush" Value="Blue"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Background" Value="#E7F8FE"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <EventSetter Event="MouseDoubleClick"  Handler="ListViewItem_MouseDoubleClick"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView >
                     <GridViewColumn Header = "ID" DisplayMemberBinding = "{Binding MANV}" Width = "100"></GridViewColumn>
-                    <GridViewColumn Header = "Họ Tên" DisplayMemberBinding = "{Binding HOTEN}" Width = "180"></GridViewColumn>
+                    <GridViewColumn Header = "Họ Tên" DisplayMemberBinding = "{Binding HOTEN}" Width = "250"></GridViewColumn>
                     <GridViewColumn Header = "Địa chỉ" DisplayMemberBinding = "{Binding DIACHI}" Width = "140"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
+
     </Grid>
 </local:BasePage>

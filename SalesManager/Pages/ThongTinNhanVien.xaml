@@ -24,21 +24,7 @@
                 Margin="193,0,193,434.8" Grid.ColumnSpan="2"
                 />
 
-        <Grid Margin="0,30,0,369.8" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="530*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                    HorizontalAlignment="Left"
-                    TextWrapping="Wrap"
-                    Text="Mã nhân viên: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="62,13,0,10" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
-                    />
-        </Grid>
-        <Grid Margin="0,70,0,330" Grid.ColumnSpan="2">
+        <Grid Margin="0,30,0,370" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="63*"/>
                 <ColumnDefinition Width="208*"/>
@@ -49,10 +35,52 @@
                     TextWrapping="Wrap"
                     Text="Họ tên: "
                     VerticalAlignment="Center"
-                    FontSize="28" Margin="62,9,0,14" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
+                    FontSize="28" Margin="22,31,0,15.8" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
                     />
+
+            <Label x:Name="lb_ten" 
+                Grid.Column="1" 
+                Margin="81.6,0,368,12.8"
+                Height="40"
+                VerticalAlignment="Bottom"
+                FontSize="26" Grid.ColumnSpan="2"/>
         </Grid>
-        <Grid Margin="0,110,0,290" Grid.ColumnSpan="2">
+        <Grid Margin="0,80,0,320" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="63*"/>
+                <ColumnDefinition Width="208*"/>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="529*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                    HorizontalAlignment="Left"
+                    TextWrapping="Wrap"
+                    Text="Địa chỉ: "
+                    VerticalAlignment="Center"
+                    FontSize="28" Margin="21,24,0,22.8" Foreground="#FF1DB7A4" Grid.ColumnSpan="2" Height="34" Width="98"
+                    />
+            <Label x:Name="lb_diachi" 
+                Grid.Column="1" 
+                Margin="79.8,0,366,18.8"
+                Height="40"
+                VerticalAlignment="Bottom"
+                FontSize="26" Grid.ColumnSpan="3"
+                   />
+            <TextBlock
+                    HorizontalAlignment="Left"
+                    TextWrapping="Wrap"
+                    Text="Mã: "
+                    VerticalAlignment="Center"
+                    FontSize="28" Margin="232.8,24,0,22.8" Foreground="#FF1DB7A4" Grid.Column="2" RenderTransformOrigin="1.574,0.357" Grid.ColumnSpan="2" Width="54"
+                    />
+            <Label x:Name="lb_manv" 
+                Grid.Column="2" 
+                Margin="291.8,0,0,18.8"
+                Height="40"
+                VerticalAlignment="Bottom"
+                FontSize="26" Grid.ColumnSpan="2"/>
+        </Grid>
+        <Grid Margin="0,130,0,270" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="63*"/>
                 <ColumnDefinition Width="208*"/>
@@ -61,12 +89,33 @@
             <TextBlock
                     HorizontalAlignment="Left"
                     TextWrapping="Wrap"
-                    Text="Ngày sinh: "
+                    Text="Ng. sinh: "
                     VerticalAlignment="Center"
-                    FontSize="28" Margin="62,9,0,14" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
+                    FontSize="28" Margin="21,21,0,25.8" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
                     />
+            <TextBlock
+                    HorizontalAlignment="Left"
+                    TextWrapping="Wrap"
+                    Text="Ng. vào làm: "
+                    VerticalAlignment="Center"
+                    FontSize="28" Margin="124.079,21,0,25.8" Foreground="#FF1DB7A4" Grid.Column="2"
+                    />
+            <Label x:Name="lb_ngsinh" 
+                Grid.Column="1" 
+                Margin="78.079,0,30.921,18.8"
+                Height="40"
+                VerticalAlignment="Bottom"
+                FontSize="26"
+                   />
+            <Label x:Name="lb_ngvl" 
+                Grid.Column="2" 
+                Margin="291.079,0,188.521,20.8"
+                Height="40"
+                VerticalAlignment="Bottom"
+                FontSize="26"
+                   />
         </Grid>
-        <Grid Margin="0,150,0,250" Grid.ColumnSpan="2">
+        <Grid Margin="0,180,0,220" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="63*"/>
                 <ColumnDefinition Width="208*"/>
@@ -77,36 +126,29 @@
                     TextWrapping="Wrap"
                     Text="CMND: "
                     VerticalAlignment="Center"
-                    FontSize="28" Margin="62,9,0,14" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
+                    FontSize="28" Margin="22,21,0,25.8" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
                     />
-        </Grid>
-        <Grid Margin="0,190,0,210" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="530*"/>
-            </Grid.ColumnDefinitions>
             <TextBlock
                     HorizontalAlignment="Left"
                     TextWrapping="Wrap"
-                    Text="Địa chỉ: "
+                    Text="Mật khẩu: "
                     VerticalAlignment="Center"
-                    FontSize="28" Margin="62,9,0,14" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
+                    FontSize="28" Margin="154.6,21,0,25.8" Foreground="#FF1DB7A4" Grid.Column="2"
                     />
-        </Grid>
-        <Grid Margin="0,230,0,170" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="530*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                    HorizontalAlignment="Left"
-                    TextWrapping="Wrap"
-                    Text="Ngày vào làm: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="62,9,0,14" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
-                    />
+            <Label x:Name="lb_cmnd" 
+                Grid.Column="1" 
+                Margin="77.6,0,382,20.8"
+                Height="40"
+                VerticalAlignment="Bottom"
+                FontSize="26" Grid.ColumnSpan="2"
+                   />
+            <Label x:Name="lb_mk" 
+                Grid.Column="2" 
+                Margin="290.6,0,0,20.8"
+                Height="40"
+                VerticalAlignment="Bottom"
+                FontSize="26"
+                   />
         </Grid>
         <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
@@ -127,45 +169,17 @@
             TẠO MẬT KHẨU
         </Button>
         <ListView HorizontalAlignment = "Center" 
-                  Height = "205" 
+                  Height = "220" 
                   VerticalAlignment = "Top"  
-                  Width = "641" 
-                  Margin="0,276,159,-0.2"
-                  x:Name="lvUsers" Grid.ColumnSpan="2"
-                   FontSize="20">
-
+                  Width = "670" 
+                  Margin="-29,261,159,-0.2"
+                  x:Name="lvHOADON" Grid.ColumnSpan="2"
+                  FontSize="20">
             <ListView.View>
-
                 <GridView>
-                    <GridViewColumn Header = "Mã Hóa Đơn"
-                  DisplayMemberBinding = "{Binding MAHD}" Width = "200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding MAHD}" 
-                                           TextAlignment="Center" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header = "Ngày Hóa Đơn" 
-                  DisplayMemberBinding = "{Binding name}" Width = "200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding name}" 
-                                           TextAlignment="Center" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header = "Trị giá" 
-                                    DisplayMemberBinding = "{Binding stt}" 
-                                    Width = "150"
-                                    >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding stt}" 
-                                           TextAlignment="Center" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    <GridViewColumn Header = "Mã HD" DisplayMemberBinding = "{Binding MAHD}" Width = "120"></GridViewColumn>
+                    <GridViewColumn Header = "Ngày Hóa Đơn" DisplayMemberBinding = "{Binding NGHOADON}" Width = "270"></GridViewColumn>
+                    <GridViewColumn Header = "Trị giá" DisplayMemberBinding = "{Binding TRIGIA}" Width = "200"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
