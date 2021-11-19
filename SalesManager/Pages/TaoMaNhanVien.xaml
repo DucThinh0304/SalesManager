@@ -55,7 +55,7 @@
                 FontSize="15" 
                 Foreground="White"
                 Margin="0,319,100,98.6" Click="Button_Click" Width="128" />
-        <ComboBox x:Name="manv"
+        <ComboBox x:Name="manv_txb"
             HorizontalAlignment="Center" 
             Height="23"  
             VerticalAlignment="Top" 

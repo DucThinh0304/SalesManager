@@ -50,6 +50,8 @@ namespace SalesManager
                     return new VisualOff();
                 case ApplicationPage.XuatHoaDon:
                     return new XuatHoaDon();
+                case ApplicationPage.NotificationControl:
+                    return new NotificationControl();
                 default:
                     Debugger.Break();
                     return null;

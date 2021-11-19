@@ -25,6 +25,7 @@ namespace SalesManager
             InitializeComponent();
 
             this.DataContext = new WindowViewModel(this);
+            
         }
     }
 }

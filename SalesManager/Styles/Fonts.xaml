@@ -30,5 +30,8 @@
     <system:String x:Key="FontAwesomeStaffIcon">&#xf0c0;</system:String>
     <system:String x:Key="FontAwesomeCogIcon">&#xf013;</system:String>
     <system:String x:Key="FontAwesomeHomeIcon">&#xf015;</system:String>
+    <system:String x:Key="FontAwesomeBellIcon">&#xf0f3;</system:String>
+    <system:String x:Key="FontAwesomeLeftArrowIcon">&#xf060;</system:String>
+
 
 </ResourceDictionary>

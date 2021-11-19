@@ -88,11 +88,17 @@ namespace SalesManager
             var bc = new BrushConverter();
             TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoHoaDon;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.VisualOff;
         }
         private void Home_Click(object sender, RoutedEventArgs e)
         {
             ResetColor();
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+        }
+        private void Notification_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.NotificationControl;
         }
     }
 }
