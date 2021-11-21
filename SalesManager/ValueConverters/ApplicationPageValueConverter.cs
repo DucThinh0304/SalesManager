@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesManager.Pages;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 
@@ -52,6 +53,8 @@ namespace SalesManager
                     return new XuatHoaDon();
                 case ApplicationPage.NotificationControl:
                     return new NotificationControl();
+                case ApplicationPage.ThongKeDoanhThuThang:
+                    return new ThongKeDoanhThuThang();
                 default:
                     Debugger.Break();
                     return null;

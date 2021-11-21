@@ -14,6 +14,8 @@ namespace SalesManager
     {
         #region Public Variable
         public static string manv = "";
+        public static string thang = "";
+        public static string nam = "";
         #endregion
 
         #region Public Properties
