@@ -25,7 +25,6 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="50" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
@@ -34,6 +33,7 @@
                         <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeHomeIcon}" Click="Home_Click" />
                         <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeManagerIcon}" />
                         <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeStaffIcon}" />
+                        <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeBellIcon}" Click="Notification_Click"/>
                     </StackPanel>
 
                     <!-- Settings button -->

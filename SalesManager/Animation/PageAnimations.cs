@@ -69,10 +69,10 @@ namespace SalesManager
             var sb = new Storyboard();
 
             // Add slide from right animation
-            sb.AddSlideFromLeft(seconds, page.WindowWidth);
+            sb.AddSlideFromLeft(seconds/2, page.WindowWidth);
 
             // Add fade in animation
-            sb.AddFadeIn(seconds);
+            sb.AddFadeIn(seconds/2);
 
             // Start animating
             sb.Begin(page);

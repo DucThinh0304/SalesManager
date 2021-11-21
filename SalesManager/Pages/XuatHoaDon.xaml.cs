@@ -99,6 +99,7 @@ namespace SalesManager
             if (KhachDua.Text == "" || Convert.ToInt32(ThoiLai.Text) < 0)
                 MessageBox.Show("Vui lòng kiểm tra lại giá trị tiền khách trả", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
         }
     }
 }

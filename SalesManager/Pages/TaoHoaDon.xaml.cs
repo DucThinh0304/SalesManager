@@ -127,6 +127,7 @@ namespace SalesManager
                 sqlCommand.ExecuteNonQuery();
             }
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
 
         }
 

@@ -34,7 +34,7 @@ namespace SalesManager
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                manv.Items.Add(dr.GetString(0));
+                manv_txb.Items.Add(dr.GetString(0));
             }
             dr.Close();
         }
@@ -70,18 +70,18 @@ namespace SalesManager
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (manv.Text == "" || tennv.Text == "" || pass.Password == "" || repass.Password == "")
+            if (manv_txb.Text == "" || tennv.Text == "" || pass.Password == "" || repass.Password == "")
                 MessageBox.Show("Vui lòng nhập đủ thông tin", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
                 string Pass = Encrypt(pass.Password);
                 string RePass = Encrypt(repass.Password);
-                var sqlCommand = new SqlCommand("SELECT MANV,HOTEN FROM NHANVIEN WHERE MANV='" + manv.Text + "'and HOTEN ='" + tennv.Text + "'", con);
+                var sqlCommand = new SqlCommand("SELECT MANV,HOTEN FROM NHANVIEN WHERE MANV='" + manv_txb.Text + "'and HOTEN ='" + tennv.Text + "'", con);
                 var reader = sqlCommand.ExecuteReader();
                 if (reader.Read() == true && Pass == RePass)
                 {
                     reader.Close();
-                    var cmd = new SqlCommand("UPDATE NHANVIEN SET MATKHAU = " + pass.Password + " WHERE MANV='" + manv.Text + "'", con);
+                    var cmd = new SqlCommand("UPDATE NHANVIEN SET MATKHAU = " + pass.Password + " WHERE MANV='" + manv_txb.Text + "'", con);
                     cmd.ExecuteReader();
                     con.Close();
 
@@ -90,7 +90,7 @@ namespace SalesManager
                 else
                 {
                     reader.Close();
-                    manv.Text = "";
+                    manv_txb.Text = "";
                     tennv.Text = "";
                     pass.Password = "";
                     repass.Password = "";
