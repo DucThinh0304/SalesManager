@@ -65,28 +65,37 @@ namespace SalesManager
                 SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();
                 string MatKhauMaHoa = Encrypt(MatKhau.Password);
-                var sqlCommand = new SqlCommand("SELECT CMND,MATKHAU FROM NHANVIEN WHERE CMND='" + CMND.Text + "'and MATKHAU ='" + MatKhauMaHoa + "'", sqlConn);
-                var reader = sqlCommand.ExecuteReader();
-                if (reader.Read() == true)
+                try
                 {
-                    sqlConn.Close();
+                    var sqlCommand = new SqlCommand("SELECT CMND,MATKHAU FROM NHANVIEN WHERE CMND='" + CMND.Text + "'and MATKHAU ='" + MatKhauMaHoa + "'", sqlConn);
+                    var reader = sqlCommand.ExecuteReader();
+                    if (reader.Read() == true)
+                    {
+                        sqlConn.Close();
+                        reader.Close();
+                        NhapHangMoi.CMND = CMND.Text;
+                        Home.CMND = CMND.Text;
+                        TaoHoaDon.CMND = CMND.Text;
+                        ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+                        ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
+                    }
+                    else
+                    {
+                        CMND.Clear();
+                        MatKhau.Clear();
+                        MessageBox.Show("Đăng nhập Không thành công.");
+                    }
                     reader.Close();
-                    NhapHangMoi.CMND = CMND.Text;
-                    Home.CMND = CMND.Text;
-                    TaoHoaDon.CMND = CMND.Text;
-                    ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
-                    ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
                 }
-                else
+                catch(Exception)
                 {
-                    CMND.Clear();
-                    MatKhau.Clear();
-                    MessageBox.Show("Đăng nhập thất bại");
+                    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
+                    sqlConn.Close();
                 }
-                reader.Close();
+              
             }
             else
-                 MessageBox.Show("Xin hãy điền đầy đủ thông tin");
+                 MessageBox.Show("Bạn vui lòng nhập đầy đủ thông tin!!!");
 
         }
 

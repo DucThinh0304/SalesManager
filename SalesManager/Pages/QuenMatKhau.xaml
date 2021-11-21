@@ -21,10 +21,12 @@
                     Width="800">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="136*"></RowDefinition>
                     <RowDefinition Height="60*"></RowDefinition>
-                    <RowDefinition Height="60*"></RowDefinition>
-                    <RowDefinition Height="152*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="70"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <TextBlock 
@@ -33,40 +35,83 @@
                         FontWeight="Bold" 
                         Foreground="#0288D1"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center" Margin="220,74,220,33">
+                        VerticalAlignment="Center" Height="76">
                         Quên mật khẩu
                     </TextBlock>
                     <TextBlock
                     Style="{StaticResource MaterialDesignBody1TextBlock}"
-                        HorizontalAlignment="Center"
+                       HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"       
-                        Width="638"
-                        FontSize="22">
-                    Nhập mã cửa hàng và mã nhân viên quản lí để xác nhận lấy lại mật khẩu.
+                        Width="510"
+                        FontSize="22" Margin="152,0,138,0"  >
+                         Nhập cmnd/cccd và gmail để xác nhận tạo mật khẩu mới.
 
                     </TextBlock>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <TextBlock Text="CMND:"
-                               Margin="280,34,-146,-14"
-                               FontSize="25" 
+                    <TextBlock Text="CMND/CCCD:"
+                               FontSize="20" 
+                               VerticalAlignment="Center" Margin="90,21,538,22"
                               ></TextBlock>
-                    <TextBox
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        FontSize="20"
-                        Margin="368,10,152,10"/>
+                    <TextBox  x:Name="CMND"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                              FontSize="20"
+                              Margin="218,-5,90,20"/>
                 </Grid>
                 <Grid Grid.Row="2">
-                    <TextBlock Text="Mật khẩu mới:"
-                               Margin="200,34,-60,-14"
-                               FontSize   ="25" 
+                    <TextBlock Text="Gmail:"
+                               FontSize="20" 
+                               VerticalAlignment="Center" Margin="90,21,458,22"
                               ></TextBlock>
                     <TextBox
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                        Style="{StaticResource 
+                        MaterialDesignFloatingHintTextBox}" 
                         FontSize="20"
-                        Margin="368,10,152,10"/>
+                        Margin="154,-5,444,20"
+                        x:Name="Gmail"
+                        TextChanged="Gmail_TextChanged"
+                        PreviewTextInput="Gmail_PreviewTextInput"/>
+                    <TextBlock Text="@gmail.com"
+                               FontSize="20" 
+                               VerticalAlignment="Center" Margin="361,21,187,22"
+                              ></TextBlock>
+                    <Button
+                             Style="{StaticResource 
+                             MaterialDesignRaisedLightButton}"
+                             Margin="477,18,192,17"
+                             Click="Button_Click">
+                        Lấy mã xác nhận
+                    </Button>
+                    <TextBox
+                            x:Name="MXN"
+                            materialDesign:HintAssist.Hint="Mã xác nhận"
+                            FontSize="20"
+                            Style="{StaticResource 
+                            MaterialDesignFloatingHintTextBox}" 
+                            Margin="613,-4,74,20" />
                 </Grid>
                 <Grid Grid.Row="3">
+
+                    <TextBlock Text="Mật khẩu mới:"
+                               FontSize="20" 
+                               VerticalAlignment="Center" Margin="90,20,488,22" Grid.ColumnSpan="2"
+                              ></TextBlock>
+                    <PasswordBox 
+                                FontSize="20"
+                                 x:Name="MatKhau" 
+                                Margin="232,16,90,17" />
+                </Grid>
+                <Grid Grid.Row="4">
+                    <TextBlock Text="Nhập lại mật khẩu:"
+                               FontSize="20" 
+                               VerticalAlignment="Center" Margin="90,21,488,22"
+                              ></TextBlock>
+                    <PasswordBox 
+                                 FontSize="20"
+                                 x:Name="XNMatKhau"
+                                Margin="268,16,90,17"/>
+                </Grid>
+                <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -74,20 +119,19 @@
                     <Button
                         Foreground="{StaticResource ForegroundLightBrush}"
                         FontFamily="{StaticResource MyriadBold}"
-                        Margin="165,59,30,60"
                         FontSize="20"
                         Grid.Column="0" 
-                        Height="Auto"
-                        Click="GetPass_Click">
-                        Lấy lại mật khẩu
+                        Click="GetPass_Click"
+                        Margin="132,10,50,19" Height="Auto">
+                        Tạo mật khẩu mới
                     </Button>
                     <Button
                         Foreground="{StaticResource ForegroundLightBrush}"
                         FontFamily="{StaticResource MyriadBold}"
-                        Margin="30,59,160,60"
                         FontSize="20"
                         Grid.Column="1"
-                        Click="Back_Click" Height="Auto">
+                        Click="Back_Click" 
+                        Margin="50,10,132,19" Height="Auto">
                         Quay lại đăng nhập
                     </Button>
                 </Grid>
