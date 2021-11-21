@@ -93,6 +93,7 @@ namespace SalesManager
                 tbDIACHI.Text = reader[4].ToString();
                 ngVL.Text = reader[5].ToString();
                 tbMK.Password = reader[6].ToString();
+                tbGmail.Text = reader[7].ToString();
             }
             reader.Close();
             sqlConn.Close();
@@ -102,7 +103,7 @@ namespace SalesManager
         private void Them_Click(object sender, RoutedEventArgs e)
         {
 
-            if (tbMANV.Text == "" || tbHOTEN.Text == "" || ngSinh.Text == "" || tbCMND.Text == "" || tbDIACHI.Text == "" || ngVL.Text == "" || tbMK.Password == "" || tbRMK.Password == "") MessageBox.Show("Vui lòng nhập đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (tbMANV.Text == "" || tbHOTEN.Text == "" || ngSinh.Text == "" || tbCMND.Text == "" || tbDIACHI.Text == "" || ngVL.Text == "" || tbMK.Password == "" || tbRMK.Password == ""||tbGmail.Text=="") MessageBox.Show("Vui lòng nhập đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
             else if (tbMK.Password != tbRMK.Password) MessageBox.Show("Mật khẩu nhập lại không chính xác. Vui lòng thử lại!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
@@ -126,7 +127,7 @@ namespace SalesManager
                     MessageBoxResult reSult = MessageBox.Show("Nhân viên đã tồn tại trong hệ thống, bạn có muốn ghi đè dữ liệu đang có không?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                     if (reSult == MessageBoxResult.Yes)
                     {
-                        sqlCommand.CommandText = "UPDATE NHANVIEN SET HOTEN = @HOTEN, NGSINH = @NGSINH, CMND=@CMND, DIACHI= @DIACHI, NGVAOLAM=@NGVAOLAM, MATKHAU=@MATKHAU WHERE MANV = @MANV";
+                        sqlCommand.CommandText = "UPDATE NHANVIEN SET HOTEN = @HOTEN, NGSINH = @NGSINH, CMND=@CMND, DIACHI= @DIACHI, NGVAOLAM=@NGVAOLAM, MATKHAU=@MATKHAU, GMAIL=@GMAILWHERE MANV = @MANV";
                         sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
                         sqlCommand.Parameters["@MANV"].Value = tbMANV.Text;
                         sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
@@ -141,6 +142,8 @@ namespace SalesManager
                         sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.Text;
                         sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
                         sqlCommand.Parameters["@MATKHAU"].Value = pass;
+                        sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
+                        sqlCommand.Parameters["@GMAIL"].Value = tbGmail.Text;
                         sqlCommand.ExecuteNonQuery();
                         sqlCommand.Dispose();
                         MessageBox.Show("Cập nhật dữ liệu thành công");
@@ -151,13 +154,14 @@ namespace SalesManager
                         tbDIACHI.Text = "";
                         ngVL.Text = "";
                         tbMK.Password = "";
+                        tbGmail.Text = "";
                         ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
                     }
                 }
                 else
                 {
                     reader.Close();
-                    sqlCommand.CommandText = "INSERT INTO NHANVIEN (MANV,HOTEN,NGSINH,CMND,DIACHI,NGVAOLAM,MATKHAU) VALUES " + "(@MANV,@HOTEN,@NGSINH,@CMND,@DIACHI,@NGVAOLAM,@MATKHAU)";
+                    sqlCommand.CommandText = "INSERT INTO NHANVIEN (MANV,HOTEN,NGSINH,CMND,DIACHI,NGVAOLAM,MATKHAU,GMAIL) VALUES " + "(@MANV,@HOTEN,@NGSINH,@CMND,@DIACHI,@NGVAOLAM,@MATKHAU,@GMAIL)";
                     sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
                     sqlCommand.Parameters["@MANV"].Value = tbMANV.Text;
                     sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
@@ -172,6 +176,8 @@ namespace SalesManager
                     sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.Text;
                     sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
                     sqlCommand.Parameters["@MATKHAU"].Value = pass;
+                    sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
+                    sqlCommand.Parameters["@GMAIL"].Value = tbGmail.Text;
                     sqlCommand.ExecuteNonQuery();
                     sqlCommand.Dispose();
                     MessageBox.Show("Thêm dữ liệu thành công");
@@ -182,6 +188,7 @@ namespace SalesManager
                     tbDIACHI.Text = "";
                     ngVL.Text = "";
                     tbMK.Password = "";
+                    tbGmail.Text = "";
                     ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
                 }
             }

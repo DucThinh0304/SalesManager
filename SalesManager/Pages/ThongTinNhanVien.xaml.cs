@@ -69,6 +69,7 @@ namespace SalesManager
                 lb_diachi.Content = reader[4].ToString();
                 lb_ngvl.Content = reader[5].ToString();
                 lb_mk.Content = reader[6].ToString();
+                lb_gmail.Content = reader[7].ToString();
             }
             reader.Close();
             sqlConn.Close();

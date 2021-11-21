@@ -44,6 +44,19 @@
                 Height="40"
                 VerticalAlignment="Bottom"
                 FontSize="26" Grid.ColumnSpan="2"/>
+            <TextBlock
+                    HorizontalAlignment="Left"
+                    TextWrapping="Wrap"
+                    Text="Mã: "
+                    VerticalAlignment="Center"
+                    FontSize="28" Margin="232.8,24,0,22.8" Foreground="#FF1DB7A4" Grid.Column="2" RenderTransformOrigin="1.574,0.357" Grid.ColumnSpan="2" Width="54"
+                    />
+            <Label x:Name="lb_manv" 
+                Grid.Column="2" 
+                Margin="291.8,0,0,18.8"
+                Height="40"
+                VerticalAlignment="Bottom"
+                FontSize="26" Grid.ColumnSpan="2"/>
         </Grid>
         <Grid Margin="0,80,0,320" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -69,16 +82,17 @@
             <TextBlock
                     HorizontalAlignment="Left"
                     TextWrapping="Wrap"
-                    Text="Mã: "
+                    Text="Gmail: "
                     VerticalAlignment="Center"
-                    FontSize="28" Margin="232.8,24,0,22.8" Foreground="#FF1DB7A4" Grid.Column="2" RenderTransformOrigin="1.574,0.357" Grid.ColumnSpan="2" Width="54"
+                    FontSize="28" Margin="198.8,24,0,22.8" Foreground="#FF1DB7A4" Grid.Column="2" RenderTransformOrigin="1.574,0.357" Grid.ColumnSpan="2" Width="84"
                     />
-            <Label x:Name="lb_manv" 
+            <Label x:Name="lb_gmail" 
                 Grid.Column="2" 
                 Margin="291.8,0,0,18.8"
                 Height="40"
                 VerticalAlignment="Bottom"
                 FontSize="26" Grid.ColumnSpan="2"/>
+
         </Grid>
         <Grid Margin="0,130,0,270" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
