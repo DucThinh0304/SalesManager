@@ -10,7 +10,7 @@
 
     <Grid>
         <Label 
-                Content="CHỈNH SỬA DANH SÁCH HÀNG HÓA" 
+                Content="CHỈNH SỬA HÀNG HÓA" 
                 HorizontalAlignment="Center" 
                 FontWeight="Bold" 
                 FontSize="36" 
@@ -18,112 +18,143 @@
                 Margin="20 20 20 20"   />
 
         <Button
-            Content="LƯU"  
-            HorizontalAlignment="Left" 
-                FontWeight="Bold" 
-                FontSize="15" 
-                Foreground="White"
-                Margin="108,384,0,33.6" Width="91" />
+            Content = "LƯU"
+            HorizontalAlignment = "Left"
+                FontWeight = "Bold"
+                FontSize = "15"
+                Foreground = "White"
+                Margin = "108,384,0,33.6" Width = "116" Click = "suathongtin" />
+
         <Button
-            Content="TRỞ LẠI"  
-            HorizontalAlignment="Right" 
-                FontWeight="Bold" 
-                FontSize="15" 
-                Foreground="White"
-                Margin="570,384,111,33.6" Click="Button_Click" />
+            Content = "TRỞ LẠI"
+            HorizontalAlignment = "Right"
+                FontWeight = "Bold"
+                FontSize = "15"
+                Foreground = "White"
+                Margin = "0,384,111,33.6" Click = "trolai" Width="123" />
+
         <Button
-            Content="XÓA"     
-            HorizontalAlignment="Center" 
-                FontWeight="Bold" 
-                FontSize="15" 
-                Foreground="White"
-                Margin="357,384,356,33.6" Width="87" />
-        <DataGrid
-            AutoGenerateColumns="False"
-          EnableRowVirtualization="True"
-          Height = "184"
-          HorizontalAlignment="Center"
-          ItemsSource="{Binding}"
-          Margin = "10,116,0,0" 
-          Name="dataGrid"
-          RowDetailsVisibilityMode="VisibleWhenSelected"
-          VerticalAlignment="Top"
-          Width="780" >
+            Content = "XÓA"
+            HorizontalAlignment = "Center"
+                FontWeight = "Bold"
+                FontSize = "15"
+                Foreground = "White"
+                Margin = "337,384,337,33.6" Width = "126" Click = "xoathongtin" />
 
+        <Label
+                Content = "MÃ HÀNG"
+            HorizontalAlignment = "Center"
+                FontWeight = "Bold"
+                FontSize = "20"
+                Foreground = "#FF1DB7A4"
+                Margin = "152,107,533,313.6" RenderTransformOrigin = "0.538,0.093" Width="115" />
 
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="Column1"
-                            Binding="{Binding Path=Something1}"
-                            Header = "MÃ"
-                            Width = "85"/>
+        <Label
+                Content = "MÃ LÔ"
+            HorizontalAlignment = "Center"
+                FontWeight = "Bold"
+                FontSize = "20"
+                Foreground = "#FF1DB7A4"
+                Margin = "152,136,501,283.6" RenderTransformOrigin = "0.538,0.093" Width="147"/>
+        <Label
+                Content = "TÊN HÀNG"
+            HorizontalAlignment = "Center"
+                FontWeight = "Bold"
+                FontSize = "20"
+                Foreground = "#FF1DB7A4"
+                Margin = "152,166,501,253.6" RenderTransformOrigin = "0.538,0.093" Width="147"/>
+        <Label
+                Content = "NGÀY NHẬP"
+            HorizontalAlignment = "Center"
+                FontWeight = "Bold"
+                FontSize = "20"
+                Foreground = "#FF1DB7A4"
+                Margin = "152,198,475,219.6" RenderTransformOrigin = "0.538,0.093" Width="173"/>
+        <Label
+                Content = "HẠN SỬ DỤNG"
+            HorizontalAlignment = "Center"
+                FontWeight = "Bold"
+                FontSize = "20"
+                Foreground = "#FF1DB7A4"
+                Margin = "152,230,467,188.6" RenderTransformOrigin = "0.538,0.093" Width="181"/>
+        <Label
+                Content = "SỐ LƯỢNG"
+            HorizontalAlignment = "Center"
+                FontWeight = "Bold"
+                FontSize = "20"
+                Foreground = "#FF1DB7A4"
+                Margin = "152,261,487,156.6" RenderTransformOrigin = "0.538,0.093" Width="161"/>
+        <Label
+                Content = "ĐƠN VỊ TÍNH"
+            HorizontalAlignment = "Center"
+                FontWeight = "Bold"
+                FontSize = "20"
+                Foreground = "#FF1DB7A4"
+                Margin = "152,293,487,124.6" RenderTransformOrigin = "0.492,2.112" Width="161" />
 
-                <DataGridTextColumn x:Name="Column2"
-                            Binding="{Binding Path=Something2}"
-                            Header = "TÊN"
-                            Width = "90"/>
-                <DataGridTextColumn x:Name="Column3"
-                            Binding="{Binding Path=Something3}"
-                            Header = "NG.NHẬP" 
-                            Width = "130"/>
+        <Label
+                Content = "ĐƠN GIÁ"
+            HorizontalAlignment = "Center"
+                FontWeight = "Bold"
+                FontSize = "20"
+                Foreground = "#FF1DB7A4"
+                Margin = "152,325,541,92.6" RenderTransformOrigin = "0.492,2.112" Width="107" />
+        <TextBox x:Name = "MAHG"
+                 IsReadOnly="True"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,113,229,0"
+            Width = "200" RenderTransformOrigin = "0.501,-0.933" />
 
-                <DataGridTextColumn x:Name="Column4"
-                            Binding="{Binding Path=Something4}"
-                            Header = "HẠN SD"
-                            Width = "120"/>
-                <DataGridTextColumn x:Name="Column5"
-                            Binding="{Binding Path=Something5}"
-                            Header = "SL" 
-                            Width = "80"/>
-                <DataGridTextColumn x:Name="Column6"
-                            Binding="{Binding Path=Something6}"
-                            Header = "Đ.VỊ" 
-                            Width = "90"/>
+        <TextBox x:Name = "MALOO"
+                 IsReadOnly="True"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+             Margin = "371,143,229,0"
+            Width = "200" RenderTransformOrigin = "0.501,-0.933" />
 
-                <DataGridTextColumn x:Name="Column7"
-                            Binding="{Binding Path=Something7}"
-                            Header = "GIÁ"
-                            Width = "90"/>
+        <TextBox x:Name = "TENHG"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,173,229,0"
+            Width = "200" RenderTransformOrigin = "0.246,0.474" />
 
-                <DataGridTextColumn x:Name="Column8"
-                            Binding="{Binding Path=Something8}"
-                            Header = "TỔNG" 
-                            Width = "100"/>
-            </DataGrid.Columns>
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="IsHitTestVisible" Value="False"/>
-                </Style>
-            </DataGrid.RowStyle>
-            <!--Other DataGrid items-->
-        </DataGrid>
-        <Label Content="MÃ" HorizontalAlignment="Left" 
-               Margin="29,315,0,0" VerticalAlignment="Top"/>
-        <Label Content="TÊN" HorizontalAlignment="Left" 
-               Margin="29,344,0,0" VerticalAlignment="Top"/>
-        <Label Content="NGÀY NHẬP" HorizontalAlignment="Left" 
-               Margin="190,315,0,0" VerticalAlignment="Top"/>
-        <Label Content="HẠN SD" HorizontalAlignment="Left" 
-               Margin="190,344,0,0" VerticalAlignment="Top"/>
-        <Label Content="SỐ LƯỢNG" HorizontalAlignment="Left" 
-               Margin="395,316,0,0" VerticalAlignment="Top"/>
-        <Label Content="ĐƠN VỊ" HorizontalAlignment="Left" 
-               Margin="395,342,0,0" VerticalAlignment="Top"/>
-        <Label Content="GIÁ" HorizontalAlignment="Left" 
-               Margin="600,316,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.154,0.508"/>
-        <TextBox HorizontalAlignment="Left" Height="23" 
-                 Margin="60,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" 
-                 Margin="265,345,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" 
-                 Margin="265,315,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" 
-                 Margin="60,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" 
-                 Margin="470,315,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" 
-                 Margin="470,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" 
-                 Margin="635,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name = "NGAY"    
+                 IsReadOnly="True"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,202,229,0"
+            Width = "200" />
+
+        <DatePicker x:Name = "HAN"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,233,229,0"
+            Width = "200" />
+        <TextBox x:Name = "SL"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,265,229,0"
+            Width = "200" />
+        <TextBox x:Name = "DONVI"
+                 IsReadOnly="True"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,298,229,0"
+            Width = "200" />
+        <TextBox x:Name = "GIA"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,329,229,0"
+            Width = "200" RenderTransformOrigin="0.512,-0.747" />
 
     </Grid>
 </Page>

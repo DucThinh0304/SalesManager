@@ -15,74 +15,65 @@
                 FontWeight="Bold" 
                 FontSize="36" 
                 Foreground="#FF0536C0"
-                Margin="20 20 20 20"   />
+                Margin="186,40,186,-0.4"   />
 
         <Button
-            Content="CHỈNH SỬA"  
-            HorizontalAlignment="Left"
-                FontWeight="Bold" 
-                FontSize="15" 
-                Foreground="White"
-                Margin="108,384,492,33.6"   />
+            Content = "CHỈNH SỬA"
+            HorizontalAlignment = "Left"
+             VerticalAlignment = "Bottom"
+                FontWeight = "Bold"
+                FontSize = "15"
+                Foreground = "White"
+                Margin = "107,0,0,82.6" Click = "CHINHSUA" Width="180" />
+
         <Button
-            Content="TRỞ LẠI"
-            HorizontalAlignment="Right"
-                FontWeight="Bold" 
-                FontSize="15" 
-                Foreground="White"
-                Margin="489,384,111,33.6" Click="Button_Click" />
-        <DataGrid
-            AutoGenerateColumns="False"
-          EnableRowVirtualization="True"
-          Height = "230"
-          HorizontalAlignment="Center"
-          ItemsSource="{Binding}"
-          Margin = "15,116,5,0" 
-          Name="dataGrid"
-          RowDetailsVisibilityMode="VisibleWhenSelected"
-          VerticalAlignment="Top"
-          Width="780" >
+            Content = "TRỞ LẠI"
+            HorizontalAlignment = "Right"
+            VerticalAlignment = "Bottom"
+                FontWeight = "Bold"
+                FontSize = "15"
+                Foreground = "White"
+                Margin = "0,0,107,82.6" Click = "TROLAI" Width="180" RenderTransformOrigin="0.484,1.966" />
+        <ListView 
+            Name="listhanghoa" 
+            HorizontalAlignment="Center"
+            VerticalAlignment = "Top"
+            Margin = "-132,128,-123,-58.4"
+            Width = "1055"
+            FontSize="15" Height="380"   >
+            <ListView.Resources>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="IsSelected" Value="True"/>
+                        </Trigger>
+                    </Style.Triggers>
+                    <EventSetter Event="PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>
+                    <Setter Property="Height" Value="30" />
+                    <Setter Property="BorderBrush" Value="Blue"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Background" Value="#E7F8FE"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <EventSetter Event="MouseDoubleClick"  Handler="ListViewItem_MouseDoubleClick"/>
+                </Style>
+            </ListView.ItemContainerStyle>
 
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Header = "MÃ HÀNG" DisplayMemberBinding = "{Binding MAHANG}" Width = "150"></GridViewColumn>
+                    <GridViewColumn Header = "MÃ LÔ" DisplayMemberBinding = "{Binding MALO}" Width = "120"></GridViewColumn>
+                    <GridViewColumn Header = "TÊN" DisplayMemberBinding = "{Binding TENHANG}" Width = "130"></GridViewColumn>
+                    <GridViewColumn Header = "NGÀY NHẬP" DisplayMemberBinding = "{Binding NGNHAP}" Width = "160"></GridViewColumn>
+                    <GridViewColumn Header = "HẠN SD" DisplayMemberBinding = "{Binding HANSD}" Width = "160"></GridViewColumn>
+                    <GridViewColumn Header = "SL" DisplayMemberBinding = "{Binding SOLUONG}" Width = "80"></GridViewColumn>
+                    <GridViewColumn Header = "ĐƠN VỊ"  DisplayMemberBinding = "{Binding DVT}" Width = "115"></GridViewColumn>
+                    <GridViewColumn Header = "GIÁ" DisplayMemberBinding = "{Binding DONGIA}" Width = "140"></GridViewColumn>
 
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="Column1"
-                            Binding="{Binding Path=Something1}"
-                            Header = "MÃ"
-                            Width = "85"/>
-
-                <DataGridTextColumn x:Name="Column2"
-                            Binding="{Binding Path=Something2}"
-                            Header = "TÊN"
-                            Width = "90"/>
-                <DataGridTextColumn x:Name="Column3"
-                            Binding="{Binding Path=Something3}"
-                            Header = "NG.NHẬP" 
-                            Width = "130"/>
-
-                <DataGridTextColumn x:Name="Column4"
-                            Binding="{Binding Path=Something4}"
-                            Header = "HẠN SD"
-                            Width = "120"/>
-                <DataGridTextColumn x:Name="Column5"
-                            Binding="{Binding Path=Something5}"
-                            Header = "SL" 
-                            Width = "80"/>
-                <DataGridTextColumn x:Name="Column6"
-                            Binding="{Binding Path=Something6}"
-                            Header = "Đ.VỊ" 
-                            Width = "90"/>
-
-                <DataGridTextColumn x:Name="Column7"
-                            Binding="{Binding Path=Something7}"
-                            Header = "GIÁ"
-                            Width = "90"/>
-
-                <DataGridTextColumn x:Name="Column8"
-                            Binding="{Binding Path=Something8}"
-                            Header = "TỔNG" 
-                            Width = "100"/>
-            </DataGrid.Columns>
-
-        </DataGrid>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </local:BasePage>

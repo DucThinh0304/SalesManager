@@ -17,30 +17,37 @@
                 FontSize="36" 
                 Foreground="#FF0536C0"
                 Margin="143,28,145,371.6" Width="512"   />
-        <Label 
-                Content="MÃ NHÂN VIÊN"                
-                FontWeight="Bold" 
-                FontSize="15" 
-                Foreground="#FF1DB7A4"
-                Margin="160,120,500,300.6"  />
-        <Label 
-                Content="TÊN NHÂN VIÊN"                
-                FontWeight="Bold" 
-                FontSize="15" 
-                Foreground="#FF1DB7A4"
-                Margin="160,164,500,255.6"  />
-        <Label  
-                Content="PASS NHÂN VIÊN"                
-                FontWeight="Bold" 
-                FontSize="15" 
-                Foreground="#FF1DB7A4"
-                Margin="160,213,463,206.6"  />
-        <Label  
-                Content="REPASS NHÂN VIÊN"                
-                FontWeight="Bold" 
-                FontSize="15" 
-                Foreground="#FF1DB7A4"
-                Margin="160,257,463,160.6"  />
+        <Label
+                Content = "MÃ"
+                FontWeight = "Bold"
+                FontSize = "15"
+                Foreground = "#FF1DB7A4"
+                Margin = "303,121,461,299.6" RenderTransformOrigin = "0.538,0.093" />
+        <Label
+                Content = "HỌ TÊN"
+                FontWeight = "Bold"
+                FontSize = "15"
+                Foreground = "#FF1DB7A4"
+                Margin = "269,155,461,264.6" />
+        <Label
+                Content = "MẬT KHẨU"
+                FontWeight = "Bold"
+                FontSize = "15"
+                Foreground = "#FF1DB7A4"
+                Margin = "244,188,461,231.6" />
+        <Label
+                Content = "MẬT KHẨU MỚI"
+                FontWeight = "Bold"
+                FontSize = "15"
+                Foreground = "#FF1DB7A4"
+                Margin = "208,223,461,194.6" />
+        <Label
+                Content = "NHẬP LẠI MẬT KHẨU MỚI"
+                FontWeight = "Bold"
+                FontSize = "15"
+                Foreground = "#FF1DB7A4"
+                Margin = "132,262,461,160.6" />
+
         <Button
             Content="LƯU"   
             HorizontalAlignment="Left" 
@@ -55,32 +62,39 @@
                 FontSize="15" 
                 Foreground="White"
                 Margin="0,319,100,98.6" Click="Button_Click" Width="128" />
-        <ComboBox x:Name="manv_txb"
-            HorizontalAlignment="Center" 
-            Height="23"  
-            VerticalAlignment="Top" 
-            Margin="491,126,109,0"
-            Width="200"/>
-        <TextBox x:Name="tennv" 
-            HorizontalAlignment="Center" 
-            Height="23" 
-            TextWrapping="Wrap" 
-            VerticalAlignment="Top" 
-             Margin="491,171,109,0"
-            Width="200" RenderTransformOrigin="0.501,-0.933"/>
+        <ComboBox x:Name = "manv"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,127,229,0"
+            Width = "200" />
+        <TextBox x:Name = "tennv"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            TextWrapping = "Wrap"
+            VerticalAlignment = "Top"
+             Margin = "371,162,229,0"
+            Width = "200" RenderTransformOrigin = "0.501,-0.933" />
+        <PasswordBox x:Name = "MK"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,195,229,0"
+            Width = "200" RenderTransformOrigin = "0.246,0.474" />
 
-        <PasswordBox x:Name="pass"
-            HorizontalAlignment="Center" 
-            Height="23" 
-            VerticalAlignment="Top" 
-            Margin="491,220,109,0"
-            Width="200"/>
+        <PasswordBox x:Name = "pass"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,232,229,0"
+            Width = "200" />
 
-        <PasswordBox x:Name="repass"
-            HorizontalAlignment="Center" 
-            Height="23" 
-            VerticalAlignment="Top" 
-            Margin="491,266,109,0"
-            Width="200"/>
+        <PasswordBox x:Name = "repass"
+            HorizontalAlignment = "Center"
+            Height = "23"
+            VerticalAlignment = "Top"
+            Margin = "371,266,229,0"
+            Width = "200" />
+        
     </Grid>
 </local:BasePage>

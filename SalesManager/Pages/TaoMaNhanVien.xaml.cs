@@ -23,18 +23,16 @@ namespace SalesManager
     /// </summary>
     public partial class TaoMaNhanVien : BasePage
     {
-        string strCon = @"Data Source=DESKTOP-5N8T091\SQLEXPRESS;Initial Catalog=DOANLTTQ_QUANLYHANGHOA;Integrated Security=True";
-        SqlConnection con = null;
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         public TaoMaNhanVien()
         {
             InitializeComponent();
-            con = new SqlConnection(strCon);
             con.Open();
             var cmd = new SqlCommand("select MANV from NHANVIEN", con);
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                manv_txb.Items.Add(dr.GetString(0));
+                manv.Items.Add(dr.GetString(0));
             }
             dr.Close();
         }
@@ -70,18 +68,18 @@ namespace SalesManager
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (manv_txb.Text == "" || tennv.Text == "" || pass.Password == "" || repass.Password == "")
+            if (manv.Text == "" || tennv.Text == "" || pass.Password == "" || repass.Password == "")
                 MessageBox.Show("Vui lòng nhập đủ thông tin", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
                 string Pass = Encrypt(pass.Password);
                 string RePass = Encrypt(repass.Password);
-                var sqlCommand = new SqlCommand("SELECT MANV,HOTEN FROM NHANVIEN WHERE MANV='" + manv_txb.Text + "'and HOTEN ='" + tennv.Text + "'", con);
+                var sqlCommand = new SqlCommand("SELECT MANV,HOTEN FROM NHANVIEN WHERE MANV='" + manv.Text + "'and HOTEN ='" + tennv.Text + "'", con);
                 var reader = sqlCommand.ExecuteReader();
                 if (reader.Read() == true && Pass == RePass)
                 {
                     reader.Close();
-                    var cmd = new SqlCommand("UPDATE NHANVIEN SET MATKHAU = " + pass.Password + " WHERE MANV='" + manv_txb.Text + "'", con);
+                    var cmd = new SqlCommand("UPDATE NHANVIEN SET MATKHAU = " + pass.Password + " WHERE MANV='" + manv.Text + "'", con);
                     cmd.ExecuteReader();
                     con.Close();
 
@@ -90,7 +88,7 @@ namespace SalesManager
                 else
                 {
                     reader.Close();
-                    manv_txb.Text = "";
+                    manv.Text = "";
                     tennv.Text = "";
                     pass.Password = "";
                     repass.Password = "";
