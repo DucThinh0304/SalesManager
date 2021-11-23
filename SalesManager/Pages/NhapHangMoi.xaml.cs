@@ -122,6 +122,36 @@ namespace SalesManager
             }
         }
 
+        private void comMaHang_DropDownClosed(object sender, EventArgs e)
+        {
+            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            var sqlCommand = new SqlCommand("SELECT TENHANG FROM LOAIHANG WHERE MAHANG = '"+comMaHang.Text+"'", sqlConn);
+            var reader = sqlCommand.ExecuteReader();
+            if (reader.Read())
+            {
+                if (!reader.IsDBNull(0)) TextTenHang.Content = reader.GetString(0);
+            }    
+        }
+
+        private void comMaHang_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            var sqlCommand = new SqlCommand("SELECT TENHANG FROM LOAIHANG WHERE MAHANG = '" + comMaHang.Text + "'", sqlConn);
+            var reader = sqlCommand.ExecuteReader();
+            if (reader.Read())
+            {
+                if (!reader.IsDBNull(0)) TextTenHang.Content = reader.GetString(0);
+            }
+        }
+
+        private void comMaHang_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
         private void TroVe_Click(object sender, RoutedEventArgs e)
         {
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapHang_Question;

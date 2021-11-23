@@ -84,17 +84,25 @@ namespace SalesManager
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 con.Open();
-                var cmd = new SqlCommand("SELECT MALO FROM NHAPHANG WHERE MAHANG = " + "'" + comMaHang.Text + "'", con);
+                var cmd = new SqlCommand("SELECT MALO FROM NHAPHANG WHERE MAHANG = " + "'" + comMaHang.Text + "' AND SOLUONG>0", con);
                 var dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
                     comMaLo.Items.Add(Convert.ToString(dr.GetInt32(0)));
                 }
             }
+            reader.Close();
+            sqlCommand = new SqlCommand("SELECT TENHANG FROM LOAIHANG WHERE MAHANG = '" + comMaHang.Text + "'", sqlConn);
+            reader = sqlCommand.ExecuteReader();
+            if (reader.Read())
+            {
+                if (!reader.IsDBNull(0)) TextTenHang.Content = reader.GetString(0);
+            }
         }
 
         private void Xoa_Click(object sender, RoutedEventArgs e)
         {
+            if (HangMua.SelectedIndex == -1) return;
             var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             sqlConn.Open();
             int i = HangMua.SelectedIndex;
@@ -110,7 +118,11 @@ namespace SalesManager
                 list[i].STT = i + 1;
             }
             HangMua.Items.Clear();
-            HangMua.ItemsSource = list;
+            for (i=0; i<list.Count; i++)
+            {
+                MatHang tmp = list[i];
+                HangMua.Items.Add(new MatHang() { STT = tmp.STT, DonGia = tmp.DonGia, SoLuong = tmp.SoLuong, TenHang = tmp.TenHang, ThanhTien = tmp.ThanhTien });
+            }    
             STT--;
         }
 
@@ -182,6 +194,18 @@ namespace SalesManager
             }
         }
 
+        private void comMaHang_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            var sqlCommand = new SqlCommand("SELECT TENHANG FROM LOAIHANG WHERE MAHANG = '" + comMaHang.Text + "'", sqlConn);
+            var reader = sqlCommand.ExecuteReader();
+            if (reader.Read())
+            {
+                if (!reader.IsDBNull(0)) TextTenHang.Content = reader.GetString(0);
+            }
+        }
+
         private void NhapHang_Click(object sender, RoutedEventArgs e)
         {
             if (comMaHang.Text == "" || textSL.Text == "" || comMaLo.Text == "") 
@@ -206,7 +230,7 @@ namespace SalesManager
                 if (!flag) MessageBox.Show("Mã hàng không tồn tại trong hệ thống!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 else
                 {
-                    sqlCommand = new SqlCommand("SELECT SOLUONG FROM NHAPHANG WHERE MALO = " + comMaLo.Text + "AND MAHANG = '" +comMaHang.Text +"'", sqlConn);
+                    sqlCommand = new SqlCommand("SELECT SOLUONG FROM NHAPHANG WHERE MALO = " + comMaLo.Text + " AND MAHANG = '" +comMaHang.Text +"'", sqlConn);
                     reader = sqlCommand.ExecuteReader();
                     if (reader.Read())
                     {

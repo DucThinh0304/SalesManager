@@ -86,7 +86,8 @@ namespace SalesManager
 
         private void KhachDua_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ThoiLai.Text = Convert.ToString(Convert.ToInt32(KhachDua.Text) - Convert.ToInt32(ThanhTien.Text));
+            if (KhachDua.Text=="") ThoiLai.Text = Convert.ToString(0 - Convert.ToInt32(ThanhTien.Text));
+            else ThoiLai.Text = Convert.ToString(Convert.ToInt32(KhachDua.Text) - Convert.ToInt32(ThanhTien.Text));
         }
 
         private void TroVe_Click(object sender, RoutedEventArgs e)
