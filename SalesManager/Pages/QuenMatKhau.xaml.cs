@@ -29,7 +29,7 @@ namespace SalesManager
         public QuenMatKhau()
         {
             InitializeComponent();
-        } 
+        }
         string MaXacNhan;
         private void Back_Click(object sender, RoutedEventArgs e)
         {
@@ -62,15 +62,24 @@ namespace SalesManager
             {
                 SqlCommand sqlCommand = new SqlCommand("UPDATE NHANVIEN SET MATKHAU = '" + MatKhauMaHoa + "' WHERE CMND ='" + CMND.Text + "' and GMAIL = '" + Gmail.Text + "@gmail.com" + "'", sqlConn);
                 var reader = sqlCommand.ExecuteNonQuery();
-                CMND.Clear();
-                Gmail.Clear();
-                MXN.Clear();
-                MaXacNhan = null;
-                MatKhau.Clear();
-                XNMatKhau.Clear();
-                sqlConn.Close();
-                MessageBox.Show("Thành công.");
-              
+                if (Convert.ToInt32(reader) == 1)
+                {
+                    CMND.Clear();
+                    Gmail.Clear();
+                    MXN.Clear();
+                    MaXacNhan = null;
+                    MatKhau.Clear();
+                    XNMatKhau.Clear();
+                    sqlConn.Close();
+                    MessageBox.Show("Thành công.");
+                }
+                else
+                {
+                    sqlConn.Close();
+                    MessageBox.Show("CMND/CCCD hoặc Gmail chưa trùng khớp.");
+                    return;
+                }
+
             }
             catch (Exception)
             {
@@ -81,7 +90,7 @@ namespace SalesManager
 
         private void Gmail_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^1-9a-zA-Z]+");
+            Regex regex = new Regex("[^0-9a-zA-Z]+");
             e.Handled = regex.IsMatch(e.Text);
         }
         public static string Encrypt(string toEncrypt)

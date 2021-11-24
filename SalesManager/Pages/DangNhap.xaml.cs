@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
@@ -26,6 +27,31 @@ namespace SalesManager
         public DangNhap()
         {
             InitializeComponent();
+            Check();
+
+        }
+        private void Check()
+        {
+            SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            if (sqlConn.State == ConnectionState.Closed) { sqlConn.Open(); }
+            SqlCommand sqlCommandCheck;
+            try
+            {
+                sqlCommandCheck = new SqlCommand("SELECT COUNT (MACH) FROM CUAHANG", sqlConn);
+                var reader = sqlCommandCheck.ExecuteScalar();
+                if (Convert.ToInt32(reader) >= 1)
+                {
+                    DangKy.IsEnabled = false;
+                }
+                sqlConn.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi kết nối dữ liệu!!!");
+                sqlConn.Close();
+                return;
+            }
+
         }
 
 
@@ -61,7 +87,8 @@ namespace SalesManager
         }
         private void DangNhap_Click(object sender, RoutedEventArgs e)
         {
-            if (!(CMND.Text == "" || MatKhau.Password== "" )) {
+            if (!(CMND.Text == "" || MatKhau.Password == ""))
+            {
                 SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();
                 string MatKhauMaHoa = Encrypt(MatKhau.Password);
@@ -87,15 +114,15 @@ namespace SalesManager
                     }
                     reader.Close();
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     MessageBox.Show("Lỗi kết nối dữ liệu!!!");
                     sqlConn.Close();
                 }
-              
+
             }
             else
-                 MessageBox.Show("Bạn vui lòng nhập đầy đủ thông tin!!!");
+                MessageBox.Show("Bạn vui lòng nhập đầy đủ thông tin!!!");
 
         }
 

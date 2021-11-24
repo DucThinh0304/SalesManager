@@ -56,7 +56,7 @@ namespace SalesManager
 
             return Convert.ToBase64String(resultArray, 0, resultArray.Length);
         }
-       
+
         private void SDT_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -81,7 +81,7 @@ namespace SalesManager
         {
             string MaCuaHang = "CH";
             // Nhập chưa đủ thông tin
-            if (TenCuaHang.Text == "" || NgayThanhLap.Text == "" || TenQuanLi.Text == "" || NgaySinh.Text == "" || SDT.Text == "" || DiaChi.Text == "" || CMND.Text == "" || MatKhau.Password == "" || XNMatKhau.Password == "" || Gmail.Text == "" || MXN.Text == "") 
+            if (TenCuaHang.Text == "" || NgayThanhLap.Text == "" || TenQuanLi.Text == "" || NgaySinh.Text == "" || SDT.Text == "" || DiaChi.Text == "" || CMND.Text == "" || MatKhau.Password == "" || XNMatKhau.Password == "" || Gmail.Text == "" || MXN.Text == "")
             {
                 MessageBox.Show("Bạn vui lòng nhập đủ thông tin!!!");
                 return;
@@ -104,63 +104,63 @@ namespace SalesManager
             else
             {
                 SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-                if (sqlConn.State == ConnectionState.Closed){ sqlConn.Open(); }
-                SqlCommand sqlCommandCheck ;
+                if (sqlConn.State == ConnectionState.Closed) { sqlConn.Open(); }
+                //  SqlCommand sqlCommandCheck ;
                 // Tìm mã cửa hàng
-                try
-                {
-                    sqlCommandCheck = new SqlCommand("SELECT COUNT (MACH) FROM CUAHANG", sqlConn);
-                    var reader = sqlCommandCheck.ExecuteScalar();
-                    MaCuaHang =MaCuaHang + Convert.ToString(Convert.ToInt32(reader) + 1);
-                    sqlConn.Close();
-                }
-                catch(Exception)
-                {
-                    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
-                    sqlConn.Close();
-                    return;
-                }
-                // Gmail tồn tại
-                if (sqlConn.State == ConnectionState.Closed) { sqlConn.Open(); }
-                sqlCommandCheck = new SqlCommand("SELECT GMAIL FROM NHANVIEN WHERE GMAIL ='" + Gmail.Text + "@gmail.com'", sqlConn);
-                try
-                {
-                    var reader = sqlCommandCheck.ExecuteReader();
-                    if (reader.Read() == true)
-                    {
-                        MessageBox.Show("Gmail đã tồn tại!!!");
-                        reader.Close();
-                        sqlConn.Close();
-                        return;
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
-                    sqlConn.Close();
-                    return;
-                }
-                //CMND/CCCD tôn tại
-                if (sqlConn.State == ConnectionState.Open) { sqlConn.Close(); }
-                if (sqlConn.State == ConnectionState.Closed) { sqlConn.Open(); }
-                sqlCommandCheck = new SqlCommand("SELECT CMND FROM NHANVIEN WHERE CMND='" + CMND.Text + "'", sqlConn);
-                try
-                {
-                    var reader = sqlCommandCheck.ExecuteReader();
-                    if (reader.Read() == true)
-                    {
-                        MessageBox.Show("CMND/CCCD đã tồn tại!!!");
-                        reader.Close();
-                        sqlConn.Close();
-                        return;
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
-                    sqlConn.Close();
-                    return;
-                }
+                //try
+                //{
+                //    sqlCommandCheck = new SqlCommand("SELECT COUNT (MACH) FROM CUAHANG", sqlConn);
+                //    var reader = sqlCommandCheck.ExecuteScalar();
+                //    MaCuaHang =MaCuaHang + Convert.ToString(Convert.ToInt32(reader) + 1);
+                //    sqlConn.Close();
+                //}
+                //catch(Exception)
+                //{
+                //    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
+                //    sqlConn.Close();
+                //    return;
+                //}
+                //// Gmail tồn tại
+                //if (sqlConn.State == ConnectionState.Closed) { sqlConn.Open(); }
+                //sqlCommandCheck = new SqlCommand("SELECT GMAIL FROM NHANVIEN WHERE GMAIL ='" + Gmail.Text + "@gmail.com'", sqlConn);
+                //try
+                //{
+                //    var reader = sqlCommandCheck.ExecuteReader();
+                //    if (reader.Read() == true)
+                //    {
+                //        MessageBox.Show("Gmail đã tồn tại!!!");
+                //        reader.Close();
+                //        sqlConn.Close();
+                //        return;
+                //    }
+                //}
+                //catch (Exception)
+                //{
+                //    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
+                //    sqlConn.Close();
+                //    return;
+                //}
+                ////CMND/CCCD tôn tại
+                //if (sqlConn.State == ConnectionState.Open) { sqlConn.Close(); }
+                //if (sqlConn.State == ConnectionState.Closed) { sqlConn.Open(); }
+                //sqlCommandCheck = new SqlCommand("SELECT CMND FROM NHANVIEN WHERE CMND='" + CMND.Text + "'", sqlConn);
+                //try
+                //{
+                //    var reader = sqlCommandCheck.ExecuteReader();
+                //    if (reader.Read() == true)
+                //    {
+                //        MessageBox.Show("CMND/CCCD đã tồn tại!!!");
+                //        reader.Close();
+                //        sqlConn.Close();
+                //        return;
+                //    }
+                //}
+                //catch (Exception)
+                //{
+                //    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
+                //    sqlConn.Close();
+                //    return;
+                //}
 
                 // Thêm data vào Sql
                 if (sqlConn.State == ConnectionState.Open) { sqlConn.Close(); }
@@ -168,8 +168,8 @@ namespace SalesManager
                 try
                 {
                     string MatKhauMaHoa = Encrypt(MatKhau.Password);
-                    string CH = "insert into CUAHANG values ('" + MaCuaHang + "',N'" + TenCuaHang.Text + "','NVQL01','" + NgayThanhLap.Text + "')";
-                    string NV = "insert into NHANVIEN values ('NVQL01',N'" + TenQuanLi.Text + "','" + NgaySinh.Text + "','" + CMND.Text + "',N'" + DiaChi.Text + "','" + NgayThanhLap.Text + "','" + MatKhauMaHoa + "','" + Gmail.Text + "@gmail.com')";
+                    string CH = "insert into CUAHANG values ('" + MaCuaHang + "',N'" + TenCuaHang.Text + "','NVQL','" + NgayThanhLap.Text + "')";
+                    string NV = "insert into NHANVIEN values ('NVQL',N'" + TenQuanLi.Text + "','" + NgaySinh.Text + "','" + CMND.Text + "',N'" + DiaChi.Text + "','" + NgayThanhLap.Text + "','" + MatKhauMaHoa + "','" + Gmail.Text + "@gmail.com')";
                     SqlCommand sqlCommandCH, sqlCommandNV;
                     sqlCommandNV = sqlConn.CreateCommand();
                     sqlCommandNV.CommandText = NV;
@@ -180,27 +180,28 @@ namespace SalesManager
                     if (sqlConn != null)
                         sqlConn.Close();
                     MessageBox.Show("Tạo tài khoản thành công.");
-                    TenCuaHang.Clear();
-                    NgayThanhLap.Text = "";
-                    TenQuanLi.Clear();
-                    NgaySinh.Text = "";
-                    SDT.Clear();
-                    DiaChi.Clear();
-                    CMND.Clear();
-                    Gmail.Clear();
-                    MXN.Clear();
-                    MaXacNhan = null;
-                    MatKhau.Clear();
-                    XNMatKhau.Clear();
+                    //TenCuaHang.Clear();
+                    //NgayThanhLap.Text = "";
+                    //TenQuanLi.Clear();
+                    //NgaySinh.Text = "";
+                    //SDT.Clear();
+                    //DiaChi.Clear();
+                    //CMND.Clear();
+                    //Gmail.Clear();
+                    //MXN.Clear();
+                    //MaXacNhan = null;
+                    //MatKhau.Clear();
+                    //XNMatKhau.Clear();
                     sqlConn.Close();
+                    ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
                 }
-                catch(Exception)
+                catch (Exception)
                 {
-                    MessageBox.Show("Lỗi kết nối dữ liệu tc!!!");
+                    MessageBox.Show("Lỗi kết nối dữ liệu !!!");
                     sqlConn.Close();
                     return;
                 }
-               
+
             }
         }
 
@@ -208,12 +209,12 @@ namespace SalesManager
         {
             Random Ran = new Random();
             MaXacNhan = Ran.Next(100000, 999999).ToString();
-            MailMessage Mess = new MailMessage("bihubihu2002@gmail.com", Gmail.Text+"@gmail.com", "[QUẢN LÍ BÁN HÀNG]", "Mã xác nhận: " + MaXacNhan);
+            MailMessage Mess = new MailMessage("bihubihu2002@gmail.com", Gmail.Text + "@gmail.com", "[QUẢN LÍ BÁN HÀNG]", "Mã xác nhận: " + MaXacNhan);
             Mess.BodyEncoding = System.Text.Encoding.UTF8;
             Mess.SubjectEncoding = System.Text.Encoding.UTF8;
             Mess.IsBodyHtml = true;
             Mess.Sender = new MailAddress("bihubihu2002@gmail.com", "QUANLIBANHANG");
-            SmtpClient Client = new SmtpClient("smtp.gmail.com",587);
+            SmtpClient Client = new SmtpClient("smtp.gmail.com", 587);
             Client.EnableSsl = true;
             Client.Credentials = new NetworkCredential("bihubihu2002@gmail.com", "dungcomadua2");
             try
@@ -221,11 +222,11 @@ namespace SalesManager
                 Client.Send(Mess);
                 MessageBox.Show("Đã gửi mã xác nhận. Bạn vui lòng kiểm tra trong hộp thư gmail của bạn.");
             }
-            catch(Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Gửi mã xác nhận thất bại.");
             }
-          
+
         }
 
         private void Gmail_TextChanged(object sender, TextChangedEventArgs e)
@@ -234,4 +235,4 @@ namespace SalesManager
             MaXacNhan = null;
         }
     }
-    }
+}
