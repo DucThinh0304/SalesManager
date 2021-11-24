@@ -44,7 +44,7 @@ namespace SalesManager
         /// <summary>
         /// The smallest height the window can go to
         /// </summary>
-        public double WindowMinimumHeight { get; set; } = 600;
+        public double WindowMinimumHeight { get; set; } = 800;
 
         /// <summary>
         /// True if the window should be borderless because it is docked or maximized

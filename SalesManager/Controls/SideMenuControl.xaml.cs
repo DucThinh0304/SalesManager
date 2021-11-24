@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +23,39 @@ namespace SalesManager
     /// </summary>
     public partial class SideMenuControl : BaseControl
     {
+        static public bool NotificationCheck = false;
+        static public int Count = 0;
         public SideMenuControl()
         {
             InitializeComponent();
+            NotificationControl.listNotification.CollectionChanged += ListNotification_CollectionChanged;
+            if (NotificationCheck == true)
+            {
+                this.CoThongBao.Visibility = Visibility.Hidden;
+            }
+            if (NotificationControl.listNotification.Count == 0 || NotificationControl.listNotification.Count == Count)
+            {
+                this.CoThongBao.Visibility = Visibility.Hidden;
+            }
+            Count = NotificationControl.listNotification.Count;
+            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            var sqlCommand = new SqlCommand($"DELETE FROM NHAPHANG WHERE HANSD < GETDATE()", sqlConn);
+            var reader = sqlCommand.ExecuteReader();
         }
+        private void ListNotification_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (NotificationControl.listNotification.Count == 0 || NotificationControl.listNotification.Count == Count)
+            {
+                this.CoThongBao.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                this.CoThongBao.Visibility = Visibility.Visible;
+                NotificationCheck = false;
+            }
+        }
+
 
         private void ResetColor()
         {
@@ -35,6 +66,8 @@ namespace SalesManager
             ThongKe_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             Danhsach_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+
         }
 
         private void Setting_Click(object sender, RoutedEventArgs e)
@@ -97,8 +130,31 @@ namespace SalesManager
         }
         private void Notification_Click(object sender, RoutedEventArgs e)
         {
+            NotificationCheck = true;
+            //foreach (Border bor in NotificationControl.listNotification)
+            //{
+            //    bor.Parent.RemoveChild(bor);
+            //}
             ResetColor();
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.NotificationControl;
+
+        }
+        private void Manager_Click(object sender, RoutedEventArgs e)
+        {
+            this.Manager.Visibility = Visibility.Visible;
+            this.Staff.Visibility = Visibility.Hidden;
+        }
+        private void Staff_Click(object sender, RoutedEventArgs e)
+        {
+            this.Staff.Visibility = Visibility.Visible;
+            this.Manager.Visibility = Visibility.Hidden;
+        }
+        private void ThongKeSoLuongHang_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            var bc = new BrushConverter();
+            ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeSoLuongHang;
         }
     }
 }

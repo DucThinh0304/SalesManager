@@ -55,6 +55,8 @@ namespace SalesManager
                     return new NotificationControl();
                 case ApplicationPage.ThongKeDoanhThuThang:
                     return new ThongKeDoanhThuThang();
+                case ApplicationPage.ThongKeSoLuongHang:
+                    return new ThongKeSoLuongHang();
                 default:
                     Debugger.Break();
                     return null;

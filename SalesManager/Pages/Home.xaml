@@ -281,7 +281,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-            <Border Background="BlueViolet"
+            <Border x:Name="Title"
                     Height="50"
                     Margin="20 10 20 10"
                     CornerRadius="20">
@@ -289,8 +289,8 @@
                        FontSize="50"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center" Grid.Column="0">
-                    <Run Text="Xin chào" Foreground="{StaticResource ForegroundLightBrush}" FontFamily="{StaticResource MyriadRegular}"></Run>
-                    <Run x:Name="Usr" Foreground="{StaticResource MaterialDesignDarkForeground}" FontFamily="{StaticResource MyriadBold}" TextDecorations="Underline"></Run>
+                    <Run Text="Xin chào" Foreground="#FF0536C0" FontFamily="{StaticResource MyriadBold}"></Run>
+                    <Run x:Name="Usr" Foreground="#FF0536C0" FontFamily="{StaticResource MyriadBold}" TextDecorations="Underline"></Run>
                 </TextBlock>
             </Border>
         </StackPanel>

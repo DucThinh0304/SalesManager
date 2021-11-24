@@ -28,6 +28,11 @@ namespace SalesManager
         {
             InitializeComponent();
 
+            RadialGradientBrush radialGradientBrush = new RadialGradientBrush();
+            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Cyan, 0.0));
+            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.White, 1));
+            Title.Background = radialGradientBrush;
+            NotificationControl.listNotification.Clear();
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
@@ -45,6 +50,108 @@ namespace SalesManager
             LiveTime.Interval = TimeSpan.FromSeconds(1);
             LiveTime.Tick += timer_Tick;
             LiveTime.Start();
+            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            var sqlCommand = new SqlCommand("SELECT SUM(SOLUONG), TENHANG, A.MAHANG, DVT FROM NHAPHANG A, LOAIHANG B WHERE A.MAHANG=B.MAHANG  GROUP BY A.MAHANG, TENHANG, DVT", sqlConn);
+            var reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader.GetInt32(0) < 10 && reader.GetInt32(0) != 0)
+                {
+                    var newItem = new Border();
+                    newItem.Tag = true;
+                    newItem.Margin = new Thickness(0, 1, 0, 1);
+                    newItem.Width = 240;
+                    var bc = new BrushConverter();
+
+                    newItem.Background = (Brush)bc.ConvertFrom("#a366ff");
+                    newItem.BorderBrush = (Brush)bc.ConvertFrom("#1f004d");
+                    newItem.BorderThickness = new Thickness(1, 1, 1, 1);
+                    newItem.CornerRadius = new CornerRadius(5);
+                    newItem.Opacity = 0.95;
+                    StackPanel stack = new StackPanel();
+                    newItem.Child = stack;
+                    stack.Orientation = Orientation.Horizontal;
+                    TextBlock textBlock = new TextBlock();
+                    textBlock.Width = 100;
+                    textBlock.Text = $"Mặt hàng {reader.GetString(1).ToLower()} sắp hết hàng!!!";
+                    textBlock.TextWrapping = TextWrapping.Wrap;
+                    textBlock.Foreground = Brushes.White;
+                    textBlock.FontSize = 15;
+                    textBlock.FontWeight = FontWeights.Bold;
+                    textBlock.Padding = new Thickness(3, 3, 0, 3);
+                    textBlock.FontFamily = new FontFamily("Segoe UI");
+                    textBlock.TextAlignment = TextAlignment.Center;
+
+                    TextBlock textBlock1 = new TextBlock();
+                    textBlock1.Width = 120;
+                    textBlock1.Text = $"Mã hàng: {reader.GetString(2)}\nSố lượng hàng còn lại: {reader.GetInt32(0)} {reader.GetString(3).ToLower()}";
+                    textBlock1.TextWrapping = TextWrapping.Wrap;
+                    textBlock1.Foreground = (Brush)bc.ConvertFrom("#330080");
+                    textBlock1.FontSize = 15;
+                    textBlock1.Padding = new Thickness(2, 3, 3, 3);
+                    textBlock1.FontFamily = new FontFamily("Segoe UI");
+                    textBlock1.TextAlignment = TextAlignment.Center;
+                    stack.Children.Add(textBlock);
+
+                    stack.Children.Add(textBlock1);
+                    NotificationControl.listNotification.Add(newItem);
+                }
+            }
+            reader.Close();
+            sqlConn.Close();
+
+
+            sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            sqlCommand = new SqlCommand("SELECT * FROM NHAPHANG A, LOAIHANG B WHERE A.MAHANG = B.MAHANG", sqlConn);
+            reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                if (reader.GetDateTime(3).Date == DateTime.Now.AddDays(1).Date)
+                {
+                    var newItem = new Border();
+                    newItem.Width = 240;
+                    newItem.Tag = true;
+                    newItem.Margin = new Thickness(0, 1, 0, 1);
+                    newItem.Opacity = 0.95;
+                    var bc = new BrushConverter();
+                    newItem.Background = (Brush)bc.ConvertFrom("#4dff4d");
+                    newItem.BorderBrush = (Brush)bc.ConvertFrom("#006600");
+                    newItem.BorderThickness = new Thickness(1, 1, 1, 1);
+                    newItem.CornerRadius = new CornerRadius(5);
+                    StackPanel stack = new StackPanel();
+                    newItem.Child = stack;
+                    stack.Orientation = Orientation.Horizontal;
+                    TextBlock textBlock = new TextBlock();
+                    textBlock.Width = 100;
+                    textBlock.FontWeight = FontWeights.Bold;
+                    textBlock.Text = $"Mặt hàng {reader.GetString(8).ToLower()} sắp hết hạn!!!";
+                    textBlock.TextWrapping = TextWrapping.Wrap;
+                    textBlock.Foreground = (Brush)bc.ConvertFrom("#006600");
+                    textBlock.FontSize = 15;
+                    textBlock.Padding = new Thickness(3, 3, 0, 3);
+                    textBlock.FontFamily = new FontFamily("Segoe UI");
+                    textBlock.TextAlignment = TextAlignment.Center;
+
+                    TextBlock textBlock1 = new TextBlock();
+                    textBlock1.Width = 120;
+                    textBlock1.Text = $"Mã hàng: {reader.GetString(0)}\nMã lô: {reader.GetInt32(1)}\nHSD: {reader.GetDateTime(3).Day}/{reader.GetDateTime(3).Month}/{reader.GetDateTime(3).Year}\nSố lượng hàng: {reader.GetInt32(4)}";
+                    textBlock1.TextWrapping = TextWrapping.Wrap;
+                    textBlock1.Foreground = (Brush)bc.ConvertFrom("#054405");
+                    textBlock1.FontSize = 15;
+                    textBlock1.Padding = new Thickness(2, 3, 3, 3);
+                    textBlock.FontFamily = new FontFamily("Segoe UI");
+                    textBlock1.TextAlignment = TextAlignment.Center;
+
+                    stack.Children.Add(textBlock);
+
+                    stack.Children.Add(textBlock1);
+                    NotificationControl.listNotification.Add(newItem);
+                }
+            }
+            reader.Close();
+            sqlConn.Close();
         }
         void timer_Tick(object sender, EventArgs e)
         {
