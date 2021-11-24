@@ -28,25 +28,25 @@
                 FontWeight = "Bold"
                 FontSize = "15"
                 Foreground = "#FF1DB7A4"
-                Margin = "269,155,461,264.6" />
+                Margin = "303,155,427,264.6" />
         <Label
                 Content = "MẬT KHẨU"
                 FontWeight = "Bold"
                 FontSize = "15"
                 Foreground = "#FF1DB7A4"
-                Margin = "244,188,461,231.6" />
+                Margin = "303,188,402,231.6" />
         <Label
                 Content = "MẬT KHẨU MỚI"
                 FontWeight = "Bold"
                 FontSize = "15"
                 Foreground = "#FF1DB7A4"
-                Margin = "208,223,461,194.6" />
+                Margin = "303,223,366,194.6" />
         <Label
                 Content = "NHẬP LẠI MẬT KHẨU MỚI"
                 FontWeight = "Bold"
                 FontSize = "15"
                 Foreground = "#FF1DB7A4"
-                Margin = "132,262,461,160.6" />
+                Margin = "303,260,290,162.6" />
 
         <Button
             Content="LƯU"   

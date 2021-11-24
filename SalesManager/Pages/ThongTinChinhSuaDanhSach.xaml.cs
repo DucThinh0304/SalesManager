@@ -41,20 +41,24 @@ namespace SalesManager
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                NGAY.Text = dr.GetDateTime(0).ToString();
-                HAN.Text = dr.GetDateTime(1).ToString();
+                NGAY.Text = dr.GetDateTime(0).ToString("MM/dd/yyyy");
+                HAN.Text = dr.GetDateTime(1).ToString("MM/dd/yyyy");
                 SL.Text = dr.GetInt32(2).ToString();
                 GIA.Text = dr.GetDecimal(3).ToString();
             }
             dr.Close();
-            cmd = new SqlCommand("SELECT TENHANG,DVT  FROM LOAIHANG WHERE MAHANG='" + mahang + "'", con);
+            cmd = new SqlCommand("SELECT TENHANG,DVT FROM LOAIHANG WHERE MAHANG='" + mahang + "'", con);
             dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 TENHG.Text = dr.GetString(0);
-                DONVI.Text = dr.GetString(1);
+                DONVI.Text= dr.GetString(1);
             }
             dr.Close();
+            DONVI.Items.Add("Cái");
+            DONVI.Items.Add("Kg");
+            DONVI.Items.Add("Lốc");
+            DONVI.Items.Add("Chục");
         }
         private void trolai(object sender, RoutedEventArgs e)
         {
@@ -97,6 +101,12 @@ namespace SalesManager
                 cmd.Parameters.Add("@HANSD", System.Data.SqlDbType.SmallDateTime);
                 cmd.Parameters["@HANSD"].Value = HAN.SelectedDate;
                 var dr = cmd.ExecuteReader();
+                dr.Close();
+                cmd = new SqlCommand("UPDATE LOAIHANG SET TENHANG = '" + TENHG.Text + "' WHERE MAHANG='" + mahang + "'", con);
+                dr = cmd.ExecuteReader();
+                dr.Close();
+                cmd = new SqlCommand("UPDATE DVT SET TENHANG = '" + DONVI.Text + "' WHERE MAHANG='" + mahang + "'", con);
+                dr = cmd.ExecuteReader();
                 dr.Close();
                 cmd = new SqlCommand("UPDATE NHAPHANG SET SOLUONG = " + int.Parse(SL.Text) + " WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
                 dr = cmd.ExecuteReader();

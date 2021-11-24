@@ -28,8 +28,8 @@ namespace SalesManager
             public string MAHANG { get; set; }
             public int MALO { get; set; }
             public string TENHANG { get; set; }
-            public System.DateTime NGNHAP { get; set; }
-            public System.DateTime HANSD { get; set; }
+            public string NGNHAP{ get; set; }
+            public string HANSD { get; set; }
             public int SOLUONG { get; set; }
             public string DVT { get; set; }
             public System.Decimal DONGIA { get; set; }
@@ -55,8 +55,8 @@ namespace SalesManager
                     MAHANG = reader.GetString(0),
                     MALO = reader.GetInt32(1),
                     TENHANG = reader.GetString(2),
-                    NGNHAP = reader.GetDateTime(3),
-                    HANSD = reader.GetDateTime(4),
+                    NGNHAP = reader.GetDateTime(3).ToString("MM/dd/yyyy"),
+                    HANSD = reader.GetDateTime(4).ToString("MM/dd/yyyy"),
                     SOLUONG = reader.GetInt32(5),
                     DVT = reader.GetString(6),
                     DONGIA = reader.GetDecimal(7)

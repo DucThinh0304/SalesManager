@@ -35,6 +35,7 @@ namespace SalesManager
                 manv.Items.Add(dr.GetString(0));
             }
             dr.Close();
+            con.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -68,21 +69,28 @@ namespace SalesManager
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (manv.Text == "" || tennv.Text == "" || pass.Password == "" || repass.Password == "")
+            if (manv.Text == "" || tennv.Text == "" || MK.Password == "" || pass.Password == "" || repass.Password == "")
                 MessageBox.Show("Vui lòng nhập đủ thông tin", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
+                string mk = Encrypt(MK.Password);
                 string Pass = Encrypt(pass.Password);
                 string RePass = Encrypt(repass.Password);
-                var sqlCommand = new SqlCommand("SELECT MANV,HOTEN FROM NHANVIEN WHERE MANV='" + manv.Text + "'and HOTEN ='" + tennv.Text + "'", con);
+                con.Open();
+                var sqlCommand = new SqlCommand("SELECT MANV,HOTEN FROM NHANVIEN WHERE MANV='" + manv.Text + "'and HOTEN ='" + tennv.Text + "'and MATKHAU ='" + mk + "'", con);
                 var reader = sqlCommand.ExecuteReader();
                 if (reader.Read() == true && Pass == RePass)
                 {
                     reader.Close();
-                    var cmd = new SqlCommand("UPDATE NHANVIEN SET MATKHAU = " + pass.Password + " WHERE MANV='" + manv.Text + "'", con);
+                    var cmd = new SqlCommand("UPDATE NHANVIEN SET MATKHAU = '" + Pass + "' WHERE MANV='" + manv.Text + "'", con);
                     cmd.ExecuteReader();
                     con.Close();
-
+                    reader.Close();
+                    manv.Text = "";
+                    tennv.Text = "";
+                    MK.Password = "";
+                    pass.Password = "";
+                    repass.Password = "";
                     MessageBox.Show("Sửa mật khẩu thành công!");
                 }
                 else
@@ -90,6 +98,7 @@ namespace SalesManager
                     reader.Close();
                     manv.Text = "";
                     tennv.Text = "";
+                    MK.Password = "";
                     pass.Password = "";
                     repass.Password = "";
                     MessageBox.Show("Sai thông tin! ");

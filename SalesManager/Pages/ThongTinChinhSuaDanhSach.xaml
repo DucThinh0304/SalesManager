@@ -142,7 +142,7 @@
             VerticalAlignment = "Top"
             Margin = "371,265,229,0"
             Width = "200" />
-        <TextBox x:Name = "DONVI"
+        <ComboBox x:Name = "DONVI"
                  IsReadOnly="True"
             HorizontalAlignment = "Center"
             Height = "23"
