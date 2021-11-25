@@ -104,7 +104,7 @@ namespace SalesManager
 
         private void suaNV_Click(object sender, RoutedEventArgs e)
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.SuaNhanVien;
         }
 
         private void XoaNV_Click(object sender, RoutedEventArgs e)

@@ -66,7 +66,7 @@ namespace SalesManager
             if (manv == "") MessageBox.Show("Nháy đúp chọn nhân viên trước khi sửa thông tin!");
             else
             {
-                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.SuaNhanVien;
             }
         }
         private void ThemNV_Click(object sender, RoutedEventArgs e)
