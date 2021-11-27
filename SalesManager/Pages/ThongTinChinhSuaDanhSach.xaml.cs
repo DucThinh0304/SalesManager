@@ -109,17 +109,26 @@ namespace SalesManager
                 cmd.Parameters["@HANSD"].Value = HAN.SelectedDate;
                 var dr = cmd.ExecuteReader();
                 dr.Close();
-                cmd = new SqlCommand("UPDATE LOAIHANG SET TENHANG = '" + TENHG.Text + "' WHERE MAHANG='" + mahang + "'", con);
+
+                cmd = new SqlCommand("UPDATE LOAIHANG SET TENHANG = @TENHANG  WHERE MAHANG='" + mahang + "'", con);
+                cmd.Parameters.Add("@TENHANG", System.Data.SqlDbType.NVarChar);
+                cmd.Parameters["@TENHANG"].Value = TENHG.Text;
                 dr = cmd.ExecuteReader();
                 dr.Close();
-                cmd = new SqlCommand("UPDATE LOAIHANG SET DVT = '" + DONVI.Text + "' WHERE MAHANG='" + mahang + "'", con);
-                dr = cmd.ExecuteReader();
+
+                cmd = new SqlCommand("UPDATE LOAIHANG SET DVT = @DVT WHERE MAHANG='" + mahang + "'", con);
+                cmd.Parameters.Add("@DVT", System.Data.SqlDbType.NVarChar);
+                cmd.Parameters["@DVT"].Value = DONVI.Text;
                 dr.Close();
-                cmd = new SqlCommand("UPDATE NHAPHANG SET SOLUONG = " + int.Parse(SL.Text) + " WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
-                dr = cmd.ExecuteReader();
+
+                cmd = new SqlCommand("UPDATE NHAPHANG SET SOLUONG = @SOLUONG WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
+                cmd.Parameters.Add("@SOLUONG", System.Data.SqlDbType.Int);
+                cmd.Parameters["@SOLUONG"].Value = Convert.ToInt32(SL.Text);
                 dr.Close();
-                cmd = new SqlCommand("UPDATE NHAPHANG SET DONGIA = " + Convert.ToDecimal(GIA.Text) + " WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
-                dr = cmd.ExecuteReader();
+
+                cmd = new SqlCommand("UPDATE NHAPHANG SET DONGIA = @DONGIA WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
+                cmd.Parameters.Add("@DONGIA", System.Data.SqlDbType.Money);
+                cmd.Parameters["@DONGIA"].Value = Convert.ToInt32(GIA.Text);
                 dr.Close();
 
                 con.Close();

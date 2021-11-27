@@ -17,8 +17,7 @@ namespace SalesManager
             {
                 case ApplicationPage.Home:
                     return new Home();
-                case ApplicationPage.NhapHang_Question:
-
+                case ApplicationPage.NhapHangMoi:
                     return new NhapHangMoi();
                 case ApplicationPage.NhapLoaiHangMoi:
                     return new NhapLoaiHangMoi();
@@ -38,7 +37,7 @@ namespace SalesManager
                     return new ThongTinNhanVien();
                 case ApplicationPage.TaoMaNhanVien:
                     return new TaoMaNhanVien();
-                case ApplicationPage.ThongTinDanhSachHangHoa:
+                case ApplicationPage.ThongTinChinhSuaDanhSach:
                     return new ThongTinChinhSuaDanhSach();
                 case ApplicationPage.SideMenuControl:
                     return new SideMenuControl();
