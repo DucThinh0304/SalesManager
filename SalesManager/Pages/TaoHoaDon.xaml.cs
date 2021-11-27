@@ -38,6 +38,11 @@ namespace SalesManager
         public TaoHoaDon()
         {
             InitializeComponent();
+            ColorConverter brush = new ColorConverter();
+            RadialGradientBrush radialGradientBrush = new RadialGradientBrush();
+            radialGradientBrush.GradientStops.Add(new GradientStop((Color)brush.ConvertFrom("#99ddff"), 0.0));
+            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
+            Title.Background = radialGradientBrush;
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
             var cmd = new SqlCommand("SELECT MAHANG FROM LOAIHANG", con);
@@ -208,7 +213,7 @@ namespace SalesManager
 
         private void NhapHang_Click(object sender, RoutedEventArgs e)
         {
-            if (comMaHang.Text == "" || textSL.Text == "" || comMaLo.Text == "") 
+            if (comMaHang.Text == "" || textSL.Text == "" || comMaLo.SelectedIndex == -1) 
                 MessageBox.Show("Vui lòng nhập đủ thông tin", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else if (Convert.ToInt32(textSL.Text) == 0) MessageBox.Show("Số lượng hàng nhập phải lớn hơn 0", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else

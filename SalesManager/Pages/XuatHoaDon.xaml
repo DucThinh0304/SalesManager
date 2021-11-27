@@ -24,17 +24,17 @@
                 VerticalAlignment="Top"
                 Width="140" Height="40" Margin="0,10,21,0" Click="Button_Click" />
         <StackPanel Grid.ColumnSpan="2" Margin="0,0,0,-0.4">
-
+            <Border Margin="10 10 10 10" x:Name="Title" Width="500">
             <TextBlock 
                 TextWrapping="Wrap" 
                 Text="PHIẾU THANH TOÁN"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
-                FontWeight="Bold" 
+                FontFamily="{StaticResource MyriadBold}" 
                 FontSize="36" 
-                Foreground="#FF0536C0"
-                Margin="10 10 10 10"
+                Foreground="{StaticResource TitleBrush}"
                 />
+            </Border>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250*"/>

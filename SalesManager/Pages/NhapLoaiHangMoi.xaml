@@ -10,16 +10,18 @@
 
     <Grid>
         <StackPanel Grid.ColumnSpan="2" Margin="0,0,0,-0.4">
+            <Border x:Name="Title">
             <TextBlock 
                 TextWrapping="Wrap" 
                 Text="NHẬP THÔNG TIN LOẠI HÀNG MỚI"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
-                FontWeight="Bold" 
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize="36" 
-                Foreground="#FF0536C0"
+                Foreground="{StaticResource TitleBrush}"
                 Margin="20 20 20 20"
                 />
+            </Border>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="63*"/>

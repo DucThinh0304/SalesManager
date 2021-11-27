@@ -17,17 +17,17 @@
                 VerticalAlignment="Top"
                 Width="140" Height="40" Margin="21,10,0,0" Click="TroVe_Click"/>
         <StackPanel Grid.ColumnSpan="2" Margin="0,0,0,-0.4">
-
-            <TextBlock 
+            <Border x:Name="Title" Margin="20 20 20 20" Width="600">
+                <TextBlock 
                 TextWrapping="Wrap" 
                 Text="TẠO HÓA ĐƠN"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
-                FontWeight="Bold" 
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize="36" 
-                Foreground="#FF0536C0"
-                Margin="20 20 20 20"
+                Foreground="{StaticResource TitleBrush}"
                 />
+            </Border>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="94*"/>
@@ -44,11 +44,9 @@
                     />
                 <ComboBox x:Name="comMaHang"
                     Grid.Column="2"
-                    HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Height="39"
-                    FontSize="20"
-                    Width="608" IsEditable="True" Margin="2.4,-8,0,22.6" DropDownClosed="comMaHang_DropDownClosed" TextInput="comMaHang_TextInput"/>
+                    FontSize="20" IsEditable="True" Margin="2,-8,78,23" DropDownClosed="comMaHang_DropDownClosed" TextInput="comMaHang_TextInput"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -137,14 +135,14 @@
                     Width="140" Height="40" Margin="0,10" Click="Xoa_Click"/>
 
             </Grid>
-            <ListView x:Name="HangMua" Height="417" HorizontalAlignment="Center" FontSize="16" Margin="196,0" VerticalAlignment="Top" VerticalContentAlignment="Center">
+            <ListView x:Name="HangMua" Height="317" HorizontalAlignment="Center" FontSize="16"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="1100">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT}" Width="100"/>
-                        <GridViewColumn Header="Tên hàng" DisplayMemberBinding="{Binding TenHang}" Width="250"/>
-                        <GridViewColumn Header="SL" DisplayMemberBinding="{Binding SoLuong}" Width="100"/>
-                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding DonGia}" Width="170"/>
-                        <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding ThanhTien}" Width="170"/>
+                        <GridViewColumn Header="Tên hàng" DisplayMemberBinding="{Binding TenHang}" Width="400"/>
+                        <GridViewColumn Header="SL" DisplayMemberBinding="{Binding SoLuong}" Width="150"/>
+                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding DonGia}" Width="200"/>
+                        <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding ThanhTien}" Width="200"/>
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -10,16 +10,19 @@
 
     <Grid>
         <StackPanel Grid.ColumnSpan="2" Margin="0,0,0,-0.4">
+            <Border Height="50"
+                    Margin="20 10 20 10"
+                    CornerRadius="20" x:Name="Title">
             <TextBlock 
                 TextWrapping="Wrap" 
                 Text="NHẬP THÊM HÀNG VÀO KHO"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
-                FontWeight="Bold" 
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize="36" 
-                Foreground="#FF0536C0"
-                Margin="20 20 20 20"
+                Foreground="{StaticResource TitleBrush}"
                 />
+            </Border>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="63*"/>

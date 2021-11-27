@@ -27,11 +27,11 @@ namespace SalesManager
         public ThongKeSoLuongHang()
         {
             InitializeComponent();
+            ColorConverter brush = new ColorConverter();
             RadialGradientBrush radialGradientBrush = new RadialGradientBrush();
-            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Cyan, 0.0));
-            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.White, 1));
+            radialGradientBrush.GradientStops.Add(new GradientStop((Color)brush.ConvertFrom("#99ddff"), 0.0));
+            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
             Title.Background = radialGradientBrush;
-            Sum_Border.Background = radialGradientBrush;
             SapXep_ComboBox.SelectedIndex = 0;
             SapXepTheo_ComboBox.SelectedIndex = 0;
             SapXep_ComboBox.SelectionChanged += SapXep_ComboBox_SelectionChanged;
@@ -132,7 +132,7 @@ namespace SalesManager
             {
                 Sum += item.TONGGIA;
             }
-            TongTien_TextBlock.Text = "Tổng tiền: " + Sum.ToString() + " VND";
+            TongTien_TextBlock.Text = Sum.ToString() ;
             reader.Close();
             sqlConn.Close();
         }
@@ -152,6 +152,24 @@ namespace SalesManager
         {
             ListViewItem item = (ListViewItem)sender;
             item.IsSelected = true;
+        }
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ThongTinChinhSuaDanhSach.mahang = ((LoaiHangHoa)lvUsers.SelectedItem).MAHANG;
+            ThongTinChinhSuaDanhSach.malo = ((LoaiHangHoa)lvUsers.SelectedItem).MALO;
+        }
+        private void CHINHSUA(object sender, RoutedEventArgs e)
+        {
+            if (ThongTinChinhSuaDanhSach.mahang == "") MessageBox.Show("Nháy đúp chọn hàng trước khi sửa thông tin!");
+            else
+            {
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinChinhSuaDanhSach;
+            }
+
+        }
+        private void XuatExcel(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("");
         }
 
     }

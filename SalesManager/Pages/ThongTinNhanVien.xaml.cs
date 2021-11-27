@@ -58,7 +58,7 @@ namespace SalesManager
         {
             var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             sqlConn.Open();
-            var sqlCommand = new SqlCommand("SELECT * FROM NHANVIEN WHERE MANV=" + manv, sqlConn);
+            var sqlCommand = new SqlCommand("SELECT * FROM NHANVIEN WHERE MANV= '" + manv+ "'", sqlConn);
             var reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {

@@ -289,10 +289,11 @@
                        FontSize="50"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center" Grid.Column="0">
-                    <Run Text="Xin chào" Foreground="#FF0536C0" FontFamily="{StaticResource MyriadBold}"></Run>
-                    <Run x:Name="Usr" Foreground="#FF0536C0" FontFamily="{StaticResource MyriadBold}" TextDecorations="Underline"></Run>
+                    <Run Text="Xin chào" Foreground="{StaticResource TitleBrush}" FontFamily="{StaticResource MyriadBold}"></Run>
+                    <Run x:Name="Usr" Foreground="{StaticResource TitleBrush}" FontFamily="{StaticResource MyriadBold}" TextDecorations="Underline"></Run>
                 </TextBlock>
             </Border>
+            <Image Source="/Images/Logo/HomeScreen.png" Opacity="0.1" Height="600" Width="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Border Background="{StaticResource WordBlueBrush}" 

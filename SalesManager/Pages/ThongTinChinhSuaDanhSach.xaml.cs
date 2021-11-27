@@ -21,13 +21,20 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for ThongTinChinhSuaDanhSach.xaml
     /// </summary>
-    public partial class ThongTinChinhSuaDanhSach : Page
+    public partial class ThongTinChinhSuaDanhSach : BasePage
     {       
-        public static string mahang;
+        public static string mahang = "";
         public static int malo;
         public ThongTinChinhSuaDanhSach()
         {
+            
             InitializeComponent();
+            
+            RadialGradientBrush radialGradientBrush = new RadialGradientBrush();
+            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Cyan, 0.0));
+            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.White, 1));
+            Title.Background = radialGradientBrush;
+            DONVI.SelectedIndex = 0;
             load();         
             
         }
@@ -44,7 +51,7 @@ namespace SalesManager
                 NGAY.Text = dr.GetDateTime(0).ToString("MM/dd/yyyy");
                 HAN.Text = dr.GetDateTime(1).ToString("MM/dd/yyyy");
                 SL.Text = dr.GetInt32(2).ToString();
-                GIA.Text = dr.GetDecimal(3).ToString();
+                GIA.Text = Convert.ToInt32(dr.GetDecimal(3)).ToString();
             }
             dr.Close();
             cmd = new SqlCommand("SELECT TENHANG,DVT FROM LOAIHANG WHERE MAHANG='" + mahang + "'", con);
@@ -62,7 +69,7 @@ namespace SalesManager
         }
         private void trolai(object sender, RoutedEventArgs e)
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinDanhSachHangHoa;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeSoLuongHang;
         }
 
         private void xoathongtin(object sender, RoutedEventArgs e)
@@ -105,26 +112,19 @@ namespace SalesManager
                 cmd = new SqlCommand("UPDATE LOAIHANG SET TENHANG = '" + TENHG.Text + "' WHERE MAHANG='" + mahang + "'", con);
                 dr = cmd.ExecuteReader();
                 dr.Close();
-                cmd = new SqlCommand("UPDATE DVT SET TENHANG = '" + DONVI.Text + "' WHERE MAHANG='" + mahang + "'", con);
+                cmd = new SqlCommand("UPDATE LOAIHANG SET DVT = '" + DONVI.Text + "' WHERE MAHANG='" + mahang + "'", con);
                 dr = cmd.ExecuteReader();
                 dr.Close();
                 cmd = new SqlCommand("UPDATE NHAPHANG SET SOLUONG = " + int.Parse(SL.Text) + " WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
                 dr = cmd.ExecuteReader();
                 dr.Close();
-                cmd = new SqlCommand("UPDATE NHAPHANG SET DONGIA = " + Decimal.Parse(GIA.Text) + " WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
+                cmd = new SqlCommand("UPDATE NHAPHANG SET DONGIA = " + Convert.ToDecimal(GIA.Text) + " WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
                 dr = cmd.ExecuteReader();
                 dr.Close();
 
                 con.Close();
                 MessageBox.Show("Sửa thông tin thành công!");
-                MAHG.Text = "";
-                MALOO.Text = "";
-                NGAY.Text = "";
-                TENHG.Text = "";
-                DONVI.Text = "";
-                HAN.Text = "";
-                SL.Text = "";
-                GIA.Text = "";
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeSoLuongHang;
             }
         }
     }

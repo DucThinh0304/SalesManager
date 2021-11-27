@@ -18,7 +18,7 @@
                 FontWeight="Bold" 
                 FontSize="36" 
                 FontFamily="{StaticResource MyriadBold}"
-                Foreground="#FF0536C0"
+                Foreground="{StaticResource TitleBrush}"
                 Margin="20 20 20 20"
                 />
         <Grid Height="50">
@@ -57,7 +57,7 @@
             </Border>
         </Grid>
         <StackPanel>
-            <ListView Margin="10" Name="lvUsers" FontSize="20" Height="525">
+            <ListView Margin="10" Name="lvUsers" FontSize="20" Height="500">
                 <ListView.Resources>
                     <Style TargetType="ListViewItem">
                         <Style.Triggers>
@@ -78,24 +78,37 @@
                 </ListView.Resources>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
-
+                        <EventSetter Event="MouseDoubleClick"  Handler="ListViewItem_MouseDoubleClick"/>
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header = "Mã Hàng" DisplayMemberBinding = "{Binding MAHANG}" Width = "80"></GridViewColumn>
                         <GridViewColumn Header = "Mã Lô" DisplayMemberBinding = "{Binding MALO}" Width = "60"></GridViewColumn>
-                        <GridViewColumn Header = "Tên Hàng" DisplayMemberBinding = "{Binding TENHANG}" Width = "300"></GridViewColumn>
+                        <GridViewColumn Header = "Tên Hàng" DisplayMemberBinding = "{Binding TENHANG}" Width = "290"></GridViewColumn>
                         <GridViewColumn Header = "Số Lượng" DisplayMemberBinding = "{Binding SOLUONG}" Width = "100"></GridViewColumn>
-                        <GridViewColumn Header = "HSD" DisplayMemberBinding = "{Binding HSD}" Width = "100"></GridViewColumn>
+                        <GridViewColumn Header = "HSD" DisplayMemberBinding = "{Binding HSD}" Width = "110"></GridViewColumn>
                         <GridViewColumn Header = "Giá" DisplayMemberBinding = "{Binding GIA}" Width = "125"></GridViewColumn>
                         <GridViewColumn Header = "Tổng Giá" DisplayMemberBinding = "{Binding TONGGIA}" Width = "135"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Border x:Name="Sum_Border" Margin="20 5 20 5" Width="400" HorizontalAlignment="Right">
-                <TextBlock x:Name="TongTien_TextBlock" HorizontalAlignment="Center" FontSize="25" Margin="0 3 0 0" FontFamily="{StaticResource MyriadBold}" Foreground="Chocolate"></TextBlock>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Chỉnh Sửa" Click="CHINHSUA" FontFamily="{StaticResource MyriadBold}" FontSize="20" Foreground="White" HorizontalAlignment="Center"  Width="150" Height="35"/>
+                <Button Grid.Column="1" Content="Xuất Excel" Click="XuatExcel" FontFamily="{StaticResource MyriadBold}" FontSize="20" Foreground="White" HorizontalAlignment="Center"  Width="150" Height="35"/>
+                <Border Grid.Column="2" x:Name="Sum_Border" Margin="20 5 20 5" Width="400" HorizontalAlignment="Right">
+                    <TextBlock HorizontalAlignment="Center" FontSize="25" Margin="0 3 0 0" >
+                        <Run Text="Tổng tiền: " Foreground="#FF1DB7A4" FontFamily="{StaticResource MyriadBold}"/>
+                        <Run x:Name="TongTien_TextBlock" FontFamily="{StaticResource MyriadRegular}"/>
+                        <Run Text="VND" FontFamily="{StaticResource MyriadBold}"/>
+                    </TextBlock>
             </Border>
+            </Grid>
         </StackPanel>
     </StackPanel>
 </local:BasePage>

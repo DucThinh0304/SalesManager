@@ -6,51 +6,63 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:SalesManager"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="900"
       Title="DanhSachNhanVien">
 
     <Grid>
-        <TextBlock 
+        <Border x:Name="Title" Margin="20 20 20 20" VerticalAlignment="Top"  Width="700"
+                HorizontalAlignment="Center" >
+            <TextBlock 
                 TextWrapping="Wrap" 
                 Text="DANH SÁCH NHÂN VIÊN"
-                VerticalAlignment="Top" 
-                HorizontalAlignment="Center" 
-                FontWeight="Bold" 
+                FontFamily="{StaticResource MyriadBold}"
+                HorizontalAlignment="Center"
                 FontSize="36" 
-                Foreground="#FF0536C0"
-                Margin="20 20 20 20"
+                Foreground="{StaticResource TitleBrush}"
                 />
+        </Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <Button
+                Foreground="{StaticResource ForegroundLightBrush}"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Width="220"
+                 Click="SuaNV_Click"
+                    Margin="0 150 0 20 " Height="35" FontSize="21"
+                HorizontalAlignment="Center">
+                    SỬA THÔNG TIN
+            </Button>
         <Button
                 Foreground="{StaticResource ForegroundLightBrush}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
-                Width="150"
-                ToolTip="Resource name: MaterialDesignRaisedButton" Margin="650,130,0,287.6" Click="SuaNV_Click">
-            SỬA THÔNG TIN
-        </Button>
-        <Button
-                Foreground="{StaticResource ForegroundLightBrush}"
-                Style="{StaticResource MaterialDesignRaisedButton}"
-                Width="150"
-                ToolTip="Resource name: MaterialDesignRaisedButton" Margin="650,271,0,146.6" Click="ThemNV_Click">
+                 Width="220"
+            Margin="0 20 0 20 " Height="35" FontSize="21"
+                HorizontalAlignment="Center"
+                 Click="ThemNV_Click">
             THÊM NHÂN VIÊN
         </Button>
         <Button
                 Foreground="{StaticResource ForegroundLightBrush}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
-                Width="150"
-                ToolTip="Resource name: MaterialDesignRaisedButton" 
-                Margin="650,202,0,215.6" Click="XemThongTin_Click">
+                Width="220"
+            Margin="0 20 0 20 " Height="35" FontSize="21"
+                 Click="XemThongTin_Click">
             XEM THÔNG TIN
         </Button>
         <Button
                 Foreground="{StaticResource ForegroundLightBrush}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
-                Width="150"
-                ToolTip="Resource name: MaterialDesignRaisedButton" 
-                Margin="650,342,0,75.6" Click="Thoat_Click">
+                Width="220"
+            Margin="0 20 0 20 " Height="35" FontSize="21"
+                 Click="Thoat_Click">
             THOÁT
         </Button>
-        <ListView Margin="54,68,312,-0.4" Name="lvUsers" FontSize="18" >
+         </StackPanel>
+            <ListView Margin="50,68,50,-0.4" Name="lvUsers" FontSize="18" Grid.Column="0" HorizontalAlignment="Center">
             <ListView.Resources>
                 <Style TargetType="ListViewItem">
                     <Style.Triggers>
@@ -78,6 +90,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
+        </Grid>
     </Grid>
 </local:BasePage>

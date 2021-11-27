@@ -9,16 +9,18 @@
       Title="ThemNhanVien">
 
     <Grid>
+        <Border VerticalAlignment="Top" x:Name="Title">
         <TextBlock 
                 TextWrapping="Wrap" 
                 Text="THÊM NHÂN VIÊN"
                 VerticalAlignment="Top" 
                 HorizontalAlignment="Center" 
-                FontWeight="Bold" 
+                FontFamily="{StaticResource MyriadBold}" 
                 FontSize="36" 
-                Foreground="#FF0536C0"
+                Foreground="{StaticResource TitleBrush}"
                 Margin="193,14,193,0"
                 />
+        </Border>
 
         <Grid Margin="0,40,0,360">
             <Grid.ColumnDefinitions>
@@ -47,8 +49,7 @@
             Style="{StaticResource MaterialDesignRaisedButton}"
             Width="100"
             FontWeight="Bold"
-            Foreground="{StaticResource ForegroundLightBrush}"
-            ToolTip="Resource name: MaterialDesignRaisedButton" 
+            Foreground="{StaticResource ForegroundLightBrush}" 
             Margin="366.079,8,63.521,9.6"  Grid.Column="2" Click="kiemtra1_Click">
                 Kiểm tra
             </Button>
@@ -132,7 +133,6 @@
             Width="100"
             FontWeight="Bold"
             Foreground="{StaticResource ForegroundLightBrush}"
-            ToolTip="Resource name: MaterialDesignRaisedButton" 
             Margin="366.079,8,63.521,9.6"  Grid.Column="2" Click="kiemtra2_Click">
                 Kiểm tra
             </Button>
@@ -262,7 +262,6 @@
             Width="100"
             FontWeight="Bold"
             Foreground="{StaticResource ForegroundLightBrush}"
-            ToolTip="Resource name: MaterialDesignRaisedButton" 
             Margin="221,427,479,-9.4" Click="Them_Click">
             THÊM
         </Button>
@@ -271,7 +270,6 @@
             Width="100"
             FontWeight="Bold"
             Foreground="{StaticResource ForegroundLightBrush}"
-            ToolTip="Resource name: MaterialDesignRaisedButton" 
             Margin="480,427,220,-9.4" Click="Huy_Click">
             HỦY
         </Button>

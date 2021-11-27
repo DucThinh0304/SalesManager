@@ -27,10 +27,10 @@ namespace SalesManager
         public Home()
         {
             InitializeComponent();
-
+            ColorConverter brush = new ColorConverter();
             RadialGradientBrush radialGradientBrush = new RadialGradientBrush();
-            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Cyan, 0.0));
-            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.White, 1));
+            radialGradientBrush.GradientStops.Add(new GradientStop((Color)brush.ConvertFrom("#99ddff"), 0.0));
+            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
             Title.Background = radialGradientBrush;
             NotificationControl.listNotification.Clear();
 
@@ -64,7 +64,7 @@ namespace SalesManager
                     newItem.Width = 240;
                     var bc = new BrushConverter();
 
-                    newItem.Background = (Brush)bc.ConvertFrom("#a366ff");
+                    newItem.Background = (Brush)bc.ConvertFrom("#005c99");
                     newItem.BorderBrush = (Brush)bc.ConvertFrom("#1f004d");
                     newItem.BorderThickness = new Thickness(1, 1, 1, 1);
                     newItem.CornerRadius = new CornerRadius(5);
@@ -87,7 +87,7 @@ namespace SalesManager
                     textBlock1.Width = 120;
                     textBlock1.Text = $"Mã hàng: {reader.GetString(2)}\nSố lượng hàng còn lại: {reader.GetInt32(0)} {reader.GetString(3).ToLower()}";
                     textBlock1.TextWrapping = TextWrapping.Wrap;
-                    textBlock1.Foreground = (Brush)bc.ConvertFrom("#330080");
+                    textBlock1.Foreground = Brushes.White;
                     textBlock1.FontSize = 15;
                     textBlock1.Padding = new Thickness(2, 3, 3, 3);
                     textBlock1.FontFamily = new FontFamily("Segoe UI");
@@ -108,7 +108,7 @@ namespace SalesManager
             reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
-                if (reader.GetDateTime(3).Date == DateTime.Now.AddDays(1).Date)
+                if (reader.GetDateTime(3).Date == DateTime.Now.AddDays(1).Date && reader.GetInt32(4) != 0)
                 {
                     var newItem = new Border();
                     newItem.Width = 240;
@@ -116,8 +116,8 @@ namespace SalesManager
                     newItem.Margin = new Thickness(0, 1, 0, 1);
                     newItem.Opacity = 0.95;
                     var bc = new BrushConverter();
-                    newItem.Background = (Brush)bc.ConvertFrom("#4dff4d");
-                    newItem.BorderBrush = (Brush)bc.ConvertFrom("#006600");
+                    newItem.Background = (Brush)bc.ConvertFrom("#1f1f7a");
+                    newItem.BorderBrush = (Brush)bc.ConvertFrom("#0a0a29");
                     newItem.BorderThickness = new Thickness(1, 1, 1, 1);
                     newItem.CornerRadius = new CornerRadius(5);
                     StackPanel stack = new StackPanel();
@@ -128,17 +128,18 @@ namespace SalesManager
                     textBlock.FontWeight = FontWeights.Bold;
                     textBlock.Text = $"Mặt hàng {reader.GetString(8).ToLower()} sắp hết hạn!!!";
                     textBlock.TextWrapping = TextWrapping.Wrap;
-                    textBlock.Foreground = (Brush)bc.ConvertFrom("#006600");
+                    textBlock.Foreground = Brushes.White;
                     textBlock.FontSize = 15;
                     textBlock.Padding = new Thickness(3, 3, 0, 3);
                     textBlock.FontFamily = new FontFamily("Segoe UI");
                     textBlock.TextAlignment = TextAlignment.Center;
+                    textBlock.VerticalAlignment = VerticalAlignment.Center;
 
                     TextBlock textBlock1 = new TextBlock();
                     textBlock1.Width = 120;
                     textBlock1.Text = $"Mã hàng: {reader.GetString(0)}\nMã lô: {reader.GetInt32(1)}\nHSD: {reader.GetDateTime(3).Day}/{reader.GetDateTime(3).Month}/{reader.GetDateTime(3).Year}\nSố lượng hàng: {reader.GetInt32(4)}";
                     textBlock1.TextWrapping = TextWrapping.Wrap;
-                    textBlock1.Foreground = (Brush)bc.ConvertFrom("#054405");
+                    textBlock1.Foreground = Brushes.White;
                     textBlock1.FontSize = 15;
                     textBlock1.Padding = new Thickness(2, 3, 3, 3);
                     textBlock.FontFamily = new FontFamily("Segoe UI");

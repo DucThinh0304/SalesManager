@@ -23,6 +23,7 @@ namespace SalesManager
     /// </summary>
     public partial class SideMenuControl : BaseControl
     {
+        bool ShowThemHangContent = false;
         static public bool NotificationCheck = false;
         static public int Count = 0;
         public SideMenuControl()
@@ -64,7 +65,6 @@ namespace SalesManager
             DanhSachNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThemSuaNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThongKe_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
-            Danhsach_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
 
@@ -80,8 +80,19 @@ namespace SalesManager
         {
             ResetColor();
             var bc = new BrushConverter();
-            ThemHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapHang_Question;
+            if (ShowThemHangContent == false)
+            {
+                ThemHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+                ThemLoaiHangMoi_Button.Visibility = Visibility.Visible;
+                ThemLoaiHangDaCo_Button.Visibility = Visibility.Visible;
+                ShowThemHangContent = true;
+            }
+            else
+            {
+                ThemLoaiHangMoi_Button.Visibility = Visibility.Collapsed;
+                ThemLoaiHangDaCo_Button.Visibility = Visibility.Collapsed;
+                ShowThemHangContent = false;
+            }
         }
 
         private void DSNV_Click(object sender, RoutedEventArgs e)
@@ -107,14 +118,7 @@ namespace SalesManager
             ThongKe_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeDoanhThu;
         }
-        private void Danhsach_1(object sender, RoutedEventArgs e)
-        {
-            ResetColor();
-            var bc = new BrushConverter();
-            Danhsach_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinDanhSachHangHoa;
-        }
-
+        
         private void TaoHoaDon_Click(object sender, RoutedEventArgs e)
         {
             ResetColor();
@@ -143,11 +147,13 @@ namespace SalesManager
         {
             this.Manager.Visibility = Visibility.Visible;
             this.Staff.Visibility = Visibility.Hidden;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
         }
         private void Staff_Click(object sender, RoutedEventArgs e)
         {
             this.Staff.Visibility = Visibility.Visible;
             this.Manager.Visibility = Visibility.Hidden;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
         }
         private void ThongKeSoLuongHang_Click(object sender, RoutedEventArgs e)
         {
@@ -155,6 +161,14 @@ namespace SalesManager
             var bc = new BrushConverter();
             ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeSoLuongHang;
+        }
+        private void ThemLoaiHangDaCo_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapHangMoi;
+        }
+        private void ThemLoaiHangMoi_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapLoaiHangMoi;
         }
     }
 }

@@ -47,5 +47,8 @@
     <Color x:Key="Staff">#0c6991</Color>
     <SolidColorBrush x:Key="StaffBrush" Color="{StaticResource Staff}" />
 
+    <Color x:Key="Title">#6600ff</Color>
+    <SolidColorBrush x:Key="TitleBrush" Color="{StaticResource Title}" />
+
 
 </ResourceDictionary>
