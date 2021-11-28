@@ -60,8 +60,15 @@ namespace SalesManager
             string MatKhauMaHoa = Encrypt(MatKhau.Password);
             try
             {
-                SqlCommand sqlCommand = new SqlCommand("UPDATE NHANVIEN SET MATKHAU = '" + MatKhauMaHoa + "' WHERE CMND ='" + CMND.Text + "' and GMAIL = '" + Gmail.Text + "@gmail.com" + "'", sqlConn);
+                SqlCommand sqlCommand = new SqlCommand("UPDATE NHANVIEN SET MATKHAU = @MATKHAU WHERE CMND = @CMND AND GMAIL = @gmail", sqlConn);
+                sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
+                sqlCommand.Parameters["@MATKHAU"].Value = MatKhauMaHoa;
+                sqlCommand.Parameters.Add("@CMND", System.Data.SqlDbType.NVarChar);
+                sqlCommand.Parameters["@CMND"].Value = CMND.Text;
+                sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.NVarChar);
+                sqlCommand.Parameters["@GMAIL"].Value = Gmail.Text+"@gmail.com";
                 var reader = sqlCommand.ExecuteNonQuery();
+                sqlCommand.Dispose();
                 if (Convert.ToInt32(reader) == 1)
                 {
                     CMND.Clear();
@@ -120,6 +127,11 @@ namespace SalesManager
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Gmail.Text == "")
+            {
+                MessageBox.Show("Bạn chưa nhập gmail.");
+                return;
+            }
             Random Ran = new Random();
             MaXacNhan = Ran.Next(100000, 999999).ToString();
             MailMessage Mess = new MailMessage("bihubihu2002@gmail.com", Gmail.Text + "@gmail.com", "[QUẢN LÍ BÁN HÀNG]", "Mã xác nhận: " + MaXacNhan);

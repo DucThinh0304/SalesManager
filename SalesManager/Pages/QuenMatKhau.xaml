@@ -76,7 +76,7 @@
                                VerticalAlignment="Center" Margin="361,21,187,22"
                               ></TextBlock>
                     <Button
-                             Style="{StaticResource 
+                            Style="{StaticResource 
                              MaterialDesignRaisedLightButton}"
                              Margin="477,18,192,17"
                              Click="Button_Click">

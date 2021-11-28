@@ -79,7 +79,6 @@ namespace SalesManager
         string MaXacNhan;
         private void HoanTat_Click(object sender, RoutedEventArgs e)
         {
-            string MaCuaHang = "CH";
             // Nhập chưa đủ thông tin
             if (TenCuaHang.Text == "" || NgayThanhLap.Text == "" || TenQuanLi.Text == "" || NgaySinh.Text == "" || SDT.Text == "" || DiaChi.Text == "" || CMND.Text == "" || MatKhau.Password == "" || XNMatKhau.Password == "" || Gmail.Text == "" || MXN.Text == "")
             {
@@ -104,95 +103,44 @@ namespace SalesManager
             else
             {
                 SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-                if (sqlConn.State == ConnectionState.Closed) { sqlConn.Open(); }
-                //  SqlCommand sqlCommandCheck ;
-                // Tìm mã cửa hàng
-                //try
-                //{
-                //    sqlCommandCheck = new SqlCommand("SELECT COUNT (MACH) FROM CUAHANG", sqlConn);
-                //    var reader = sqlCommandCheck.ExecuteScalar();
-                //    MaCuaHang =MaCuaHang + Convert.ToString(Convert.ToInt32(reader) + 1);
-                //    sqlConn.Close();
-                //}
-                //catch(Exception)
-                //{
-                //    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
-                //    sqlConn.Close();
-                //    return;
-                //}
-                //// Gmail tồn tại
-                //if (sqlConn.State == ConnectionState.Closed) { sqlConn.Open(); }
-                //sqlCommandCheck = new SqlCommand("SELECT GMAIL FROM NHANVIEN WHERE GMAIL ='" + Gmail.Text + "@gmail.com'", sqlConn);
-                //try
-                //{
-                //    var reader = sqlCommandCheck.ExecuteReader();
-                //    if (reader.Read() == true)
-                //    {
-                //        MessageBox.Show("Gmail đã tồn tại!!!");
-                //        reader.Close();
-                //        sqlConn.Close();
-                //        return;
-                //    }
-                //}
-                //catch (Exception)
-                //{
-                //    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
-                //    sqlConn.Close();
-                //    return;
-                //}
-                ////CMND/CCCD tôn tại
-                //if (sqlConn.State == ConnectionState.Open) { sqlConn.Close(); }
-                //if (sqlConn.State == ConnectionState.Closed) { sqlConn.Open(); }
-                //sqlCommandCheck = new SqlCommand("SELECT CMND FROM NHANVIEN WHERE CMND='" + CMND.Text + "'", sqlConn);
-                //try
-                //{
-                //    var reader = sqlCommandCheck.ExecuteReader();
-                //    if (reader.Read() == true)
-                //    {
-                //        MessageBox.Show("CMND/CCCD đã tồn tại!!!");
-                //        reader.Close();
-                //        sqlConn.Close();
-                //        return;
-                //    }
-                //}
-                //catch (Exception)
-                //{
-                //    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
-                //    sqlConn.Close();
-                //    return;
-                //}
-
-                // Thêm data vào Sql
-                if (sqlConn.State == ConnectionState.Open) { sqlConn.Close(); }
-                if (sqlConn.State == ConnectionState.Closed) { sqlConn.Open(); }
                 try
                 {
                     string MatKhauMaHoa = Encrypt(MatKhau.Password);
-                    string CH = "insert into CUAHANG values ('" + MaCuaHang + "',N'" + TenCuaHang.Text + "','NVQL','" + NgayThanhLap.Text + "')";
-                    string NV = "insert into NHANVIEN values ('NVQL',N'" + TenQuanLi.Text + "','" + NgaySinh.Text + "','" + CMND.Text + "',N'" + DiaChi.Text + "','" + NgayThanhLap.Text + "','" + MatKhauMaHoa + "','" + Gmail.Text + "@gmail.com')";
-                    SqlCommand sqlCommandCH, sqlCommandNV;
-                    sqlCommandNV = sqlConn.CreateCommand();
-                    sqlCommandNV.CommandText = NV;
-                    sqlCommandNV.ExecuteNonQuery();
-                    sqlCommandCH = sqlConn.CreateCommand();
-                    sqlCommandCH.CommandText = CH;
-                    sqlCommandCH.ExecuteNonQuery();
-                    if (sqlConn != null)
-                        sqlConn.Close();
-                    MessageBox.Show("Tạo tài khoản thành công.");
-                    //TenCuaHang.Clear();
-                    //NgayThanhLap.Text = "";
-                    //TenQuanLi.Clear();
-                    //NgaySinh.Text = "";
-                    //SDT.Clear();
-                    //DiaChi.Clear();
-                    //CMND.Clear();
-                    //Gmail.Clear();
-                    //MXN.Clear();
-                    //MaXacNhan = null;
-                    //MatKhau.Clear();
-                    //XNMatKhau.Clear();
+                    sqlConn.Open();
+                    var sqlCommand = new SqlCommand("INSERT INTO NHANVIEN (MANV,HOTEN,NGSINH,CMND,DIACHI,NGVAOLAM,MATKHAU,GMAIL) VALUES " + "(@MANV,@HOTEN,@NGSINH,@CMND,@DIACHI,@NGVAOLAM,@MATKHAU,@GMAIL)", sqlConn);
+                    sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
+                    sqlCommand.Parameters["@MANV"].Value = "NVQL";
+                    sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@HOTEN"].Value = TenQuanLi.Text;
+                    sqlCommand.Parameters.Add("@NGSINH", System.Data.SqlDbType.SmallDateTime);
+                    sqlCommand.Parameters["@NGSINH"].Value = NgaySinh.Text;
+                    sqlCommand.Parameters.Add("@CMND", System.Data.SqlDbType.VarChar);
+                    sqlCommand.Parameters["@CMND"].Value = CMND.Text;
+                    sqlCommand.Parameters.Add("@DIACHI", System.Data.SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@DIACHI"].Value = DiaChi.Text;
+                    sqlCommand.Parameters.Add("@NGVAOLAM", System.Data.SqlDbType.SmallDateTime);
+                    sqlCommand.Parameters["@NGVAOLAM"].Value = NgayThanhLap.Text;
+                    sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@MATKHAU"].Value = MatKhauMaHoa;
+                    sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
+                    sqlCommand.Parameters["@GMAIL"].Value = Gmail.Text+"@gmail.com";
+                    sqlCommand.ExecuteNonQuery();
+                    sqlCommand.Dispose();
                     sqlConn.Close();
+                    sqlConn.Open();
+                    sqlCommand.CommandText = "INSERT INTO CUAHANG (MACH,TENCH,MACHUCH,NGTHANHLAP) VALUES " + "(@MACH,@TENCH,@MACHUCH,@NGTHANHLAP)";
+                    sqlCommand.Parameters.Add("@MACH", System.Data.SqlDbType.VarChar);
+                    sqlCommand.Parameters["@MACH"].Value = "CH";
+                    sqlCommand.Parameters.Add("@TENCH", System.Data.SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@TENCH"].Value = TenCuaHang.Text;
+                    sqlCommand.Parameters.Add("@MACHUCH", System.Data.SqlDbType.VarChar);
+                    sqlCommand.Parameters["@MACHUCH"].Value = "NVQL";
+                    sqlCommand.Parameters.Add("@NGTHANHLAP", System.Data.SqlDbType.SmallDateTime);
+                    sqlCommand.Parameters["@NGTHANHLAP"].Value = NgayThanhLap.Text;
+                    sqlCommand.ExecuteNonQuery();
+                    sqlCommand.Dispose();
+                    sqlConn.Close();
+                    MessageBox.Show("Tạo tài khoản thành công.");
                     ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
                 }
                 catch (Exception)
@@ -202,11 +150,16 @@ namespace SalesManager
                     return;
                 }
 
-            }
+        }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Gmail.Text == "")
+            {
+                MessageBox.Show("Bạn chưa nhập gmail.");
+                return;
+            }
             Random Ran = new Random();
             MaXacNhan = Ran.Next(100000, 999999).ToString();
             MailMessage Mess = new MailMessage("bihubihu2002@gmail.com", Gmail.Text + "@gmail.com", "[QUẢN LÍ BÁN HÀNG]", "Mã xác nhận: " + MaXacNhan);
