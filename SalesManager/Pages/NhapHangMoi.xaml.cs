@@ -158,7 +158,7 @@ namespace SalesManager
 
         private void TroVe_Click(object sender, RoutedEventArgs e)
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapHang_Question;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
         }
     }
 }

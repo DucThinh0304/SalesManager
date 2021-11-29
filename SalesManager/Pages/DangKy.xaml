@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SalesManager"
       mc:Ignorable="d" 
+      xml:lang="vi-VN"
       d:DesignHeight="600" d:DesignWidth="900"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system="clr-namespace:System;assembly=mscorlib"
                 TextElement.Foreground="{DynamicResource MaterialDesignBody}"

@@ -297,7 +297,7 @@
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Border Background="{StaticResource WordBlueBrush}" 
-                    Width="200"
+                    Width="250"
                     Margin="20 20 20 20"
                     CornerRadius="30"
                     Padding="20 3"
@@ -315,8 +315,8 @@
             </Border>
             <Calendar x:Name="Calendar_Home"
                   Margin="0 0 20 0"
-                  Height="350"
-                  Width="200"
+                  Height="370"
+                  Width="250"
                   HorizontalAlignment="Right"
                   SelectedDate="{x:Static sys:DateTime.Now}" Style="{DynamicResource CalendarStyle1}"/>
         </StackPanel>

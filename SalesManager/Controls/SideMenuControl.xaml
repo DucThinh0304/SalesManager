@@ -42,8 +42,8 @@
                 </Grid>
                 <ContentPresenter Grid.Row="1" />
                 <StackPanel Grid.Row="1" x:Name="Staff">
-                    <TextBlock x:Name="Staff_TextBlock" Text="Nhân viên" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
-                    <Button x:Name= "ThemHang_Button" Height="50" FontSize="20" Content="Thêm hàng" Click="ThemHang_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <TextBlock x:Name="Staff_TextBlock" Text="Nhân Viên" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
+                    <Button x:Name= "ThemHang_Button" Height="50" FontSize="20" Content="Thêm Hàng" Click="ThemHang_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                     <Button x:Name= "ThemLoaiHangMoi_Button" Height="35" FontSize="18" Content="Thêm Loại Hàng Mới" Click="ThemLoaiHangMoi_Click" Foreground="{StaticResource ForegroundLightBrush}" Background="{StaticResource WordBlueBrush}" BorderThickness="0" Visibility="Collapsed"/>
                     <Button x:Name= "ThemLoaiHangDaCo_Button" Height="35" FontSize="18" Content="Thêm Loại Hàng Đã Có" Click="ThemLoaiHangDaCo_Click" Foreground="{StaticResource ForegroundLightBrush}" Background="{StaticResource WordBlueBrush}" BorderThickness="0" Visibility="Collapsed"/>
                     <Button x:Name= "ThongKeSoLuongHang_Button" Height="50" FontSize="20" Content="Thống Kê Lượng Hàng" Click="ThongKeSoLuongHang_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
@@ -51,11 +51,16 @@
                     <Button x:Name= "TaoHoaDon_Button"  Height="50" FontSize="20"  Content="Tạo hóa đơn" Click="TaoHoaDon_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" x:Name="Manager" Visibility="Hidden">
-                    <TextBlock x:Name="Manager_TextBlock" Text="Chủ cửa hàng" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
+                    <TextBlock x:Name="Manager_TextBlock" Text="Chủ Cửa Hàng" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
                     <Button x:Name= "DanhSachNV_Button"  Height="50" FontSize="20"  Content="Danh Sách Nhân Viên" Click="DSNV_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                     <Button x:Name= "ThemSuaNV_Button"  Height="50" FontSize="20"  Content="Thêm/Sửa Nhân Viên" Click="ThemNV_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                     <Button x:Name= "ThongKe_Button"  Height="50" FontSize="20"  Content="Thống Kê Doanh Thu" Click="ThongKeDT_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
-
+                </StackPanel>
+                <StackPanel Grid.Row="1" x:Name="Setting" Visibility="Hidden">
+                    <TextBlock x:Name="Setting_TextBlock" Text="Cài Đặt" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
+                    <Button x:Name= "ThongTinCuaHang_Button"  Height="50" FontSize="20"  Content="Thông Tin Cửa Hàng" Click="ThongTinCuaHang_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <Button x:Name= "DangXuat_Button"  Height="50" FontSize="20"  Content="Đăng Xuất" Click="LogOut_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    
                 </StackPanel>
                 <Ellipse Fill="Red" HorizontalAlignment="Left" Height="11" Margin="179,10,0,0" Stroke="Red" VerticalAlignment="Top" Width="11" x:Name="CoThongBao" Visibility="Visible"/>
             </Grid>

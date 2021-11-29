@@ -105,7 +105,7 @@ namespace SalesManager
 
         private void Trove_click(object sender, RoutedEventArgs e)
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapHang_Question;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
         }
     }
 }

@@ -29,11 +29,11 @@ namespace SalesManager
         {
             
             InitializeComponent();
-            
+
+            ColorConverter brush = new ColorConverter();
             RadialGradientBrush radialGradientBrush = new RadialGradientBrush();
-            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Cyan, 0.0));
-            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.White, 1));
-            Title.Background = radialGradientBrush;
+            radialGradientBrush.GradientStops.Add(new GradientStop((Color)brush.ConvertFrom("#99ddff"), 0.0));
+            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
             DONVI.SelectedIndex = 0;
             load();         
             

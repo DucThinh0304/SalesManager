@@ -23,9 +23,13 @@ namespace SalesManager
     /// </summary>
     public partial class SideMenuControl : BaseControl
     {
+        #region Public Variables
         bool ShowThemHangContent = false;
         static public bool NotificationCheck = false;
         static public int Count = 0;
+        #endregion
+
+        #region Constructor
         public SideMenuControl()
         {
             InitializeComponent();
@@ -44,6 +48,29 @@ namespace SalesManager
             var sqlCommand = new SqlCommand($"DELETE FROM NHAPHANG WHERE HANSD < GETDATE()", sqlConn);
             var reader = sqlCommand.ExecuteReader();
         }
+        #endregion
+
+        #region UI for SideMenu
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+        }
+
+        private void ResetColor()
+        {
+            BrushConverter bc = new BrushConverter();
+            ThemHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            DanhSachNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            ThemSuaNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            ThongKe_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+        }
+        #endregion
+
+        #region Notification Component
         private void ListNotification_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             if (NotificationControl.listNotification.Count == 0 || NotificationControl.listNotification.Count == Count)
@@ -57,29 +84,27 @@ namespace SalesManager
             }
         }
 
-
-        private void ResetColor()
+        private void Notification_Click(object sender, RoutedEventArgs e)
         {
-            var bc = new BrushConverter();
-            ThemHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
-            DanhSachNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
-            ThemSuaNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
-            ThongKe_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
-            TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
-            ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
-
+            NotificationCheck = true;
+            ResetColor();
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.NotificationControl;
         }
 
-        private void Setting_Click(object sender, RoutedEventArgs e)
-        {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.VisualOff;
-        }
+        #endregion
 
+        #region Staff Component
+        private void Staff_Click(object sender, RoutedEventArgs e)
+        {
+            this.Staff.Visibility = Visibility.Visible;
+            this.Manager.Visibility = Visibility.Hidden;
+            this.Setting.Visibility = Visibility.Hidden;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+        }
         private void ThemHang_Click(object sender, RoutedEventArgs e)
         {
             ResetColor();
-            var bc = new BrushConverter();
+            BrushConverter bc = new BrushConverter();
             if (ShowThemHangContent == false)
             {
                 ThemHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
@@ -94,81 +119,102 @@ namespace SalesManager
                 ShowThemHangContent = false;
             }
         }
-
-        private void DSNV_Click(object sender, RoutedEventArgs e)
-        {
-            ResetColor();
-            var bc = new BrushConverter();
-            DanhSachNV_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
-        }
-
-        private void ThemNV_Click(object sender, RoutedEventArgs e)
-        {
-            ResetColor();
-            var bc = new BrushConverter();
-            ThemSuaNV_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
-        }
-
-        private void ThongKeDT_Click(object sender, RoutedEventArgs e)
-        {
-            ResetColor();
-            var bc = new BrushConverter();
-            ThongKe_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeDoanhThu;
-        }
-        
-        private void TaoHoaDon_Click(object sender, RoutedEventArgs e)
-        {
-            ResetColor();
-            var bc = new BrushConverter();
-            TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoHoaDon;
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.VisualOff;
-        }
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-            ResetColor();
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
-        }
-        private void Notification_Click(object sender, RoutedEventArgs e)
-        {
-            NotificationCheck = true;
-            //foreach (Border bor in NotificationControl.listNotification)
-            //{
-            //    bor.Parent.RemoveChild(bor);
-            //}
-            ResetColor();
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.NotificationControl;
-
-        }
-        private void Manager_Click(object sender, RoutedEventArgs e)
-        {
-            this.Manager.Visibility = Visibility.Visible;
-            this.Staff.Visibility = Visibility.Hidden;
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
-        }
-        private void Staff_Click(object sender, RoutedEventArgs e)
-        {
-            this.Staff.Visibility = Visibility.Visible;
-            this.Manager.Visibility = Visibility.Hidden;
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
-        }
-        private void ThongKeSoLuongHang_Click(object sender, RoutedEventArgs e)
-        {
-            ResetColor();
-            var bc = new BrushConverter();
-            ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeSoLuongHang;
-        }
         private void ThemLoaiHangDaCo_Click(object sender, RoutedEventArgs e)
         {
+            BrushConverter bc = new BrushConverter();
+            ResetColor();
+            ThemHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapHangMoi;
         }
         private void ThemLoaiHangMoi_Click(object sender, RoutedEventArgs e)
         {
+            BrushConverter bc = new BrushConverter();
+            ResetColor();
+            ThemHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapLoaiHangMoi;
         }
+        private void ThongKeSoLuongHang_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            BrushConverter bc = new BrushConverter();
+            ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeSoLuongHang;
+        }
+
+        private void TaoHoaDon_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            BrushConverter bc = new BrushConverter();
+            TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoHoaDon;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.VisualOff;
+        }
+        #endregion
+
+        #region Manager Component
+        private void Manager_Click(object sender, RoutedEventArgs e)
+        {
+            string Manv = "";
+            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            var sqlCommand = new SqlCommand($"SELECT MANV FROM NHANVIEN WHERE CMND = " + Home.CMND, sqlConn);
+            var reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                Manv = reader.GetString(0);
+            }
+            if (Manv != "NVQL")
+            {
+                MessageBox.Show("Chỉ có chủ cửa hàng mới có thể sử dụng những chức năng này");
+            }
+            else
+            {
+                this.Manager.Visibility = Visibility.Visible;
+                this.Staff.Visibility = Visibility.Hidden;
+                this.Setting.Visibility = Visibility.Hidden;
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+            }
+        }
+        private void DSNV_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            BrushConverter bc = new BrushConverter();
+            DanhSachNV_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
+        }
+        private void ThemNV_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            BrushConverter bc = new BrushConverter();
+            ThemSuaNV_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
+        }
+        private void ThongKeDT_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            BrushConverter bc = new BrushConverter();
+            ThongKe_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeDoanhThu;
+        }
+        #endregion
+
+        #region Setting Component
+        private void Setting_Click(object sender, RoutedEventArgs e)
+        {
+            this.Staff.Visibility = Visibility.Hidden;
+            this.Manager.Visibility = Visibility.Hidden;
+            this.Setting.Visibility = Visibility.Visible;
+        }
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.VisualOff;
+        }
+        private void ThongTinCuaHang_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Bình thêm vô đi");
+        }
+        #endregion
+
     }
 }

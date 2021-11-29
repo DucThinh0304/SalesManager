@@ -42,7 +42,7 @@ namespace SalesManager
         {
             var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             sqlConn.Open();
-            var sqlCommand = new SqlCommand("SELECT MAHD,NGHOADON,TRIGIA FROM HOADON WHERE MANV=" + manv, sqlConn);
+            var sqlCommand = new SqlCommand("SELECT MAHD,NGHOADON,TRIGIA FROM HOADON WHERE MANV='" + manv+"'", sqlConn);
             var reader = sqlCommand.ExecuteReader();
             List<HOADON> items = new List<HOADON>();
             while (reader.Read())
@@ -64,10 +64,10 @@ namespace SalesManager
             {
                 lb_manv.Content = reader[0].ToString();
                 lb_ten.Content = reader[1].ToString();
-                lb_ngsinh.Content = reader[2].ToString();
+                lb_ngsinh.Content = $"{reader.GetDateTime(2).Day}/{reader.GetDateTime(2).Month}/{reader.GetDateTime(2).Year}";
                 lb_cmnd.Content = reader[3].ToString();
                 lb_diachi.Content = reader[4].ToString();
-                lb_ngvl.Content = reader[5].ToString();
+                lb_ngvl.Content = $"{reader.GetDateTime(5).Day}/{reader.GetDateTime(5).Month}/{reader.GetDateTime(5).Year}";
                 lb_mk.Content = reader[6].ToString();
                 lb_gmail.Content = reader[7].ToString();
             }

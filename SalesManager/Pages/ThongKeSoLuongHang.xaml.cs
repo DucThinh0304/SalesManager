@@ -16,6 +16,8 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.ComponentModel;
+using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
 
 namespace SalesManager
 {
@@ -42,55 +44,63 @@ namespace SalesManager
 
         private void SapXep_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvUsers.ItemsSource);
-            view.SortDescriptions.Clear();
-            if (SapXepTheo_ComboBox.SelectedIndex == 0)
+            try
             {
-                switch (SapXep_ComboBox.SelectedIndex)
+                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvUsers.ItemsSource);
+                view.SortDescriptions.Clear();
+                if (SapXepTheo_ComboBox.SelectedIndex == 0)
                 {
-                    case 0:
-                        view.SortDescriptions.Add(new SortDescription("TENHANG", ListSortDirection.Ascending));
-                        break;
-                    case 1:
-                        view.SortDescriptions.Add(new SortDescription("GIA", ListSortDirection.Ascending));
-                        break;
-                    case 2:
-                        view.SortDescriptions.Add(new SortDescription("HSD", ListSortDirection.Ascending));
-                        break;
-                    case 3:
-                        view.SortDescriptions.Add(new SortDescription("SOLUONG", ListSortDirection.Ascending));
-                        break;
-                    case 4:
-                        view.SortDescriptions.Add(new SortDescription("TONGGIA", ListSortDirection.Ascending));
-                        break;
-                    default:
-                        return;
+                    switch (SapXep_ComboBox.SelectedIndex)
+                    {
+                        case 0:
+                            view.SortDescriptions.Add(new SortDescription("TENHANG", ListSortDirection.Ascending));
+                            break;
+                        case 1:
+                            view.SortDescriptions.Add(new SortDescription("GIA", ListSortDirection.Ascending));
+                            break;
+                        case 2:
+                            view.SortDescriptions.Add(new SortDescription("HSD", ListSortDirection.Ascending));
+                            break;
+                        case 3:
+                            view.SortDescriptions.Add(new SortDescription("SOLUONG", ListSortDirection.Ascending));
+                            break;
+                        case 4:
+                            view.SortDescriptions.Add(new SortDescription("TONGGIA", ListSortDirection.Ascending));
+                            break;
+                        default:
+                            return;
+                    }
                 }
+                else
+                {
+                    switch (SapXep_ComboBox.SelectedIndex)
+                    {
+                        case 0:
+                            view.SortDescriptions.Add(new SortDescription("TENHANG", ListSortDirection.Descending));
+                            break;
+                        case 1:
+                            view.SortDescriptions.Add(new SortDescription("GIA", ListSortDirection.Descending));
+                            break;
+                        case 2:
+                            view.SortDescriptions.Add(new SortDescription("HSD", ListSortDirection.Descending));
+                            break;
+                        case 3:
+                            view.SortDescriptions.Add(new SortDescription("SOLUONG", ListSortDirection.Descending));
+                            break;
+                        case 4:
+                            view.SortDescriptions.Add(new SortDescription("TONGGIA", ListSortDirection.Descending));
+                            break;
+                        default:
+                            return;
+                    }
+                }
+
+                CollectionViewSource.GetDefaultView(lvUsers.ItemsSource).Refresh();
             }
-            else
+            catch
             {
-                switch (SapXep_ComboBox.SelectedIndex)
-                {
-                    case 0:
-                        view.SortDescriptions.Add(new SortDescription("TENHANG", ListSortDirection.Descending));
-                        break;
-                    case 1:
-                        view.SortDescriptions.Add(new SortDescription("GIA", ListSortDirection.Descending));
-                        break;
-                    case 2:
-                        view.SortDescriptions.Add(new SortDescription("HSD", ListSortDirection.Descending));
-                        break;
-                    case 3:
-                        view.SortDescriptions.Add(new SortDescription("SOLUONG", ListSortDirection.Descending));
-                        break;
-                    case 4:
-                        view.SortDescriptions.Add(new SortDescription("TONGGIA", ListSortDirection.Descending));
-                        break;
-                    default:
-                        return;
-                }
+                MessageBox.Show("Chưa có thông tin mặt hàng");
             }
-            CollectionViewSource.GetDefaultView(lvUsers.ItemsSource).Refresh();
         }
 
         public class LoaiHangHoa
@@ -125,16 +135,23 @@ namespace SalesManager
                 });
                 lvUsers.ItemsSource = items;
             }
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvUsers.ItemsSource);
-            view.SortDescriptions.Add(new SortDescription("TENHANG", ListSortDirection.Ascending));
-            view.Filter = UserFilter;
-            foreach (LoaiHangHoa item in items)
+            try
             {
-                Sum += item.TONGGIA;
+                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvUsers.ItemsSource);
+                view.SortDescriptions.Add(new SortDescription("TENHANG", ListSortDirection.Ascending));
+                view.Filter = UserFilter;
+                foreach (LoaiHangHoa item in items)
+                {
+                    Sum += item.TONGGIA;
+                }
+                TongTien_TextBlock.Text = Sum.ToString();
+                reader.Close();
+                sqlConn.Close();
             }
-            TongTien_TextBlock.Text = Sum.ToString() ;
-            reader.Close();
-            sqlConn.Close();
+            catch
+            {
+                MessageBox.Show("Chưa có thông tin mặt hàng");
+            }
         }
 
         private bool UserFilter(object item)
@@ -146,7 +163,14 @@ namespace SalesManager
         }
         private void TimKiem_TextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            CollectionViewSource.GetDefaultView(lvUsers.ItemsSource).Refresh();
+            try
+            {
+                CollectionViewSource.GetDefaultView(lvUsers.ItemsSource).Refresh();
+            }
+            catch
+            {
+                MessageBox.Show("Chưa có thông tin mặt hàng");
+            }
         }
         private void SelectCurrentItem(object sender, KeyboardFocusChangedEventArgs e)
         {
@@ -163,14 +187,52 @@ namespace SalesManager
             if (ThongTinChinhSuaDanhSach.mahang == "") MessageBox.Show("Nháy đúp chọn hàng trước khi sửa thông tin!");
             else
             {
-                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinChinhSuaDanhSach;
+                ((WindowViewModel)((MainWindow)System.Windows.Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinChinhSuaDanhSach;
             }
 
         }
         private void XuatExcel(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("");
-        }
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
 
+            for (int i = 0; i < 7; i++)
+            {
+                Range myRange = (Range)sheet1.Cells[3, i + 1];
+                sheet1.Cells[3, i + 1].Font.Bold = true;
+                sheet1.Columns[i + 1].ColumnWidth = 30;
+                myRange.Value2 = ((GridView)lvUsers.View).Columns[i].Header;
+            }
+            sheet1.Range[sheet1.Cells[1, 1], sheet1.Cells[1, 7]].Merge();
+            Range TitleExcel = (Range)sheet1.Cells[1, 1];
+            TitleExcel.Value2 = "Quản lý bán hàng";
+            sheet1.Cells[1, 1].Font.Bold = true;
+            sheet1.Cells[1, 1].Font.Size = 18;
+            sheet1.get_Range("A1", "G3").Cells.HorizontalAlignment =
+                 Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            int r = 3;
+            List<LoaiHangHoa> items = (List<LoaiHangHoa>)lvUsers.ItemsSource;
+            foreach (LoaiHangHoa item in items)
+            {
+                Range myRange = (Range)sheet1.Cells[r + 1, 1];
+                myRange.Value2 = item.MAHANG;
+                myRange = (Range)sheet1.Cells[r + 1, 2];
+                myRange.Value2 = item.MALO;
+                myRange = (Range)sheet1.Cells[r + 1, 3];
+                myRange.Value2 = item.TENHANG;
+                myRange = (Range)sheet1.Cells[r + 1, 4];
+                myRange.Value2 = item.SOLUONG;
+                myRange = (Range)sheet1.Cells[r + 1, 5];
+                myRange.Value2 = item.HSD;
+                myRange = (Range)sheet1.Cells[r + 1, 6];
+                myRange.Value2 = item.GIA;
+                myRange = (Range)sheet1.Cells[r + 1, 7];
+                myRange.Value2 = item.TONGGIA;
+                r++;
+            }
+
+        }
     }
 }
