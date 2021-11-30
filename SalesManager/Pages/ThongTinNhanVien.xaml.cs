@@ -29,6 +29,7 @@ namespace SalesManager
             InitializeComponent();
             Load();
             LoadListHD();
+            LoadListNam();
         }
 
         public class HOADON
@@ -125,6 +126,32 @@ namespace SalesManager
         private void taoPass_Click(object sender, RoutedEventArgs e)
         {
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoMaNhanVien;
+        }
+        void LoadListNam()
+        {
+            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            var sqlCommand = new SqlCommand("SELECT DISTINCT YEAR(NGHOADON) FROM HOADON ORDER BY YEAR(NGHOADON) ASC", sqlConn);
+            var reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                cbNam.Items.Add(reader[0].ToString());
+            }
+            reader.Close();
+            sqlConn.Close();
+        }
+        private void Thongke_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbThang.Text == "" || cbNam.Text == "")
+            {
+                MessageBox.Show("Vui lòng chọn đủ tháng, năm!");
+            }
+            else
+            {
+                thang = cbThang.Text;
+                nam = cbNam.Text;
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DoanhThuNhanVien;
+            }
         }
     }
 }

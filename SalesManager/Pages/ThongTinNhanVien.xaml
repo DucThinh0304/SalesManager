@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:SalesManager"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" Height="481.173"
@@ -164,36 +165,81 @@
                 FontSize="26"
                    />
         </Grid>
+        <Grid Grid.Column="1" Margin="158,284,18,121.8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="154*"/>
+                <ColumnDefinition Width="85*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox 
+                        x:Name="cbThang" 
+                        materialDesign:HintAssist.Hint="Tháng"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                        Margin="0, 0 ,0,0" 
+                        Width="100" 
+                        FontSize="20"
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" RenderTransformOrigin="0.963,-0.289">
+                <!--<ComboBoxItem IsSelected="True">Tất cả</ComboBoxItem>-->
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>7</ComboBoxItem>
+                <ComboBoxItem>8</ComboBoxItem>
+                <ComboBoxItem>9</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>11</ComboBoxItem>
+                <ComboBoxItem>12</ComboBoxItem>
+            </ComboBox>
+            <ComboBox 
+                        FontSize="20"
+                        x:Name="cbNam" 
+                        materialDesign:HintAssist.Hint="Năm"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                        Margin="0,0,20,0"
+                        Width="100" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Top" Grid.ColumnSpan="2" >
+            </ComboBox>
+        </Grid>
         <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Width="140"
-                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="250,300,10,97.8" Grid.Column="1" Click="suaNV_Click">
+                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="119,381,141,67.8" Grid.Column="1" Click="Thongke_Click" >
+            THỐNG KÊ D.THU
+        </Button>
+        <Button
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="140"
+                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="119,439,141,9.8" Grid.Column="1" Click="suaNV_Click">
             SỬA THÔNG TIN
         </Button>
         <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Width="140"
-                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="250,381,10,67.8" Grid.Column="1" Click="XoaNV_Click">
+                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="280,381,-20,67.8" Grid.Column="1" Click="XoaNV_Click">
             XÓA NHÂN VIÊN
         </Button>
         <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
                     Width="140"
-                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="250,439,10,9.8" Grid.Column="1" Click="taoPass_Click">
+                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="280,439,-20,9.8" Grid.Column="1" Click="taoPass_Click">
             TẠO MẬT KHẨU
         </Button>
         <ListView HorizontalAlignment = "Center" 
                   Height = "220" 
                   VerticalAlignment = "Top"  
-                  Width = "670" 
-                  Margin="-29,261,159,-0.2"
+                  Width = "531" 
+                  Margin="-29,261,298,-0.2"
                   x:Name="lvHOADON" Grid.ColumnSpan="2"
                   FontSize="20">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header = "Mã HD" DisplayMemberBinding = "{Binding MAHD}" Width = "120"></GridViewColumn>
-                    <GridViewColumn Header = "Ngày Hóa Đơn" DisplayMemberBinding = "{Binding NGHOADON}" Width = "270"></GridViewColumn>
-                    <GridViewColumn Header = "Trị giá" DisplayMemberBinding = "{Binding TRIGIA}" Width = "200"></GridViewColumn>
+                    <GridViewColumn Header = "Ngày Hóa Đơn" DisplayMemberBinding = "{Binding NGHOADON}" Width = "200"></GridViewColumn>
+                    <GridViewColumn Header = "Trị giá" DisplayMemberBinding = "{Binding TRIGIA}" Width = "180"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

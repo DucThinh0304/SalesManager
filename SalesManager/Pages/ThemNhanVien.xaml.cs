@@ -97,13 +97,13 @@ namespace SalesManager
                     sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
                     sqlCommand.Parameters["@HOTEN"].Value = tbHOTEN.Text;
                     sqlCommand.Parameters.Add("@NGSINH", System.Data.SqlDbType.SmallDateTime);
-                    sqlCommand.Parameters["@NGSINH"].Value = ngSinh.Text;
+                    sqlCommand.Parameters["@NGSINH"].Value = ngSinh.SelectedDate;
                     sqlCommand.Parameters.Add("@CMND", System.Data.SqlDbType.VarChar);
                     sqlCommand.Parameters["@CMND"].Value = tbCMND.Text;
                     sqlCommand.Parameters.Add("@DIACHI", System.Data.SqlDbType.NVarChar);
                     sqlCommand.Parameters["@DIACHI"].Value = tbDIACHI.Text;
                     sqlCommand.Parameters.Add("@NGVAOLAM", System.Data.SqlDbType.SmallDateTime);
-                    sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.Text;
+                    sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.SelectedDate;
                     sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
                     sqlCommand.Parameters["@MATKHAU"].Value = pass;
                     sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
@@ -146,6 +146,7 @@ namespace SalesManager
                 MessageBox.Show("Chứng minh nhân dân hợp lệ!");
                 flag2 = true;
             }
+            else flag2 = false;
         }
         
 
@@ -172,6 +173,7 @@ namespace SalesManager
                 MessageBox.Show("Mã nhân viên hợp lệ!");
                 flag1 = true;
             }
+            else flag1 = false;
         }
 
         private void Huy_Click(object sender, RoutedEventArgs e)

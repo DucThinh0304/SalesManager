@@ -112,7 +112,7 @@ namespace SalesManager.Pages
                 string pass = Encrypt(tbMK.Password);
                 var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();
-                var sqlCommand = new SqlCommand("UPDATE NHANVIEN SET HOTEN = @HOTEN, NGSINH = @NGSINH, CMND = @CMND, DIACHI = @DIACHI, NGVAOLAM = @NGVAOLAM, MATKHAU = @MATKHAU, GMAIL = @GMAIL WHERE MANV = "+manv, sqlConn);
+                var sqlCommand = new SqlCommand("UPDATE NHANVIEN SET HOTEN = @HOTEN, NGSINH = @NGSINH, CMND = @CMND, DIACHI = @DIACHI, NGVAOLAM = @NGVAOLAM, MATKHAU = @MATKHAU, GMAIL = @GMAIL WHERE MANV = '"+manv+"'", sqlConn);
                     MessageBoxResult reSult = MessageBox.Show("Nhân viên đã tồn tại trong hệ thống, bạn có muốn ghi đè dữ liệu đang có không?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                     if (reSult == MessageBoxResult.Yes)
                     {
@@ -121,13 +121,13 @@ namespace SalesManager.Pages
                         sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
                         sqlCommand.Parameters["@HOTEN"].Value = tbHOTEN.Text;
                         sqlCommand.Parameters.Add("@NGSINH", System.Data.SqlDbType.SmallDateTime);
-                        sqlCommand.Parameters["@NGSINH"].Value = ngSinh.Text;
+                        sqlCommand.Parameters["@NGSINH"].Value = ngSinh.SelectedDate;
                         sqlCommand.Parameters.Add("@CMND", System.Data.SqlDbType.VarChar);
                         sqlCommand.Parameters["@CMND"].Value = tbCMND.Text;
                         sqlCommand.Parameters.Add("@DIACHI", System.Data.SqlDbType.NVarChar);
                         sqlCommand.Parameters["@DIACHI"].Value = tbDIACHI.Text;
                         sqlCommand.Parameters.Add("@NGVAOLAM", System.Data.SqlDbType.SmallDateTime);
-                        sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.Text;
+                        sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.SelectedDate;
                         sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
                         sqlCommand.Parameters["@MATKHAU"].Value = pass;
                         sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
