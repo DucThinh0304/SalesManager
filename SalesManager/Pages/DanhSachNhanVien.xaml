@@ -35,17 +35,8 @@
                     Margin="0 150 0 20 " Height="35" FontSize="21"
                 HorizontalAlignment="Center">
                     SỬA THÔNG TIN
-            </Button>
-        <Button
-                Foreground="{StaticResource ForegroundLightBrush}"
-                Style="{StaticResource MaterialDesignRaisedButton}"
-                 Width="220"
-            Margin="0 20 0 20 " Height="35" FontSize="21"
-                HorizontalAlignment="Center"
-                 Click="ThemNV_Click">
-            THÊM NHÂN VIÊN
-        </Button>
-        <Button
+                </Button>
+                <Button
                 Foreground="{StaticResource ForegroundLightBrush}"
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 Width="220"

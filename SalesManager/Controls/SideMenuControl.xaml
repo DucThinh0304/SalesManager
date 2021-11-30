@@ -53,12 +53,13 @@
                 <StackPanel Grid.Row="1" x:Name="Manager" Visibility="Hidden">
                     <TextBlock x:Name="Manager_TextBlock" Text="Chủ Cửa Hàng" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
                     <Button x:Name= "DanhSachNV_Button"  Height="50" FontSize="20"  Content="Danh Sách Nhân Viên" Click="DSNV_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
-                    <Button x:Name= "ThemSuaNV_Button"  Height="50" FontSize="20"  Content="Thêm/Sửa Nhân Viên" Click="ThemNV_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <Button x:Name= "ThemSuaNV_Button"  Height="50" FontSize="20"  Content="Thêm Nhân Viên" Click="ThemNV_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                     <Button x:Name= "ThongKe_Button"  Height="50" FontSize="20"  Content="Thống Kê Doanh Thu" Click="ThongKeDT_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" x:Name="Setting" Visibility="Hidden">
                     <TextBlock x:Name="Setting_TextBlock" Text="Cài Đặt" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
                     <Button x:Name= "ThongTinCuaHang_Button"  Height="50" FontSize="20"  Content="Thông Tin Cửa Hàng" Click="ThongTinCuaHang_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <Button x:Name= "SuaMatKhau_Button"  Height="50" FontSize="20"  Content="Sửa Mật Khẩu" Click="SuaMatKhau_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                     <Button x:Name= "DangXuat_Button"  Height="50" FontSize="20"  Content="Đăng Xuất" Click="LogOut_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                     
                 </StackPanel>

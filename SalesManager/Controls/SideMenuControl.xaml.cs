@@ -96,6 +96,7 @@ namespace SalesManager
         #region Staff Component
         private void Staff_Click(object sender, RoutedEventArgs e)
         {
+            ResetColor();
             this.Staff.Visibility = Visibility.Visible;
             this.Manager.Visibility = Visibility.Hidden;
             this.Setting.Visibility = Visibility.Hidden;
@@ -169,6 +170,7 @@ namespace SalesManager
             }
             else
             {
+                ResetColor();
                 this.Manager.Visibility = Visibility.Visible;
                 this.Staff.Visibility = Visibility.Hidden;
                 this.Setting.Visibility = Visibility.Hidden;
@@ -209,6 +211,10 @@ namespace SalesManager
         {
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.VisualOff;
+        }
+        private void SuaMatKhau_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Trâm thêm vô đi");
         }
         private void ThongTinCuaHang_Click(object sender, RoutedEventArgs e)
         {

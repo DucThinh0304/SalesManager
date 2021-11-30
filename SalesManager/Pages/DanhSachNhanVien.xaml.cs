@@ -74,11 +74,6 @@ namespace SalesManager
                 ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.SuaNhanVien;
             }
         }
-        private void ThemNV_Click(object sender, RoutedEventArgs e)
-        {
-            manv = "";
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
-        }
 
         private void XemThongTin_Click(object sender, RoutedEventArgs e)
         {

@@ -77,7 +77,7 @@ namespace SalesManager
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
 
-            if (MessageBox.Show("Bạn có chắc muốn xóa thông tin hàng này???", "CAU HỎI", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Bạn có chắc muốn xóa thông tin hàng này???", "CÂU HỎI", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 var cmd = new SqlCommand("DELETE FROM NHAPHANG WHERE MAHANG='" + mahang + "' and MALO ='" + int.Parse(MALOO.Text) + "'", con);
                 var dr= cmd.ExecuteReader();
