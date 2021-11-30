@@ -54,6 +54,7 @@ namespace SalesManager
             }
             reader.Close();
             sqlConn.Close();
+            sonv = lvUsers.Items.Count;
         }
 
         private void SelectCurrentItem(object sender, KeyboardFocusChangedEventArgs e)
@@ -89,6 +90,11 @@ namespace SalesManager
             manv = "";
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
+        }
+        private void ThemNV_Click(object sender, RoutedEventArgs e)
+        {
+            manv = "";
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace SalesManager
         {
             public string MAHD { get; set; }
             public string NGHOADON { get; set; }
-            public string TRIGIA { get; set; }
+            public int TRIGIA { get; set; }
         }
 
         void LoadListHD()
@@ -48,7 +48,7 @@ namespace SalesManager
             List<HOADON> items = new List<HOADON>();
             while (reader.Read())
             {
-                items.Add(new HOADON() { MAHD = reader[0].ToString(), NGHOADON = reader[1].ToString(), TRIGIA = reader[2].ToString() });
+                items.Add(new HOADON() { MAHD = reader[0].ToString(), NGHOADON = reader.GetDateTime(1).ToString("MM/dd/yyyy"), TRIGIA = Convert.ToInt32(reader.GetDecimal(2)) });
                 lvHOADON.ItemsSource = items;
             }
             reader.Close();

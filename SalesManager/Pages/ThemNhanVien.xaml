@@ -10,7 +10,7 @@
 
     <Grid>
         <Border VerticalAlignment="Top" x:Name="Title">
-        <TextBlock 
+            <TextBlock 
                 TextWrapping="Wrap" 
                 Text="THÊM NHÂN VIÊN"
                 VerticalAlignment="Top" 
@@ -18,42 +18,9 @@
                 FontFamily="{StaticResource MyriadBold}" 
                 FontSize="36" 
                 Foreground="{StaticResource TitleBrush}"
-                Margin="193,14,193,0"
+                Margin="253,14,253,0"
                 />
         </Border>
-
-        <Grid Margin="0,40,0,360">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="530*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                    HorizontalAlignment="Left"
-                    TextWrapping="Wrap"
-                    Text="Mã nhân viên: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="62,13,0,10" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
-                    />
-            <TextBox x:Name="tbMANV"
-                    Grid.Column="1"
-                    VerticalAlignment="Center"
-                    Height="40"
-                    TextWrapping="Wrap"
-                    FontSize="24" 
-                    Margin="207.079,0,0,9.6" 
-                    Grid.ColumnSpan="2" 
-                    HorizontalAlignment="Left" 
-                    Width="367"/>
-            <Button
-            Style="{StaticResource MaterialDesignRaisedButton}"
-            Width="100"
-            FontWeight="Bold"
-            Foreground="{StaticResource ForegroundLightBrush}" 
-            Margin="366.079,8,63.521,9.6"  Grid.Column="2" Click="kiemtra1_Click">
-                Kiểm tra
-            </Button>
-        </Grid>
         <Grid Margin="0,80,0,320">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="63*"/>

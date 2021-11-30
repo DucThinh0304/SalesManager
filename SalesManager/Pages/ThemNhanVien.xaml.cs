@@ -27,7 +27,7 @@ namespace SalesManager
         {
             InitializeComponent();
         }
-        bool flag1 = false, flag2 = false;
+        bool flag2 = false;
         public static string Encrypt(string toEncrypt)
         {
             string key = "";
@@ -81,9 +81,8 @@ namespace SalesManager
         private void Them_Click(object sender, RoutedEventArgs e)
         {
 
-            if (tbMANV.Text == "" || tbHOTEN.Text == "" || ngSinh.Text == "" || tbCMND.Text == "" || tbDIACHI.Text == "" || ngVL.Text == "" || tbMK.Password == "" || tbRMK.Password == ""||tbGmail.Text=="") MessageBox.Show("Vui lòng nhập đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (tbHOTEN.Text == "" || ngSinh.Text == "" || tbCMND.Text == "" || tbDIACHI.Text == "" || ngVL.Text == "" || tbMK.Password == "" || tbRMK.Password == ""||tbGmail.Text=="") MessageBox.Show("Vui lòng nhập đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
             else if (tbMK.Password != tbRMK.Password) MessageBox.Show("Mật khẩu nhập lại không chính xác. Vui lòng thử lại!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
-            else if(flag1==false) MessageBox.Show("Vui lòng kiểm tra lại mã nhân viên!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
             else if(flag2==false) MessageBox.Show("Vui lòng kiểm tra lại CMND!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
@@ -93,7 +92,7 @@ namespace SalesManager
                 var sqlCommand = new SqlCommand("SELECT MANV FROM NHANVIEN", sqlConn);
                     sqlCommand.CommandText = "INSERT INTO NHANVIEN (MANV,HOTEN,NGSINH,CMND,DIACHI,NGVAOLAM,MATKHAU,GMAIL) VALUES " + "(@MANV,@HOTEN,@NGSINH,@CMND,@DIACHI,@NGVAOLAM,@MATKHAU,@GMAIL)";
                     sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
-                    sqlCommand.Parameters["@MANV"].Value = tbMANV.Text;
+                    sqlCommand.Parameters["@MANV"].Value = "NV"+sonv;
                     sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
                     sqlCommand.Parameters["@HOTEN"].Value = tbHOTEN.Text;
                     sqlCommand.Parameters.Add("@NGSINH", System.Data.SqlDbType.SmallDateTime);
@@ -111,7 +110,6 @@ namespace SalesManager
                     sqlCommand.ExecuteNonQuery();
                     sqlCommand.Dispose();
                     MessageBox.Show("Thêm dữ liệu thành công");
-                    tbMANV.Text = "";
                     tbHOTEN.Text = "";
                     ngSinh.Text = "";
                     tbCMND.Text = "";
@@ -147,33 +145,6 @@ namespace SalesManager
                 flag2 = true;
             }
             else flag2 = false;
-        }
-        
-
-        private void kiemtra1_Click(object sender, RoutedEventArgs e)
-        {
-            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-            sqlConn.Open();
-            var sqlCommand = new SqlCommand("SELECT MANV FROM NHANVIEN", sqlConn);
-            var reader = sqlCommand.ExecuteReader();
-            bool flag = true;
-            while (reader.Read())
-            {
-                if (reader.GetString(0) == tbMANV.Text)
-                {
-                    MessageBox.Show("Mã nhân viên đã tồn tại, vui lòng nhập mã khác!");
-                    flag = false;
-                    break;
-                }
-            }
-            reader.Close();
-            sqlConn.Close();
-            if (flag)
-            {
-                MessageBox.Show("Mã nhân viên hợp lệ!");
-                flag1 = true;
-            }
-            else flag1 = false;
         }
 
         private void Huy_Click(object sender, RoutedEventArgs e)

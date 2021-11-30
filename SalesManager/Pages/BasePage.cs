@@ -16,6 +16,7 @@ namespace SalesManager
         public static string manv = "";
         public static string thang = "";
         public static string nam = "";
+        public static int sonv = 0;
         #endregion
 
         #region Public Properties
