@@ -57,6 +57,8 @@ namespace SalesManager
                     return new SuaNhanVien();
                 case ApplicationPage.DoanhThuNhanVien:
                     return new DoanhThuNhanVien();
+                case ApplicationPage.ThongTinCuaHang:
+                    return new ThongTinCuaHang();
                 default:
                     Debugger.Break();
                     return null;

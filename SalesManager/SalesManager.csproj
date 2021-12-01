@@ -149,6 +149,9 @@
     <Compile Include="Pages\ThongTinChinhSuaDanhSach.xaml.cs">
       <DependentUpon>ThongTinChinhSuaDanhSach.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ThongTinCuaHang.xaml.cs">
+      <DependentUpon>ThongTinCuaHang.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ThongTinNhanVien.xaml.cs">
       <DependentUpon>ThongTinNhanVien.xaml</DependentUpon>
     </Compile>
@@ -245,6 +248,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ThongTinChinhSuaDanhSach.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ThongTinCuaHang.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

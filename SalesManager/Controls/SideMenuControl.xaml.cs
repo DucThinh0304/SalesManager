@@ -218,7 +218,7 @@ namespace SalesManager
         }
         private void ThongTinCuaHang_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Bình thêm vô đi");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinCuaHang;
         }
         #endregion
 
