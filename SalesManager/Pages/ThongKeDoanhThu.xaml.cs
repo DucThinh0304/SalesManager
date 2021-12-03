@@ -18,6 +18,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System.ComponentModel;
+using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
 
 namespace SalesManager
 {
@@ -28,7 +31,7 @@ namespace SalesManager
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public SeriesCollection SeriesCollection { get; set; }
+        public LiveCharts.SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> Formatter { get; set; }
 
@@ -44,10 +47,10 @@ namespace SalesManager
             loadDTNam();
             LoadListNam();
         }
+        double S = 0, S1 = 0, S2 = 0, S3 = 0, S4 = 0, S5 = 0, S6 = 0, S7 = 0, S8 = 0, S9 = 0, S10 = 0, S11 = 0, S12 = 0,tam=0;
+        string thang = "";
         private void loadDTNam()
         {
-            double S = 0, S1 = 0, S2 = 0, S3 = 0, S4 = 0, S5 = 0, S6 = 0, S7 = 0, S8 = 0, S9 = 0, S10 = 0, S11 = 0, S12 = 0;
-            string thang = "";
             S = TongDT(S);
             tb_tongDT.Text = S.ToString() + " VND";
             S1 = TongDTthang(S1, thang = "1");
@@ -62,7 +65,7 @@ namespace SalesManager
             S10 = TongDTthang(S10, thang = "10");
             S11 = TongDTthang(S11, thang = "11");
             S12 = TongDTthang(S12, thang = "12");
-            SeriesCollection = new SeriesCollection()
+            SeriesCollection = new LiveCharts.SeriesCollection()
             {
                 new ColumnSeries
                 {
@@ -120,8 +123,8 @@ namespace SalesManager
         }
         private void thoat_Click(object sender, RoutedEventArgs e)
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
+            ((WindowViewModel)((MainWindow)System.Windows.Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+            ((WindowViewModel)((MainWindow)System.Windows.Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
         }
 
         private void ThongKeThang_Click(object sender, RoutedEventArgs e)
@@ -134,9 +137,53 @@ namespace SalesManager
             {
                 thang = cbThang.Text;
                 nam = cbNam.Text;
-                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeDoanhThuThang;
+                ((WindowViewModel)((MainWindow)System.Windows.Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeDoanhThuThang;
             }
 
+        }
+
+        private void XuatEX_Click(object sender, RoutedEventArgs e)
+        {
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+            Range myRange1 = (Range)sheet1.Cells[3, 1];
+            sheet1.Cells[3,1].Font.Bold = true;
+            sheet1.Columns[1].ColumnWidth = 30;
+            myRange1.Value2 = "Tháng";
+
+            Range myRange2 = (Range)sheet1.Cells[3, 2];
+            sheet1.Cells[3,2].Font.Bold = true;
+            sheet1.Columns[2].ColumnWidth = 30;
+            myRange2.Value2 = "Tổng doanh thu (VNĐ)";
+
+            sheet1.Range[sheet1.Cells[1, 1], sheet1.Cells[1, 2]].Merge();
+            Range TitleExcel = (Range)sheet1.Cells[1, 1];
+            TitleExcel.Value2 = "THỐNG KÊ DOANH THU NĂM 2021";
+            sheet1.Cells[1, 1].Font.Bold = true;
+            sheet1.Cells[1, 1].Font.Size = 18;
+            sheet1.get_Range("A1", "B3").Cells.HorizontalAlignment =
+                 Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            int r = 3;
+            for(int i=1; i<=12;i++)
+            {
+                Range myRange = (Range)sheet1.Cells[r + 1, 1];
+                myRange.Value2 = i;
+                myRange = (Range)sheet1.Cells[r + 1, 2];
+                myRange.Value2 = TongDTthang(tam, thang = i.ToString());
+                r++;
+            }
+            Range myRange3 = (Range)sheet1.Cells[r + 1, 1];
+            myRange3.Value2 = "                                                ------------";
+            myRange3 = (Range)sheet1.Cells[r + 1, 2];
+            myRange3.Value2 = "                                                ------------";
+            r++;
+            Range myRange4 = (Range)sheet1.Cells[r + 1, 1];
+            myRange4.Value2 = "                                     Tổng doanh thu: ";
+            myRange4 = (Range)sheet1.Cells[r + 1, 2];
+            myRange4.Value2 = S;
         }
     }
 }
