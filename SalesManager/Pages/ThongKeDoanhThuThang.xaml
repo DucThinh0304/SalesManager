@@ -68,6 +68,16 @@
                     Height="40"
                     FontSize="20"
                     ToolTip="Resource name: MaterialDesignRaisedButton" 
+                    Margin="0,50,0,0" Click="XuatExcel_click">
+                    XUẤT EXCEL
+                </Button>
+                <Button
+                    Foreground="{StaticResource ForegroundLightBrush}"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="200"
+                    Height="40"
+                    FontSize="20"
+                    ToolTip="Resource name: MaterialDesignRaisedButton" 
                     Margin="0,30,0,0" Click="thoat_Click" Content="THOÁT"/>
             </StackPanel>
         </Grid>

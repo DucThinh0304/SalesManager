@@ -47,10 +47,11 @@ namespace SalesManager
             loadDTNam();
             LoadListNam();
         }
-        double S = 0, S1 = 0, S2 = 0, S3 = 0, S4 = 0, S5 = 0, S6 = 0, S7 = 0, S8 = 0, S9 = 0, S10 = 0, S11 = 0, S12 = 0,tam=0;
-        string thang = "";
+        double S = 0, tam = 0;
         private void loadDTNam()
         {
+            double  S1 = 0, S2 = 0, S3 = 0, S4 = 0, S5 = 0, S6 = 0, S7 = 0, S8 = 0, S9 = 0, S10 = 0, S11 = 0, S12 = 0;
+            string thang = "";
             S = TongDT(S);
             tb_tongDT.Text = S.ToString() + " VND";
             S1 = TongDTthang(S1, thang = "1");
@@ -169,10 +170,11 @@ namespace SalesManager
             int r = 3;
             for(int i=1; i<=12;i++)
             {
+                string x = "";
                 Range myRange = (Range)sheet1.Cells[r + 1, 1];
                 myRange.Value2 = i;
                 myRange = (Range)sheet1.Cells[r + 1, 2];
-                myRange.Value2 = TongDTthang(tam, thang = i.ToString());
+                myRange.Value2 = TongDTthang(tam, x = i.ToString());
                 r++;
             }
             Range myRange3 = (Range)sheet1.Cells[r + 1, 1];

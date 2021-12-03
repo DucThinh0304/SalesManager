@@ -96,7 +96,7 @@
                     FontSize="20"
                     ToolTip="Resource name: MaterialDesignRaisedButton" 
                     Margin="0,50,0,0" Click="XuatEX_Click">
-                    XUẤT
+                    XUẤT EXCEL
                 </Button>
                 <Button
                     Foreground="{StaticResource ForegroundLightBrush}"

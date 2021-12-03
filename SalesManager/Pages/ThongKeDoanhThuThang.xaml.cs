@@ -18,6 +18,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System.ComponentModel;
+using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
 
 namespace SalesManager.Pages
 {
@@ -28,7 +31,7 @@ namespace SalesManager.Pages
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public SeriesCollection SeriesCollection { get; set; }
+        public LiveCharts.SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> Formatter { get; set; }
         public ThongKeDoanhThuThang()
@@ -43,10 +46,10 @@ namespace SalesManager.Pages
             loadDTThang();
             tb_Title.Text = "THỐNG KÊ DOANH THU THÁNG " + thang + " NĂM " + nam;
         }
-
+        double S = 0, tam = 0;
         private void loadDTThang()
         {
-            double S = 0, S1 = 0, S2 = 0, S3 = 0, S4 = 0, S5 = 0, S6 = 0, S7 = 0, S8 = 0, S9 = 0, S10 = 0, S11 = 0, S12 = 0, S13 = 0, S14 = 0, S15 = 0, S16 = 0, S17 = 0, S18 = 0, S19 = 0, S20 = 0, S21 = 0, S22 = 0, S23 = 0, S24 = 0, S25 = 0, S26 = 0, S27 = 0, S28 = 0, S29 = 0, S30 = 0, S31 = 0;
+            double S1 = 0, S2 = 0, S3 = 0, S4 = 0, S5 = 0, S6 = 0, S7 = 0, S8 = 0, S9 = 0, S10 = 0, S11 = 0, S12 = 0, S13 = 0, S14 = 0, S15 = 0, S16 = 0, S17 = 0, S18 = 0, S19 = 0, S20 = 0, S21 = 0, S22 = 0, S23 = 0, S24 = 0, S25 = 0, S26 = 0, S27 = 0, S28 = 0, S29 = 0, S30 = 0, S31 = 0;
             string ngay = "";
             S = TongDT(S);
             tb_tongDT.Text = S.ToString() + " VND";
@@ -81,7 +84,7 @@ namespace SalesManager.Pages
             S29 = TongDTngay(S29, ngay = "29");
             S30 = TongDTngay(S30, ngay = "30");
             S31 = TongDTngay(S31, ngay = "31");
-            SeriesCollection = new SeriesCollection()
+            SeriesCollection = new LiveCharts.SeriesCollection()
             {
                 new ColumnSeries
                 {
@@ -97,7 +100,7 @@ namespace SalesManager.Pages
         {
             var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             sqlConn.Open();
-            var sqlCommand = new SqlCommand("SELECT TRIGIA FROM HOADON WHERE YEAR(NGHOADON)=" + nam + "AND MONTH(NGHOADON)=" + thang + " AND DAY(NGHOADON)=" + ngay, sqlConn);
+            var sqlCommand = new SqlCommand("SELECT TRIGIA FROM HOADON WHERE YEAR(NGHOADON)='" + nam + "' AND MONTH(NGHOADON)='" + thang + "' AND DAY(NGHOADON)='" + ngay+"'", sqlConn);
             var reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
@@ -124,12 +127,57 @@ namespace SalesManager.Pages
 
         private void thoat_Click(object sender, RoutedEventArgs e)
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+            ((WindowViewModel)((MainWindow)System.Windows.Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
         }
 
         private void thongkenam_Click(object sender, RoutedEventArgs e)
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeDoanhThu;
+            ((WindowViewModel)((MainWindow)System.Windows.Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeDoanhThu;
+        }
+
+        private void XuatExcel_click(object sender, RoutedEventArgs e)
+        {
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+            Range myRange1 = (Range)sheet1.Cells[3, 1];
+            sheet1.Cells[3, 1].Font.Bold = true;
+            sheet1.Columns[1].ColumnWidth = 40;
+            myRange1.Value2 = "Ngày";
+
+            Range myRange2 = (Range)sheet1.Cells[3, 2];
+            sheet1.Cells[3, 2].Font.Bold = true;
+            sheet1.Columns[2].ColumnWidth = 40;
+            myRange2.Value2 = "Tổng doanh thu (VNĐ)";
+
+            sheet1.Range[sheet1.Cells[1, 1], sheet1.Cells[1, 2]].Merge();
+            Range TitleExcel = (Range)sheet1.Cells[1, 1];
+            TitleExcel.Value2 = "THỐNG KÊ DOANH THU THÁNG "+thang+" NĂM "+nam;
+            sheet1.Cells[1, 1].Font.Bold = true;
+            sheet1.Cells[1, 1].Font.Size = 18;
+            sheet1.get_Range("A1", "B3").Cells.HorizontalAlignment =
+                 Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            int r = 3;
+            for (int i = 1; i <= 31; i++)
+            {
+                string x = "";
+                Range myRange = (Range)sheet1.Cells[r + 1, 1];
+                myRange.Value2 = i;
+                myRange = (Range)sheet1.Cells[r + 1, 2];
+                myRange.Value2 = TongDTngay(tam, x = i.ToString());
+                r++;
+            }
+            Range myRange3 = (Range)sheet1.Cells[r + 1, 1];
+            myRange3.Value2 = "                                                                    ------------";
+            myRange3 = (Range)sheet1.Cells[r + 1, 2];
+            myRange3.Value2 = "                                                                    ------------";
+            r++;
+            Range myRange4 = (Range)sheet1.Cells[r + 1, 1];
+            myRange4.Value2 = "                                                            Tổng doanh thu: ";
+            myRange4 = (Range)sheet1.Cells[r + 1, 2];
+            myRange4.Value2 = S;
         }
     }
 }
