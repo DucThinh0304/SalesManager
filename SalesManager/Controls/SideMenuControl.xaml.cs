@@ -214,7 +214,7 @@ namespace SalesManager
         }
         private void SuaMatKhau_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Trâm thêm vô đi");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoMaNhanVien;
         }
         private void ThongTinCuaHang_Click(object sender, RoutedEventArgs e)
         {
@@ -222,5 +222,9 @@ namespace SalesManager
         }
         #endregion
 
+        private void HangDaBan_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ChonThang;
+        }
     }
 }

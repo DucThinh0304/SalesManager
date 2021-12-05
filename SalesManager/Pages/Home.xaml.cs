@@ -24,6 +24,7 @@ namespace SalesManager
     public partial class Home : BasePage
     {
         public static string CMND;
+        
         public Home()
         {
             InitializeComponent();
@@ -36,6 +37,7 @@ namespace SalesManager
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
+            TaoMaNhanVien.cmnd = CMND;
             var cmd = new SqlCommand("SELECT HOTEN FROM NHANVIEN WHERE CMND = "+ CMND , con);
             var dr = cmd.ExecuteReader();
             while (dr.Read())

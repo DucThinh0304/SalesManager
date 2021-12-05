@@ -104,6 +104,9 @@
     </Compile>
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\ChonThang.xaml.cs">
+      <DependentUpon>ChonThang.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DangKy.xaml.cs">
       <DependentUpon>DangKy.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,9 @@
     </Compile>
     <Compile Include="Pages\DoanhThuNhanVien.xaml.cs">
       <DependentUpon>DoanhThuNhanVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HangDaBan.xaml.cs">
+      <DependentUpon>HangDaBan.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -191,6 +197,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\ChonThang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\DangKy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -204,6 +214,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DoanhThuNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HangDaBan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

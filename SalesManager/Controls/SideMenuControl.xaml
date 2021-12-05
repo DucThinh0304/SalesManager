@@ -46,9 +46,10 @@
                     <Button x:Name= "ThemHang_Button" Height="50" FontSize="20" Content="Thêm Hàng" Click="ThemHang_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                     <Button x:Name= "ThemLoaiHangMoi_Button" Height="35" FontSize="18" Content="Thêm Loại Hàng Mới" Click="ThemLoaiHangMoi_Click" Foreground="{StaticResource ForegroundLightBrush}" Background="{StaticResource WordBlueBrush}" BorderThickness="0" Visibility="Collapsed"/>
                     <Button x:Name= "ThemLoaiHangDaCo_Button" Height="35" FontSize="18" Content="Thêm Loại Hàng Đã Có" Click="ThemLoaiHangDaCo_Click" Foreground="{StaticResource ForegroundLightBrush}" Background="{StaticResource WordBlueBrush}" BorderThickness="0" Visibility="Collapsed"/>
-                    <Button x:Name= "ThongKeSoLuongHang_Button" Height="50" FontSize="20" Content="Thống Kê Lượng Hàng" Click="ThongKeSoLuongHang_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <Button x:Name= "ThongKeSoLuongHang_Button" Height="50" FontSize="20" Content="Thống Kê Lượng Hàng" Click="ThongKeSoLuongHang_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>                  
                     
                     <Button x:Name= "TaoHoaDon_Button"  Height="50" FontSize="20"  Content="Tạo hóa đơn" Click="TaoHoaDon_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <Button x:Name= "HangDaBan_Button" Height="50" FontSize="20" Content="Lượng Hàng Đã Bán" Click="HangDaBan_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" x:Name="Manager" Visibility="Hidden">
                     <TextBlock x:Name="Manager_TextBlock" Text="Chủ Cửa Hàng" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
