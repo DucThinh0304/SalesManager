@@ -20,7 +20,7 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for HangDaBan.xaml
     /// </summary>
-    public partial class HangDaBan : Page
+    public partial class HangDaBan : BasePage
     {
         public static string Thang;
          public static string Nam;

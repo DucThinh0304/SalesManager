@@ -20,7 +20,7 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for ChonThang.xaml
     /// </summary>
-    public partial class ChonThang : Page
+    public partial class ChonThang : BasePage
     {
         SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
         public ChonThang()

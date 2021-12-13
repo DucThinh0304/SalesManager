@@ -6,228 +6,246 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:SalesManager"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" Height="481.173"
+      d:DesignHeight="450" d:DesignWidth="900" Height="750"
       Title="ThongTinNhanVien">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+    <StackPanel>
+
         <TextBlock 
                 TextWrapping="Wrap" 
                 Text="THÔNG TIN NHÂN VIÊN"
                 VerticalAlignment="Bottom" 
                 HorizontalAlignment="Center" 
-                FontWeight="Bold" 
+                FontFamily="{StaticResource MyriadBold}" 
                 FontSize="36" 
-                Foreground="#FF0536C0"
-                Margin="193,0,193,434.8" Grid.ColumnSpan="2"
+                Foreground="{StaticResource TitleBrush}"
+                Margin="0,10,10,10" Grid.ColumnSpan="2"
                 />
-
-        <Grid Margin="0,30,0,370" Grid.ColumnSpan="2">
+        <Grid Margin="0,10,0,0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="530*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="8*"/>
             </Grid.ColumnDefinitions>
             <TextBlock
                     HorizontalAlignment="Left"
                     TextWrapping="Wrap"
                     Text="Họ tên: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="22,31,0,15.8" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
+                    VerticalAlignment="Top"
+                    FontSize="28" Margin="20 0 0 0" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
                     />
-
-            <Label x:Name="lb_ten" 
+            <TextBlock x:Name="lb_ten"
+                TextWrapping="Wrap"  
                 Grid.Column="1" 
-                Margin="81.6,0,368,12.8"
-                Height="40"
+                Margin="0 0 0 0"
+                Height="74"
                 VerticalAlignment="Bottom"
-                FontSize="26" Grid.ColumnSpan="2"/>
+                FontSize="26"/>
             <TextBlock
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Right"
                     TextWrapping="Wrap"
                     Text="Mã: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="232.8,24,0,22.8" Foreground="#FF1DB7A4" Grid.Column="2" RenderTransformOrigin="1.574,0.357" Grid.ColumnSpan="2" Width="54"
+                    VerticalAlignment="Top"
+                    FontSize="28" Margin="0,0,10,0" Foreground="#FF1DB7A4" Grid.Column="2" Width="54"
                     />
-            <Label x:Name="lb_manv" 
-                Grid.Column="2" 
-                Margin="291.8,0,0,18.8"
-                Height="40"
+            <TextBlock x:Name="lb_manv" 
+                TextWrapping="WrapWithOverflow"   
+                Grid.Column="3" 
+                Margin="0 0 0 0"
+                Height="74"
                 VerticalAlignment="Bottom"
-                FontSize="26" Grid.ColumnSpan="2"/>
+                FontSize="26"/>
         </Grid>
-        <Grid Margin="0,80,0,320" Grid.ColumnSpan="2">
+
+        <Grid Margin="0,10,0,0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="0*"/>
-                <ColumnDefinition Width="529*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="8*"/>
             </Grid.ColumnDefinitions>
             <TextBlock
                     HorizontalAlignment="Left"
                     TextWrapping="Wrap"
                     Text="Địa chỉ: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="21,24,0,22.8" Foreground="#FF1DB7A4" Grid.ColumnSpan="2" Height="34" Width="98"
+                    VerticalAlignment="Top"
+                    FontSize="28" Margin="20 0 0 0" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
                     />
-            <Label x:Name="lb_diachi" 
+            <TextBlock x:Name="lb_diachi"
+                TextWrapping="Wrap"  
                 Grid.Column="1" 
-                Margin="79.8,0,366,18.8"
-                Height="40"
+                Margin="0 0 0 0"
+                Height="74"
                 VerticalAlignment="Bottom"
-                FontSize="26" Grid.ColumnSpan="3"
-                   />
+                FontSize="26"/>
             <TextBlock
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Right"
                     TextWrapping="Wrap"
                     Text="Gmail: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="198.8,24,0,22.8" Foreground="#FF1DB7A4" Grid.Column="2" RenderTransformOrigin="1.574,0.357" Grid.ColumnSpan="2" Width="84"
+                    VerticalAlignment="Top"
+                    FontSize="28" Margin="0,0,10,0" Foreground="#FF1DB7A4" Grid.Column="2" Width="80"
                     />
-            <Label x:Name="lb_gmail" 
-                Grid.Column="2" 
-                Margin="291.8,0,0,18.8"
-                Height="40"
+            <TextBlock x:Name="lb_gmail" 
+                TextWrapping="Wrap"   
+                Grid.Column="3" 
+                Margin="0 0 0 0"
+                Height="74"
                 VerticalAlignment="Bottom"
-                FontSize="26" Grid.ColumnSpan="2"/>
-
+                FontSize="26"/>
         </Grid>
-        <Grid Margin="0,130,0,270" Grid.ColumnSpan="2">
+        <Grid Margin="0,10,0,0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="530*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="8*"/>
             </Grid.ColumnDefinitions>
             <TextBlock
                     HorizontalAlignment="Left"
                     TextWrapping="Wrap"
                     Text="Ng. sinh: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="21,21,0,25.8" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
+                    VerticalAlignment="Top"
+                    FontSize="28" Margin="20 0 0 0" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
                     />
-            <TextBlock
-                    HorizontalAlignment="Left"
-                    TextWrapping="Wrap"
-                    Text="Ng. vào làm: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="124.079,21,0,25.8" Foreground="#FF1DB7A4" Grid.Column="2"
-                    />
-            <Label x:Name="lb_ngsinh" 
+            <TextBlock x:Name="lb_ngsinh"
+                TextWrapping="Wrap"  
                 Grid.Column="1" 
-                Margin="78.079,0,30.921,18.8"
-                Height="40"
+                Margin="0 0 0 0"
+                Height="74"
                 VerticalAlignment="Bottom"
-                FontSize="26"
-                   />
-            <Label x:Name="lb_ngvl" 
-                Grid.Column="2" 
-                Margin="291.079,0,188.521,20.8"
-                Height="40"
-                VerticalAlignment="Bottom"
-                FontSize="26"
-                   />
-        </Grid>
-        <Grid Margin="0,180,0,220" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="530*"/>
-            </Grid.ColumnDefinitions>
+                FontSize="26"/>
             <TextBlock
+                    HorizontalAlignment="Right"
+                    TextWrapping="Wrap"
+                    Text="Ng. vào làm:"
+                    VerticalAlignment="Top"
+                    FontSize="28" Margin="-15,0,10,0" Foreground="#FF1DB7A4" Grid.Column="2" Width="155"
+                    />
+            <TextBlock x:Name="lb_ngvl" 
+                TextWrapping="WrapWithOverflow"   
+                Grid.Column="3" 
+                Margin="0 0 0 0"
+                Height="74"
+                VerticalAlignment="Bottom"
+                FontSize="26"/>
+            </Grid>
+            <Grid Margin="0,10,0,0" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
                     HorizontalAlignment="Left"
                     TextWrapping="Wrap"
                     Text="CMND: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="22,21,0,25.8" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
+                    VerticalAlignment="Top"
+                    FontSize="28" Margin="20 0 0 0" Foreground="#FF1DB7A4" Grid.ColumnSpan="2"
                     />
-            <TextBlock
-                    HorizontalAlignment="Left"
-                    TextWrapping="Wrap"
-                    Text="Mật khẩu: "
-                    VerticalAlignment="Center"
-                    FontSize="28" Margin="154.6,21,0,25.8" Foreground="#FF1DB7A4" Grid.Column="2"
-                    />
-            <Label x:Name="lb_cmnd" 
+                <TextBlock x:Name="lb_cmnd"
+                TextWrapping="Wrap"  
                 Grid.Column="1" 
-                Margin="77.6,0,382,20.8"
-                Height="40"
+                Margin="0 0 0 0"
+                Height="74"
                 VerticalAlignment="Bottom"
-                FontSize="26" Grid.ColumnSpan="2"
-                   />
-            <Label x:Name="lb_mk" 
-                Grid.Column="2" 
-                Margin="290.6,0,0,20.8"
-                Height="40"
+                FontSize="26"/>
+                <TextBlock
+                    HorizontalAlignment="Right"
+                    TextWrapping="Wrap"
+                    Text="Mật Khẩu:"
+                    VerticalAlignment="Top"
+                    FontSize="28" Margin="0,0,10,0" Foreground="#FF1DB7A4" Grid.Column="2" Width="130"
+                    />
+                <TextBlock x:Name="lb_mk" 
+                TextWrapping="WrapWithOverflow"   
+                Grid.Column="3" 
+                Margin="0 0 0 0"
+                Height="74"
                 VerticalAlignment="Bottom"
-                FontSize="26"
-                   />
-        </Grid>
-        <Grid Grid.Column="1" Margin="158,284,18,121.8">
+                FontSize="26"/>
+            </Grid>
+            <Border Background="Black" Height="1"/>
+
+        <Grid Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="154*"/>
                 <ColumnDefinition Width="85*"/>
             </Grid.ColumnDefinitions>
-            <ComboBox 
-                        x:Name="cbThang" 
-                        materialDesign:HintAssist.Hint="Tháng"
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                        Margin="0, 0 ,0,0" 
-                        Width="100" 
+            <Grid Grid.Column="1" Margin="20">
+                <ComboBox 
+                            x:Name="cbThang" 
+                            materialDesign:HintAssist.Hint="Tháng"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                            Margin="0, 0 ,0,0" 
+                            Width="100" 
+                            Grid.Column="1"
+                            FontSize="20"
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top">
+                    <!--<ComboBoxItem IsSelected="True">Tất cả</ComboBoxItem>-->
+                    <ComboBoxItem>1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                    <ComboBoxItem>6</ComboBoxItem>
+                    <ComboBoxItem>7</ComboBoxItem>
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem>9</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                    <ComboBoxItem>11</ComboBoxItem>
+                    <ComboBoxItem>12</ComboBoxItem>
+                </ComboBox>
+                <ComboBox 
+                            FontSize="20"
+                            x:Name="cbNam" 
+                            materialDesign:HintAssist.Hint="Năm"
+                            Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                            Margin="0,0,20,0"
+                            Grid.Column="1"
+                            Width="100" 
+                            HorizontalAlignment="Right" 
+                            VerticalAlignment="Top" Grid.ColumnSpan="2" >
+                </ComboBox>
+                <StackPanel Margin="0 70 0 0">
+                    <Button
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Height="50"
                         FontSize="20"
-                        HorizontalAlignment="Left" 
-                        VerticalAlignment="Top" RenderTransformOrigin="0.963,-0.289">
-                <!--<ComboBoxItem IsSelected="True">Tất cả</ComboBoxItem>-->
-                <ComboBoxItem>1</ComboBoxItem>
-                <ComboBoxItem>2</ComboBoxItem>
-                <ComboBoxItem>3</ComboBoxItem>
-                <ComboBoxItem>4</ComboBoxItem>
-                <ComboBoxItem>5</ComboBoxItem>
-                <ComboBoxItem>6</ComboBoxItem>
-                <ComboBoxItem>7</ComboBoxItem>
-                <ComboBoxItem>8</ComboBoxItem>
-                <ComboBoxItem>9</ComboBoxItem>
-                <ComboBoxItem>10</ComboBoxItem>
-                <ComboBoxItem>11</ComboBoxItem>
-                <ComboBoxItem>12</ComboBoxItem>
-            </ComboBox>
-            <ComboBox 
+                        Foreground="White"
+                        ToolTip="Resource name: MaterialDesignRaisedButton" Margin="10" Grid.Column="1" Click="Thongke_Click" >
+                        THỐNG KÊ D.THU
+                    </Button>
+                    <Button
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Height="50"
                         FontSize="20"
-                        x:Name="cbNam" 
-                        materialDesign:HintAssist.Hint="Năm"
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                        Margin="0,0,20,0"
-                        Width="100" 
-                        HorizontalAlignment="Right" 
-                        VerticalAlignment="Top" Grid.ColumnSpan="2" >
-            </ComboBox>
-        </Grid>
-        <Button
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    Width="140"
-                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="119,381,141,67.8" Grid.Column="1" Click="Thongke_Click" >
-            THỐNG KÊ D.THU
-        </Button>
-        <Button
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    Width="140"
-                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="119,439,141,9.8" Grid.Column="1" Click="suaNV_Click">
-            SỬA THÔNG TIN
-        </Button>
-        <Button
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    Width="140"
-                    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="280,381,-20,67.8" Grid.Column="1" Click="XoaNV_Click">
-            XÓA NHÂN VIÊN
-        </Button>
-        <ListView HorizontalAlignment = "Center" 
-                  Height = "220" 
+                        Foreground="White"
+                        ToolTip="Resource name: MaterialDesignRaisedButton" Margin="10" Grid.Column="1" Click="suaNV_Click">
+                        SỬA THÔNG TIN
+                    </Button>
+                    <Button
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Height="50"
+                        FontSize="20"
+                        Foreground="White"
+                        ToolTip="Resource name: MaterialDesignRaisedButton" Margin="10" Grid.Column="1" Click="XoaNV_Click">
+                        XÓA NHÂN VIÊN
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <ListView HorizontalAlignment = "Center" 
+                  Grid.Column="0"
+                  Height = "300" 
                   VerticalAlignment = "Top"  
                   Width = "531" 
-                  Margin="-29,261,298,-0.2"
-                  x:Name="lvHOADON" Grid.ColumnSpan="2"
+                  Margin="20"
+                  x:Name="lvHOADON" 
                   FontSize="20">
             <ListView.View>
                 <GridView>
@@ -237,5 +255,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-    </Grid>
+        </Grid>
+    </StackPanel>
 </local:BasePage>

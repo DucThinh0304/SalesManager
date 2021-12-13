@@ -63,18 +63,18 @@ namespace SalesManager
             var reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
-                lb_manv.Content = reader[0].ToString();
-                lb_ten.Content = reader[1].ToString();
-                lb_ngsinh.Content = $"{reader.GetDateTime(2).Day}/{reader.GetDateTime(2).Month}/{reader.GetDateTime(2).Year}";
-                lb_cmnd.Content = reader[3].ToString();
-                lb_diachi.Content = reader[4].ToString();
-                lb_ngvl.Content = $"{reader.GetDateTime(5).Day}/{reader.GetDateTime(5).Month}/{reader.GetDateTime(5).Year}";
-                lb_mk.Content = reader[6].ToString();
-                lb_gmail.Content = reader[7].ToString();
+                lb_manv.Text = reader[0].ToString();
+                lb_ten.Text = reader[1].ToString();
+                lb_ngsinh.Text = $"{reader.GetDateTime(2).Day}/{reader.GetDateTime(2).Month}/{reader.GetDateTime(2).Year}";
+                lb_cmnd.Text = reader[3].ToString();
+                lb_diachi.Text = reader[4].ToString();
+                lb_ngvl.Text = $"{reader.GetDateTime(5).Day}/{reader.GetDateTime(5).Month}/{reader.GetDateTime(5).Year}";
+                lb_mk.Text = reader[6].ToString();
+                lb_gmail.Text = reader[7].ToString();
             }
             reader.Close();
             sqlConn.Close();
-            lb_mk.Content = Decrypt(lb_mk.Content.ToString());
+            lb_mk.Text = Decrypt(lb_mk.Text.ToString());
         }
 
         public static string Decrypt(string toDecrypt)

@@ -18,133 +18,135 @@
                 HorizontalAlignment="Center" 
                 FontFamily="{StaticResource MyriadBold}"
                 FontSize="36" 
-                Foreground="#000080"/>
+                Foreground="{StaticResource TitleBrush}"/>
         </Border>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="4*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Margin="20 50 20 50">
-                <Label
-                Content = "MÃ HÀNG"
+        <Border BorderThickness="1" Padding="5" Margin="30" CornerRadius="20" Background="AliceBlue">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="20 10 5 10">
+                    <Label
+                Content = "MÃ HÀNG:"
                 HorizontalAlignment = "Left"
                 FontWeight = "Bold"
-                FontSize = "20"
+                FontSize = "22"
                 Foreground = "#FF1DB7A4"
                     Margin=" 3"
                 />
-                <Label
-                Content = "MÃ LÔ"
+                    <Label
+                Content = "MÃ LÔ:"
                 HorizontalAlignment = "Left"
                 FontWeight = "Bold"
-                FontSize = "20"
+                FontSize = "22"
                 Foreground = "#FF1DB7A4"
                     Margin=" 3"
                 />
-                <Label
-                Content = "TÊN HÀNG"
+                    <Label
+                Content = "TÊN HÀNG:"
                 HorizontalAlignment = "Left"
                 FontWeight = "Bold"
-                FontSize = "20"
+                FontSize = "22"
                 Foreground = "#FF1DB7A4"
                     Margin=" 3"
                 />
-                <Label
-                Content = "NGÀY NHẬP"
+                    <Label
+                Content = "NGÀY NHẬP:"
                 HorizontalAlignment = "Left"
                 FontWeight = "Bold"
-                FontSize = "20"
+                FontSize = "22"
                 Foreground = "#FF1DB7A4"
                     Margin=" 3"
                />
-                <Label
-                Content = "HẠN SỬ DỤNG"
+                    <Label
+                Content = "HẠN SỬ DỤNG:"
                 HorizontalAlignment = "Left"
                 FontWeight = "Bold"
-                FontSize = "20"
+                FontSize = "22"
                 Foreground = "#FF1DB7A4"
                     Margin=" 3"
                 />
-                <Label
-                Content = "SỐ LƯỢNG"
+                    <Label
+                Content = "SỐ LƯỢNG:"
                 HorizontalAlignment = "Left"
                 FontWeight = "Bold"
-                FontSize = "20"
+                FontSize = "22"
                 Foreground = "#FF1DB7A4"
                     Margin=" 3"
                 />
-                <Label
-                Content = "ĐƠN VỊ TÍNH"
+                    <Label
+                Content = "ĐƠN VỊ TÍNH:"
                 HorizontalAlignment = "Left"
                 FontWeight = "Bold"
-                FontSize = "20"
+                FontSize = "22"
                 Foreground = "#FF1DB7A4"
                     Margin=" 3"
                 />
 
-                <Label
-                Content = "ĐƠN GIÁ"
+                    <Label
+                Content = "ĐƠN GIÁ:"
                 HorizontalAlignment = "Left"
                 FontWeight = "Bold"
-                FontSize = "20"
-                Foreground = "#FF1DB7A4" RenderTransformOrigin="0.478,1.561"
+                FontSize = "22"
+                Foreground = "#FF1DB7A4"
                     Margin=" 3"
                 />
-            </StackPanel>
-            <StackPanel Grid.Column="1" Margin="20 50 100 5">
-                <TextBox x:Name = "MAHG"
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="0 10 30 5">
+                    <TextBox x:Name = "MAHG"
                      IsReadOnly="True"
                      VerticalAlignment = "Top"
-                             FontSize = "20"
+                             FontSize = "22"
                          Margin=" 1"
                       />
 
-                <TextBox x:Name = "MALOO"
+                    <TextBox x:Name = "MALOO"
                      IsReadOnly="True"
                     VerticalAlignment = "Top"
-                             FontSize = "20"
+                             FontSize = "22"
                          Margin=" 1"
                   />
 
-                <TextBox x:Name = "TENHG"
+                    <TextBox x:Name = "TENHG"
                      VerticalAlignment = "Top"
-                             FontSize = "20"
+                             FontSize = "22"
                          Margin=" 1"
                 
                     />
 
-                <TextBox x:Name = "NGAY"    
+                    <TextBox x:Name = "NGAY"    
                      IsReadOnly="True"
                     VerticalAlignment = "Top"
-                        FontSize = "20"
+                        FontSize = "22"
                          Margin=" 1"
             
                     />
 
-                <DatePicker x:Name = "HAN"
+                    <DatePicker x:Name = "HAN"
                     VerticalAlignment = "Top"
-                FontSize = "20"
+                FontSize = "22"
                             Margin=" 1"
                     />
-                <TextBox x:Name = "SL"
+                    <TextBox x:Name = "SL"
                     VerticalAlignment = "Top"
-                FontSize = "20"
+                FontSize = "22"
                          Margin=" 1"
                     />
-                <ComboBox x:Name = "DONVI"
+                    <ComboBox x:Name = "DONVI"
                      IsReadOnly="True"
                     VerticalAlignment = "Top"
-               FontSize = "20"
+               FontSize = "22"
                           Margin=" 1"
                     />
-                <TextBox x:Name = "GIA"
+                    <TextBox x:Name = "GIA"
                     VerticalAlignment = "Top"
-                    FontSize = "20"
+                    FontSize = "22"
                          Margin=" 1"/>
-            </StackPanel>
-        </Grid>
-        <Grid Margin="0 200 0 0">
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid Margin="0 100 0 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>

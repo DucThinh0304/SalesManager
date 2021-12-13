@@ -67,6 +67,12 @@ namespace SalesManager
             ThongKe_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            HangDaBan_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            SuaMatKhau_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            ThongTinCuaHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            ThemLoaiHangMoi_Button.Visibility = Visibility.Collapsed;
+            ThemLoaiHangDaCo_Button.Visibility = Visibility.Collapsed;
+            ShowThemHangContent = false;
         }
         #endregion
 
@@ -124,6 +130,9 @@ namespace SalesManager
         {
             BrushConverter bc = new BrushConverter();
             ResetColor();
+            ThemLoaiHangMoi_Button.Visibility = Visibility.Visible;
+            ThemLoaiHangDaCo_Button.Visibility = Visibility.Visible;
+            ShowThemHangContent = true;
             ThemHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapHangMoi;
         }
@@ -131,6 +140,9 @@ namespace SalesManager
         {
             BrushConverter bc = new BrushConverter();
             ResetColor();
+            ThemLoaiHangMoi_Button.Visibility = Visibility.Visible;
+            ThemLoaiHangDaCo_Button.Visibility = Visibility.Visible;
+            ShowThemHangContent = true;
             ThemHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.NhapLoaiHangMoi;
         }
@@ -149,6 +161,13 @@ namespace SalesManager
             TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoHoaDon;
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.VisualOff;
+        }
+        private void HangDaBan_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            BrushConverter bc = new BrushConverter();
+            HangDaBan_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ChonThang;
         }
         #endregion
 
@@ -214,17 +233,21 @@ namespace SalesManager
         }
         private void SuaMatKhau_Click(object sender, RoutedEventArgs e)
         {
+            ResetColor();
+            BrushConverter bc = new BrushConverter();
+            SuaMatKhau_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoMaNhanVien;
+
         }
         private void ThongTinCuaHang_Click(object sender, RoutedEventArgs e)
         {
+            ResetColor();
+            BrushConverter bc = new BrushConverter();
+            ThongTinCuaHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinCuaHang;
         }
         #endregion
 
-        private void HangDaBan_Click(object sender, RoutedEventArgs e)
-        {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ChonThang;
-        }
+        
     }
 }

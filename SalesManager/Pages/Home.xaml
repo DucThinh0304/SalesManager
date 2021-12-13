@@ -274,8 +274,11 @@
             </Setter>
         </Style>
     </local:BasePage.Resources>
-
+    
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Logo/HomeScreen.png" Opacity="0.05" Stretch="Uniform" />
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="Auto"/>
@@ -293,7 +296,7 @@
                     <Run x:Name="Usr" Foreground="{StaticResource TitleBrush}" FontFamily="{StaticResource MyriadBold}" TextDecorations="Underline"></Run>
                 </TextBlock>
             </Border>
-            <Image Source="/Images/Logo/HomeScreen.png" Opacity="0.1" Height="600" Width="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Center"/>
+            
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Border Background="{StaticResource WordBlueBrush}" 

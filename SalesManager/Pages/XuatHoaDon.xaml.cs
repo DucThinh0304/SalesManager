@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Text.RegularExpressions;
+using System.Drawing;
+using System.IO;
+using Microsoft.Win32;
 namespace SalesManager
 {
     /// <summary>
@@ -26,16 +29,11 @@ namespace SalesManager
         public XuatHoaDon()
         {
             InitializeComponent();
-            ColorConverter brush = new ColorConverter();
-            RadialGradientBrush radialGradientBrush = new RadialGradientBrush();
-            radialGradientBrush.GradientStops.Add(new GradientStop((Color)brush.ConvertFrom("#99ddff"), 0.0));
-            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
-            Title.Background = radialGradientBrush;
             SoHD.Text = MaHoaDon;
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
             string MaNV = "";
-            var cmd = new SqlCommand("SELECT NGHOADON, MANV FROM HOADON WHERE MAHD = '"+MaHoaDon+"'", con);
+            var cmd = new SqlCommand("SELECT NGHOADON, MANV FROM HOADON WHERE MAHD = '" + MaHoaDon + "'", con);
             var dr = cmd.ExecuteReader();
             if (dr.Read())
             {
@@ -63,7 +61,7 @@ namespace SalesManager
                 MaLo.Add(dr.GetInt32(2));
             }
             dr.Close();
-            for (int i = 0; i<MaHang.Count; i++)
+            for (int i = 0; i < MaHang.Count; i++)
             {
                 string _TenHang = "";
                 int _DonGia = 0;
@@ -91,7 +89,7 @@ namespace SalesManager
 
         private void KhachDua_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (KhachDua.Text=="") ThoiLai.Text = Convert.ToString(0 - Convert.ToInt32(ThanhTien.Text));
+            if (KhachDua.Text == "") ThoiLai.Text = Convert.ToString(0 - Convert.ToInt32(ThanhTien.Text));
             else ThoiLai.Text = Convert.ToString(Convert.ToInt32(KhachDua.Text) - Convert.ToInt32(ThanhTien.Text));
         }
 
@@ -106,8 +104,21 @@ namespace SalesManager
                 MessageBox.Show("Vui lòng kiểm tra lại giá trị tiền khách trả", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
-                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
-                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
+                RenderTargetBitmap bmp = new RenderTargetBitmap((int)this.ActualWidth, (int)this.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+                bmp.Render(this);
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bmp));
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = MaHoaDon + ".png";
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    string filename = saveFileDialog.FileName;
+                    FileStream fs = new FileStream(filename, FileMode.Create);
+                    encoder.Save(fs);
+                    fs.Close();
+                }
+                MessageBox.Show("In hóa đơn thành công");
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoHoaDon;
             }
         }
     }
