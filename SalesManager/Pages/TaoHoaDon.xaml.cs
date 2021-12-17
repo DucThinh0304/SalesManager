@@ -274,6 +274,7 @@ namespace SalesManager
                     textSL.Text = "";
                     comMaHang.Text = "";
                     comMaLo.Text = "";
+                    TextTenHang.Content = "";
                     comMaLo.Items.Clear();
                     ThanhTien.Text = Convert.ToString(Convert.ToInt32(ThanhTien.Text) + tmp.ThanhTien);
                 }

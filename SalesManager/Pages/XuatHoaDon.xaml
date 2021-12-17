@@ -10,13 +10,6 @@
 
     <Grid>
         <Button 
-                Content="Trở về"
-                Foreground="{StaticResource ForegroundLightBrush}"
-                FontSize="20"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Width="140" Height="40" Margin="21,10,0,0" Click="TroVe_Click"/>
-        <Button 
                 Content="In hóa đơn"
                 Foreground="{StaticResource ForegroundLightBrush}"
                 FontSize="20"
