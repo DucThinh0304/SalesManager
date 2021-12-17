@@ -285,11 +285,12 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
             <Border x:Name="Title"
-                    Height="50"
+                    Height="100"
                     Margin="20 10 20 10"
                     CornerRadius="20">
                 <TextBlock x:Name="TextBlock1" 
-                       FontSize="50"
+                       FontSize="40"
+                       TextWrapping="Wrap"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center" Grid.Column="0">
                     <Run Text="Xin chào" Foreground="{StaticResource TitleBrush}" FontFamily="{StaticResource MyriadBold}"></Run>

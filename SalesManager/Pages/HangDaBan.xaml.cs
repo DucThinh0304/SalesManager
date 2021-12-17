@@ -33,7 +33,12 @@ namespace SalesManager
         }
         public HangDaBan()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            ColorConverter brush = new ColorConverter();
+            RadialGradientBrush radialGradientBrush = new RadialGradientBrush();
+            radialGradientBrush.GradientStops.Add(new GradientStop((Color)brush.ConvertFrom("#99ddff"), 0.0));
+            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
+            Title.Background = radialGradientBrush;
             LoadListBANHANG();
         }
         void LoadListBANHANG()
@@ -62,8 +67,6 @@ namespace SalesManager
         {
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ChonThang;
         }
-
-        
 
     }
 }

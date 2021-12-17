@@ -26,6 +26,7 @@ namespace SalesManager
         public ChonThang()
         {
             InitializeComponent();
+
             for (int i = 1; i <= 12; i++)
             {
                 thang.Items.Add(i);
@@ -58,6 +59,7 @@ namespace SalesManager
         private void Thoat_Click(object sender, RoutedEventArgs e)
         {
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.VisualOff;
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
         }
     }

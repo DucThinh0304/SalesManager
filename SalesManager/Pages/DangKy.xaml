@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:SalesManager"
       mc:Ignorable="d" 
       xml:lang="vi-VN"
-      d:DesignHeight="600" d:DesignWidth="900"
+      d:DesignHeight="800" d:DesignWidth="1050"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system="clr-namespace:System;assembly=mscorlib"
-                TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
@@ -16,10 +16,10 @@
        FontFamily="{DynamicResource MyriadLight}">
 
     <Grid>
-        <Border Height="500"
+        <Border Height="650"
                     Background="AliceBlue"
                     CornerRadius="10"
-                    Width="800">
+                    Width="1000">
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70*"></RowDefinition>
@@ -46,156 +46,155 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <TextBlock Text="Tên cửa hàng:"
-                               Margin="50,5,10,15"
-                               FontSize="15" 
+                               Margin="50,10,10,10"
+                               FontSize="22" 
                                Grid.Row="2"></TextBlock>
                     <TextBox
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="154,-17,266,0" 
+                        Margin="181,-17,420,0" 
                         Height="auto" 
                         VerticalAlignment="Top"
                         x:Name="TenCuaHang"
-                        FontSize="17"
+                        FontSize="22"
                         />
 
                     <TextBlock 
                              Text="Ngày thành lập:"
-                             Margin="539,5,132,15"
-                             FontSize="15"/>
+                             Margin="585,10,252,10"
+                             FontSize="22"/>
                     <DatePicker
-                                Language = "VN"
-                                Margin="650,-17,50,12"
+                                Margin="748,-10,50,12"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  
                                 x:Name="NgayThanhLap"
-                                FontSize="17" VerticalAlignment="Bottom"/>
+                                FontSize="22" VerticalAlignment="Bottom"/>
                 </Grid>
                 <Grid Grid.Row="2">
                     <TextBlock Text="Tên nhân viên quản lí:"
-                               Margin="50,5,10,15"
-                               FontSize="15" 
+                               Margin="50,10,10,10"
+                               FontSize="22" 
                                Grid.Row="2"></TextBlock>
                     <TextBox
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                        Margin="204,-17,230,0" 
+                        Margin="260,-17,373,0" 
                         Height="auto" 
                         VerticalAlignment="Top"
                         x:Name="TenQuanLi"
-                        FontSize="17"
+                        FontSize="22"
                         />
 
                     <TextBlock 
                     Text="Ngày sinh:"
-                    Margin="575,5,96,15"
-                      FontSize="15"/>
-                    <DatePicker Margin="650,-17,50,12"
+                    Margin="632,10,96,10"
+                      FontSize="22"/>
+                    <DatePicker Margin="737,-14,50,15"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  
                                 x:Name="NgaySinh"
-                                FontSize="17"/>
+                                FontSize="22"/>
                 </Grid>
                 <Grid Grid.Row="3">
 
                     <TextBlock Text="Số điện thoại:"
-                               Margin="50,5,10,15"
-                               FontSize="15" 
+                               Margin="50,10,10,10"
+                               FontSize="22" 
                                Grid.Row="2"></TextBlock>
                     <TextBox   Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                               Margin="154,-17,50,0" 
+                               Margin="184,-17,50,0" 
                                Height="auto" 
                                VerticalAlignment="Top"
                                PreviewTextInput="SDT_PreviewTextInput"
                                x:Name="SDT"
-                               FontSize="17"/>
+                               FontSize="22"/>
                 </Grid>
                 <Grid Grid.Row="4">
                     <TextBlock Text="Địa chỉ:"
-                               Margin="50,5,10,15"
-                               FontSize="15" 
+                               Margin="50,10,10,10"
+                               FontSize="22" 
                                Grid.Row="2"></TextBlock>
                     <TextBox Style="{StaticResource 
                              MaterialDesignFloatingHintTextBox}" 
-                             Margin="116,-17,50,0" 
+                             Margin="126,-17,50,0" 
                              Height="auto" VerticalAlignment="Top"
                              x:Name="DiaChi"
-                             FontSize="17"/>
+                             FontSize="22"/>
                 </Grid>
                 <Grid Grid.Row="5">
                     <TextBlock Text="Gmail:"
-                               Margin="50,5,10,15"
-                               FontSize="15" 
+                               Margin="50,10,10,10"
+                               FontSize="22" 
                                Grid.Row="2"></TextBlock>
                     <TextBox Style="{StaticResource 
                              MaterialDesignFloatingHintTextBox}" 
-                             Margin="106,-17,399,0" 
+                             Margin="120,-17,457,0" 
                              Height="auto" VerticalAlignment="Top"
                              x:Name="Gmail"
-                             FontSize="17"
+                             FontSize="22"
                              TextChanged="Gmail_TextChanged"
                              PreviewTextInput="Gmail_PreviewTextInput"/>
                     <TextBlock Text="@gmail.com"
-                               Margin="406,6,-346,14"
-                               FontSize="17"/>
+                               Margin="428,6,-368,14"
+                               FontSize="22"/>
                     <Button
                              Style="{StaticResource 
                              MaterialDesignRaisedLightButton}"
-                             Margin="514,-2,154,10" Click="Button_Click">
+                             Margin="563,6,307,10" Click="Button_Click">
                         Lấy mã xác nhận
                     </Button>
                     <TextBox x:Name="MXN"
                             materialDesign:HintAssist.Hint="Mã xác nhận"
-                            FontSize="17"
+                            FontSize="22"
                             Style="{StaticResource 
                             MaterialDesignFloatingHintTextBox}" 
-                            Margin="657,-15,50,10" />
+                            Margin="714,-15,50,10" />
                 </Grid>
                 <Grid Grid.Row="6">
                     <TextBlock Text="CMND/CCCD :"
                                Margin="50,5,10,15"
-                               FontSize="15" 
+                               FontSize="22" 
                                Grid.Row="2"></TextBlock>
                     <TextBox Style="{StaticResource 
                              MaterialDesignFloatingHintTextBox}" 
-                             Margin="162,-17,50,0" 
+                             Margin="194,-17,50,0" 
                              Height="auto" 
                              VerticalAlignment="Top"
                              x:Name="CMND"
                              PreviewTextInput="CMND_PreviewTextInput"
-                             FontSize="17"/>
+                             FontSize="22"/>
                 </Grid>
                 <Grid Grid.Row="7">
                     <TextBlock Text="Mật khẩu:"
                                Margin="50,5,10,15"
-                               FontSize="15" 
+                               FontSize="22" 
                                Grid.Row="2"></TextBlock>
-                    <PasswordBox Margin="129,-4,50,15"
-                                  FontSize="17" 
+                    <PasswordBox Margin="166,-4,50,15"
+                                  FontSize="22" 
                                  x:Name="MatKhau"/>
 
                 </Grid>
                 <Grid Grid.Row="8">
                     <TextBlock Text="Nhập lại mật khẩu:"
                                Margin="50,5,10,15"
-                               FontSize="15" 
+                               FontSize="22" 
                                Grid.Row="2"></TextBlock>
-                    <PasswordBox Margin="191,-4,50,15"
-                                  FontSize="17" 
+                    <PasswordBox Margin="242,-4,50,15"
+                                  FontSize="22" 
                                  x:Name="XNMatKhau"/>
                 </Grid>
                 <Grid Grid.Row="9">
                     <Button
                         Foreground="{StaticResource ForegroundLightBrush}"
-                        Width="100"
                         FontFamily="{StaticResource MyriadBold}"
-                        Margin="162,21,318,21"
+                        Margin="250,38,550,35"
+                        FontSize="22"
                         Click="HoanTat_Click"
                         x:Name="HoanTat">
                         Hoàn tất
                     </Button>
                     <Button
                         Foreground="{StaticResource ForegroundLightBrush}"
-                        Width="100"
                         FontFamily="{StaticResource MyriadBold}"
                         Click="Huy_Click"
-                        Margin="320,21,160,21"
+                        FontSize="22"
+                        Margin="550,38,250,35"
                         x:Name="Thoat">
                         Hủy
                     </Button>

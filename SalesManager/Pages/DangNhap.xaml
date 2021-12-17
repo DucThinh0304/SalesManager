@@ -23,10 +23,10 @@
             </Grid.ColumnDefinitions>
 
             <Image Source="/Images/Logo/icon-large.png" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Height="300"/>
-            <Border HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Height="400"
+            <Border HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.Column="1" Height="420"
                     Background="AliceBlue"
                     CornerRadius="10"
-                    Width="400">
+                    Width="420">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>

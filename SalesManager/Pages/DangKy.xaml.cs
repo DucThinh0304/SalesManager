@@ -103,8 +103,7 @@ namespace SalesManager
             else
             {
                 SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-                try
-                {
+
                     string MatKhauMaHoa = Encrypt(MatKhau.Password);
                     sqlConn.Open();
                     var sqlCommand = new SqlCommand("INSERT INTO NHANVIEN (MANV,HOTEN,NGSINH,CMND,DIACHI,NGVAOLAM,MATKHAU,GMAIL) VALUES " + "(@MANV,@HOTEN,@NGSINH,@CMND,@DIACHI,@NGVAOLAM,@MATKHAU,@GMAIL)", sqlConn);
@@ -113,13 +112,13 @@ namespace SalesManager
                     sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
                     sqlCommand.Parameters["@HOTEN"].Value = TenQuanLi.Text;
                     sqlCommand.Parameters.Add("@NGSINH", System.Data.SqlDbType.SmallDateTime);
-                    sqlCommand.Parameters["@NGSINH"].Value = NgaySinh.Text;
+                    sqlCommand.Parameters["@NGSINH"].Value = NgaySinh.SelectedDate;
                     sqlCommand.Parameters.Add("@CMND", System.Data.SqlDbType.VarChar);
                     sqlCommand.Parameters["@CMND"].Value = CMND.Text;
                     sqlCommand.Parameters.Add("@DIACHI", System.Data.SqlDbType.NVarChar);
                     sqlCommand.Parameters["@DIACHI"].Value = DiaChi.Text;
                     sqlCommand.Parameters.Add("@NGVAOLAM", System.Data.SqlDbType.SmallDateTime);
-                    sqlCommand.Parameters["@NGVAOLAM"].Value = NgayThanhLap.Text;
+                    sqlCommand.Parameters["@NGVAOLAM"].Value = NgayThanhLap.SelectedDate;
                     sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
                     sqlCommand.Parameters["@MATKHAU"].Value = MatKhauMaHoa;
                     sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
@@ -136,19 +135,14 @@ namespace SalesManager
                     sqlCommand.Parameters.Add("@MACHUCH", System.Data.SqlDbType.VarChar);
                     sqlCommand.Parameters["@MACHUCH"].Value = "NVQL";
                     sqlCommand.Parameters.Add("@NGTHANHLAP", System.Data.SqlDbType.SmallDateTime);
-                    sqlCommand.Parameters["@NGTHANHLAP"].Value = NgayThanhLap.Text;
+                    sqlCommand.Parameters["@NGTHANHLAP"].Value = NgayThanhLap.SelectedDate;
                     sqlCommand.ExecuteNonQuery();
                     sqlCommand.Dispose();
                     sqlConn.Close();
                     MessageBox.Show("Tạo tài khoản thành công.");
                     ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Lỗi kết nối dữ liệu !!!");
-                    sqlConn.Close();
-                    return;
-                }
+               
+                
 
         }
         }

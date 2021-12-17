@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SalesManager"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1200"
       Title="QuenMatKhau"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,7 +18,7 @@
         <Border Height="450"
                     Background="AliceBlue"
                     CornerRadius="10"
-                    Width="800">
+                    Width="1000">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60*"></RowDefinition>
@@ -67,18 +67,18 @@
                         Style="{StaticResource 
                         MaterialDesignFloatingHintTextBox}" 
                         FontSize="20"
-                        Margin="154,-5,444,20"
+                        Margin="154,-5,437,20"
                         x:Name="Gmail"
                         TextChanged="Gmail_TextChanged"
                         PreviewTextInput="Gmail_PreviewTextInput"/>
                     <TextBlock Text="@gmail.com"
                                FontSize="20" 
-                               VerticalAlignment="Center" Margin="361,21,187,22"
+                               VerticalAlignment="Center" Margin="446,21,187,22"
                               ></TextBlock>
                     <Button
                             Style="{StaticResource 
                              MaterialDesignRaisedLightButton}"
-                             Margin="477,18,192,17"
+                             Margin="568,18,303,17"
                              Click="Button_Click">
                         Lấy mã xác nhận
                     </Button>
@@ -88,7 +88,7 @@
                             FontSize="20"
                             Style="{StaticResource 
                             MaterialDesignFloatingHintTextBox}" 
-                            Margin="613,-4,74,20" />
+                            Margin="702,-4,90,20" />
                 </Grid>
                 <Grid Grid.Row="3">
 

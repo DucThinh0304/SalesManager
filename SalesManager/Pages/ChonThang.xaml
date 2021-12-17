@@ -5,23 +5,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SalesManager"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="800"
       Title="ChonThang">
 
     <Grid>
-        <Label 
-                 Content="VUI LÒNG CHỌN THỜI GIAN &#xD;&#xA;&#x9; ĐỂ THỐNG KÊ HÀNG ĐÃ BÁN Ở ĐÂY" 
+        <TextBlock 
+                x:Name="Title"
+                 Text="VUI LÒNG CHỌN THỜI GIAN &#xD;&#xA;&#x9; ĐỂ THỐNG KÊ HÀNG ĐÃ BÁN Ở ĐÂY" 
                 HorizontalAlignment="Center" 
                 FontFamily="{StaticResource MyriadBold}"
-                FontSize="30" 
+                FontSize="35" 
                 Foreground="{StaticResource TitleBrush}"
-                Margin="77,93,46,256.6" Width="677" RenderTransformOrigin="0.502,0.607"  
+                Margin="20 30 20 20" 
                 />
         <Label 
-                  Content="Tháng"   
-            HorizontalAlignment="Left" 
+                 Content="Tháng"   
+                 HorizontalAlignment="Left" 
                 FontWeight="Bold" 
-                FontSize="25" 
+                FontSize="30" 
                 Foreground="#FF1DB7A4"
                 Margin="159,256,0,141.6" Width="104" RenderTransformOrigin="1.065,0.462" 
                 />
@@ -29,21 +30,21 @@
                   HorizontalAlignment="Left" 
                   IsReadOnly="True"
                   VerticalAlignment = "Top"
-                  FontSize = "20"
+                  FontSize = "25"
                   Margin="271,260,0,0" RenderTransformOrigin="0.441,0.602" Width="104" 
                     />
         <Label 
                   Content="Năm"   
             HorizontalAlignment="Right" 
                 FontWeight="Bold" 
-                FontSize="25" 
+                FontSize="30" 
                 Foreground="#FF1DB7A4"
                 Margin="0,258,276,151.6" Width="104" 
                 />
         <ComboBox x:Name = "nam"
                   HorizontalAlignment="Right" 
                   VerticalAlignment = "Top"
-                  FontSize = "20"
+                  FontSize = "25"
                   Margin="0,261,169,0" RenderTransformOrigin="0.441,0.602" Width="104" 
                     />
         <Button
