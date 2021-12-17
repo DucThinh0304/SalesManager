@@ -79,6 +79,7 @@ namespace SalesManager
                     XNMatKhau.Clear();
                     sqlConn.Close();
                     MessageBox.Show("Thành công.");
+                    ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
                 }
                 else
                 {
@@ -157,6 +158,12 @@ namespace SalesManager
         {
             MXN.Clear();
             MaXacNhan = null;
+        }
+
+        private void CMND_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

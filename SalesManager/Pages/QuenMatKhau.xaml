@@ -56,7 +56,8 @@
                     <TextBox  x:Name="CMND"
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
                               FontSize="20"
-                              Margin="218,-5,90,20"/>
+                              Margin="218,-5,90,20"
+                              PreviewTextInput="CMND_PreviewTextInput"/>
                 </Grid>
                 <Grid Grid.Row="2">
                     <TextBlock Text="Gmail:"
@@ -67,19 +68,21 @@
                         Style="{StaticResource 
                         MaterialDesignFloatingHintTextBox}" 
                         FontSize="20"
-                        Margin="154,-5,437,20"
+                        Margin="154,-5,559,20"
                         x:Name="Gmail"
                         TextChanged="Gmail_TextChanged"
                         PreviewTextInput="Gmail_PreviewTextInput"/>
                     <TextBlock Text="@gmail.com"
                                FontSize="20" 
-                               VerticalAlignment="Center" Margin="446,21,187,22"
+                               VerticalAlignment="Center" Margin="449,24,184,19"
                               ></TextBlock>
                     <Button
-                            Style="{StaticResource 
-                             MaterialDesignRaisedLightButton}"
-                             Margin="568,18,303,17"
-                             Click="Button_Click">
+                        Foreground="{StaticResource ForegroundLightBrush}"
+                        FontFamily="{StaticResource MyriadBold}"
+                        Click="Button_Click"
+                        FontSize="22"
+                        Margin="566,12,224,16" RenderTransformOrigin="0.886,-0.656" Height="Auto"
+                        >
                         Lấy mã xác nhận
                     </Button>
                     <TextBox
@@ -88,7 +91,7 @@
                             FontSize="20"
                             Style="{StaticResource 
                             MaterialDesignFloatingHintTextBox}" 
-                            Margin="702,-4,90,20" />
+                            Margin="784,-4,90,20" />
                 </Grid>
                 <Grid Grid.Row="3">
 
@@ -122,7 +125,7 @@
                         FontSize="20"
                         Grid.Column="0" 
                         Click="GetPass_Click"
-                        Margin="132,10,50,19" Height="Auto">
+                        Margin="233,10,50,19" Height="Auto">
                         Tạo mật khẩu mới
                     </Button>
                     <Button
@@ -131,7 +134,7 @@
                         FontSize="20"
                         Grid.Column="1"
                         Click="Back_Click" 
-                        Margin="50,10,132,19" Height="Auto">
+                        Margin="50,10,220,19" Height="Auto">
                         Quay lại đăng nhập
                     </Button>
                 </Grid>

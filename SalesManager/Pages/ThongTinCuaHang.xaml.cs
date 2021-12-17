@@ -92,7 +92,7 @@ namespace SalesManager
                 sqlCommand.Parameters.Add("@TENCH", System.Data.SqlDbType.NVarChar);
                 sqlCommand.Parameters["@TENCH"].Value = TenCuaHang.Text;
                 sqlCommand.Parameters.Add("@NGTHANHLAP", System.Data.SqlDbType.SmallDateTime);
-                sqlCommand.Parameters["@NGTHANHLAP"].Value = NgayThanhLap.Text;
+                sqlCommand.Parameters["@NGTHANHLAP"].Value = NgayThanhLap.SelectedDate;
                 sqlCommand.ExecuteNonQuery();
                 sqlCommand.Dispose();
                 sqlConn.Close();
@@ -184,7 +184,7 @@ namespace SalesManager
                 while (read.Read())
                 {
                     TenCuaHang.Text = read[1].ToString();
-                    NgayThanhLap.Text = read[3].ToString();
+                    NgayThanhLap.SelectedDate= (DateTime)read[3];
                 }
                 read.Close();
                 sqlConn.Close();

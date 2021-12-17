@@ -52,6 +52,7 @@
                          materialDesign:HintAssist.Hint="CMND/CCCD"
                          VerticalAlignment="Center"
                          x:Name="CMND"
+                         PreviewTextInput="CMND_PreviewTextInput"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     </Grid>
                     <Grid Grid.Row="3" Margin="20,5,20,15">

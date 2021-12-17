@@ -86,7 +86,7 @@
                     Text="Ngày sinh:"
                     Margin="632,10,96,10"
                       FontSize="22"/>
-                    <DatePicker Margin="737,-14,50,15"
+                    <DatePicker Margin="749,-14,50,15"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  
                                 x:Name="NgaySinh"
                                 FontSize="22"/>
@@ -124,19 +124,23 @@
                                Grid.Row="2"></TextBlock>
                     <TextBox Style="{StaticResource 
                              MaterialDesignFloatingHintTextBox}" 
-                             Margin="120,-17,457,0" 
+                             Margin="120,-17,577,0" 
                              Height="auto" VerticalAlignment="Top"
                              x:Name="Gmail"
                              FontSize="22"
                              TextChanged="Gmail_TextChanged"
                              PreviewTextInput="Gmail_PreviewTextInput"/>
                     <TextBlock Text="@gmail.com"
-                               Margin="428,6,-368,14"
+                               Margin="431,12,-371,8"
                                FontSize="22"/>
+
                     <Button
-                             Style="{StaticResource 
-                             MaterialDesignRaisedLightButton}"
-                             Margin="563,6,307,10" Click="Button_Click">
+                        Foreground="{StaticResource ForegroundLightBrush}"
+                        FontFamily="{StaticResource MyriadBold}"
+                        Click="Button_Click"
+                        FontSize="22"
+                        Margin="569,6,226,7" RenderTransformOrigin="0.886,-0.656" Height="Auto"
+                        >
                         Lấy mã xác nhận
                     </Button>
                     <TextBox x:Name="MXN"
@@ -144,7 +148,7 @@
                             FontSize="22"
                             Style="{StaticResource 
                             MaterialDesignFloatingHintTextBox}" 
-                            Margin="714,-15,50,10" />
+                            Margin="790,-15,50,10" />
                 </Grid>
                 <Grid Grid.Row="6">
                     <TextBlock Text="CMND/CCCD :"
@@ -171,22 +175,25 @@
 
                 </Grid>
                 <Grid Grid.Row="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="187*"/>
+                    </Grid.ColumnDefinitions>
                     <TextBlock Text="Nhập lại mật khẩu:"
                                Margin="50,5,10,15"
-                               FontSize="22" 
-                               Grid.Row="2"></TextBlock>
-                    <PasswordBox Margin="242,-4,50,15"
+                               FontSize="22" Grid.ColumnSpan="2"/>
+                    <PasswordBox Margin="177,-4,50,15"
                                   FontSize="22" 
-                                 x:Name="XNMatKhau"/>
+                                 x:Name="XNMatKhau" Grid.Column="1"/>
                 </Grid>
                 <Grid Grid.Row="9">
                     <Button
                         Foreground="{StaticResource ForegroundLightBrush}"
                         FontFamily="{StaticResource MyriadBold}"
-                        Margin="250,38,550,35"
+                        Margin="283,30,553,35"
                         FontSize="22"
                         Click="HoanTat_Click"
-                        x:Name="HoanTat">
+                        x:Name="HoanTat" Height="Auto">
                         Hoàn tất
                     </Button>
                     <Button
@@ -194,8 +201,8 @@
                         FontFamily="{StaticResource MyriadBold}"
                         Click="Huy_Click"
                         FontSize="22"
-                        Margin="550,38,250,35"
-                        x:Name="Thoat">
+                        Margin="559,30,283,35"
+                        x:Name="Thoat" Height="Auto">
                         Hủy
                     </Button>
                 </Grid>

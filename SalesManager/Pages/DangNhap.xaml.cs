@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -110,7 +111,7 @@ namespace SalesManager
                     {
                         CMND.Clear();
                         MatKhau.Clear();
-                        MessageBox.Show("Đăng nhập Không thành công.");
+                        MessageBox.Show("CMND/CCCD hoặc mật khẩu của bạn chưa chính xác.");
                     }
                     reader.Close();
                 }
@@ -129,6 +130,12 @@ namespace SalesManager
         private void ForgotPassword_Click(object sender, MouseButtonEventArgs e)
         {
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.QuenMatKhau;
+        }
+
+        private void CMND_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
