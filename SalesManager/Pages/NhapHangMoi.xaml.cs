@@ -120,6 +120,7 @@ namespace SalesManager
                     comMaHang.Text = "";
                     NgayNhapHang.SelectedDate = DateTime.Now;
                     HSD.Text = "";
+                    TextTenHang.Content = "";
                     textDonGia.Text = "";
                     textSL.Text = "";
                 }
