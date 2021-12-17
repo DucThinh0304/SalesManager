@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 namespace SalesManager.Pages
 {
@@ -112,39 +113,39 @@ namespace SalesManager.Pages
                 string pass = Encrypt(tbMK.Password);
                 var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();
-                var sqlCommand = new SqlCommand("UPDATE NHANVIEN SET HOTEN = @HOTEN, NGSINH = @NGSINH, CMND = @CMND, DIACHI = @DIACHI, NGVAOLAM = @NGVAOLAM, MATKHAU = @MATKHAU, GMAIL = @GMAIL WHERE MANV = '"+manv+"'", sqlConn);
-                    MessageBoxResult reSult = MessageBox.Show("Nhân viên đã tồn tại trong hệ thống, bạn có muốn ghi đè dữ liệu đang có không?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                    if (reSult == MessageBoxResult.Yes)
-                    {
-                        sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
-                        sqlCommand.Parameters["@MANV"].Value = manv;
-                        sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
-                        sqlCommand.Parameters["@HOTEN"].Value = tbHOTEN.Text;
-                        sqlCommand.Parameters.Add("@NGSINH", System.Data.SqlDbType.SmallDateTime);
-                        sqlCommand.Parameters["@NGSINH"].Value = ngSinh.SelectedDate;
-                        sqlCommand.Parameters.Add("@CMND", System.Data.SqlDbType.VarChar);
-                        sqlCommand.Parameters["@CMND"].Value = tbCMND.Text;
-                        sqlCommand.Parameters.Add("@DIACHI", System.Data.SqlDbType.NVarChar);
-                        sqlCommand.Parameters["@DIACHI"].Value = tbDIACHI.Text;
-                        sqlCommand.Parameters.Add("@NGVAOLAM", System.Data.SqlDbType.SmallDateTime);
-                        sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.SelectedDate;
-                        sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
-                        sqlCommand.Parameters["@MATKHAU"].Value = pass;
-                        sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
-                        sqlCommand.Parameters["@GMAIL"].Value = tbGmail.Text;
-                        sqlCommand.ExecuteNonQuery();
-                        sqlCommand.Dispose();
-                        MessageBox.Show("Cập nhật dữ liệu thành công");
-                        tbHOTEN.Text = "";
-                        ngSinh.Text = "";
-                        tbCMND.Text = "";
-                        tbDIACHI.Text = "";
-                        ngVL.Text = "";
-                        tbMK.Password = "";
-                        tbGmail.Text = "";
-                        ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
-                    }
-                
+                var sqlCommand = new SqlCommand("UPDATE NHANVIEN SET HOTEN = @HOTEN, NGSINH = @NGSINH, CMND = @CMND, DIACHI = @DIACHI, NGVAOLAM = @NGVAOLAM, MATKHAU = @MATKHAU, GMAIL = @GMAIL WHERE MANV = '" + manv + "'", sqlConn);
+                MessageBoxResult reSult = MessageBox.Show("Nhân viên đã tồn tại trong hệ thống, bạn có muốn ghi đè dữ liệu đang có không?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (reSult == MessageBoxResult.Yes)
+                {
+                    sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
+                    sqlCommand.Parameters["@MANV"].Value = manv;
+                    sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@HOTEN"].Value = tbHOTEN.Text;
+                    sqlCommand.Parameters.Add("@NGSINH", System.Data.SqlDbType.SmallDateTime);
+                    sqlCommand.Parameters["@NGSINH"].Value = ngSinh.SelectedDate;
+                    sqlCommand.Parameters.Add("@CMND", System.Data.SqlDbType.VarChar);
+                    sqlCommand.Parameters["@CMND"].Value = tbCMND.Text;
+                    sqlCommand.Parameters.Add("@DIACHI", System.Data.SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@DIACHI"].Value = tbDIACHI.Text;
+                    sqlCommand.Parameters.Add("@NGVAOLAM", System.Data.SqlDbType.SmallDateTime);
+                    sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.SelectedDate;
+                    sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
+                    sqlCommand.Parameters["@MATKHAU"].Value = pass;
+                    sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
+                    sqlCommand.Parameters["@GMAIL"].Value = tbGmail.Text;
+                    sqlCommand.ExecuteNonQuery();
+                    sqlCommand.Dispose();
+                    MessageBox.Show("Cập nhật dữ liệu thành công");
+                    tbHOTEN.Text = "";
+                    ngSinh.Text = "";
+                    tbCMND.Text = "";
+                    tbDIACHI.Text = "";
+                    ngVL.Text = "";
+                    tbMK.Password = "";
+                    tbGmail.Text = "";
+                    ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
+                }
+
             }
         }
 
@@ -163,7 +164,7 @@ namespace SalesManager.Pages
             bool flag = true;
             while (reader.Read())
             {
-                if (reader[0].ToString() !=manv && reader.GetString(1) == tbCMND.Text)
+                if (reader[0].ToString() != manv && reader.GetString(1) == tbCMND.Text)
                 {
                     MessageBox.Show("Chứng minh nhân dân đã tồn tại, vui lòng nhập CMND khác!");
                     flag = false;
@@ -177,6 +178,12 @@ namespace SalesManager.Pages
                 MessageBox.Show("Chứng minh nhân dân hợp lệ!");
                 flag1 = true;
             }
+        }
+
+        private void tbCMND_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

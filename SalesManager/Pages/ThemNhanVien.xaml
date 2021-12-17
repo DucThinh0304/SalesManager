@@ -92,6 +92,7 @@
                     Height="40"
                     TextWrapping="Wrap"
                     FontSize="24" 
+                    PreviewTextInput="tbCMND_PreviewTextInput"
                     Margin="207.079,-1,0,10.6" 
                     HorizontalAlignment="Left" 
                     Width="361"/>

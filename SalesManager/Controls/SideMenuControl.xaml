@@ -54,7 +54,6 @@
                 <StackPanel Grid.Row="1" x:Name="Manager" Visibility="Hidden">
                     <TextBlock x:Name="Manager_TextBlock" Text="Chủ Cửa Hàng" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
                     <Button x:Name= "DanhSachNV_Button"  Height="50" FontSize="20"  Content="Danh Sách Nhân Viên" Click="DSNV_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
-                    <Button x:Name= "ThemSuaNV_Button"  Height="50" FontSize="20"  Content="Thêm Nhân Viên" Click="ThemNV_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                     <Button x:Name= "ThongKe_Button"  Height="50" FontSize="20"  Content="Thống Kê Doanh Thu" Click="ThongKeDT_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" x:Name="Setting" Visibility="Hidden">

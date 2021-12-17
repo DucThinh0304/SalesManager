@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 namespace SalesManager
 {
@@ -81,43 +82,43 @@ namespace SalesManager
         private void Them_Click(object sender, RoutedEventArgs e)
         {
 
-            if (tbHOTEN.Text == "" || ngSinh.Text == "" || tbCMND.Text == "" || tbDIACHI.Text == "" || ngVL.Text == "" || tbMK.Password == "" || tbRMK.Password == ""||tbGmail.Text=="") MessageBox.Show("Vui lòng nhập đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (tbHOTEN.Text == "" || ngSinh.Text == "" || tbCMND.Text == "" || tbDIACHI.Text == "" || ngVL.Text == "" || tbMK.Password == "" || tbRMK.Password == "" || tbGmail.Text == "") MessageBox.Show("Vui lòng nhập đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
             else if (tbMK.Password != tbRMK.Password) MessageBox.Show("Mật khẩu nhập lại không chính xác. Vui lòng thử lại!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
-            else if(flag2==false) MessageBox.Show("Vui lòng kiểm tra lại CMND!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+            else if (flag2 == false) MessageBox.Show("Vui lòng kiểm tra lại CMND!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
                 string pass = Encrypt(tbMK.Password);
                 var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();
                 var sqlCommand = new SqlCommand("SELECT MANV FROM NHANVIEN", sqlConn);
-                    sqlCommand.CommandText = "INSERT INTO NHANVIEN (MANV,HOTEN,NGSINH,CMND,DIACHI,NGVAOLAM,MATKHAU,GMAIL) VALUES " + "(@MANV,@HOTEN,@NGSINH,@CMND,@DIACHI,@NGVAOLAM,@MATKHAU,@GMAIL)";
-                    sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
-                    sqlCommand.Parameters["@MANV"].Value = "NV"+sonv;
-                    sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
-                    sqlCommand.Parameters["@HOTEN"].Value = tbHOTEN.Text;
-                    sqlCommand.Parameters.Add("@NGSINH", System.Data.SqlDbType.SmallDateTime);
-                    sqlCommand.Parameters["@NGSINH"].Value = ngSinh.SelectedDate;
-                    sqlCommand.Parameters.Add("@CMND", System.Data.SqlDbType.VarChar);
-                    sqlCommand.Parameters["@CMND"].Value = tbCMND.Text;
-                    sqlCommand.Parameters.Add("@DIACHI", System.Data.SqlDbType.NVarChar);
-                    sqlCommand.Parameters["@DIACHI"].Value = tbDIACHI.Text;
-                    sqlCommand.Parameters.Add("@NGVAOLAM", System.Data.SqlDbType.SmallDateTime);
-                    sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.SelectedDate;
-                    sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
-                    sqlCommand.Parameters["@MATKHAU"].Value = pass;
-                    sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
-                    sqlCommand.Parameters["@GMAIL"].Value = tbGmail.Text;
-                    sqlCommand.ExecuteNonQuery();
-                    sqlCommand.Dispose();
-                    MessageBox.Show("Thêm dữ liệu thành công");
-                    tbHOTEN.Text = "";
-                    ngSinh.Text = "";
-                    tbCMND.Text = "";
-                    tbDIACHI.Text = "";
-                    ngVL.Text = "";
-                    tbMK.Password = "";
-                    tbGmail.Text = "";
-                    ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
+                sqlCommand.CommandText = "INSERT INTO NHANVIEN (MANV,HOTEN,NGSINH,CMND,DIACHI,NGVAOLAM,MATKHAU,GMAIL) VALUES " + "(@MANV,@HOTEN,@NGSINH,@CMND,@DIACHI,@NGVAOLAM,@MATKHAU,@GMAIL)";
+                sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
+                sqlCommand.Parameters["@MANV"].Value = "NV" + sonv;
+                sqlCommand.Parameters.Add("@HOTEN", System.Data.SqlDbType.NVarChar);
+                sqlCommand.Parameters["@HOTEN"].Value = tbHOTEN.Text;
+                sqlCommand.Parameters.Add("@NGSINH", System.Data.SqlDbType.SmallDateTime);
+                sqlCommand.Parameters["@NGSINH"].Value = ngSinh.SelectedDate;
+                sqlCommand.Parameters.Add("@CMND", System.Data.SqlDbType.VarChar);
+                sqlCommand.Parameters["@CMND"].Value = tbCMND.Text;
+                sqlCommand.Parameters.Add("@DIACHI", System.Data.SqlDbType.NVarChar);
+                sqlCommand.Parameters["@DIACHI"].Value = tbDIACHI.Text;
+                sqlCommand.Parameters.Add("@NGVAOLAM", System.Data.SqlDbType.SmallDateTime);
+                sqlCommand.Parameters["@NGVAOLAM"].Value = ngVL.SelectedDate;
+                sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
+                sqlCommand.Parameters["@MATKHAU"].Value = pass;
+                sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
+                sqlCommand.Parameters["@GMAIL"].Value = tbGmail.Text;
+                sqlCommand.ExecuteNonQuery();
+                sqlCommand.Dispose();
+                MessageBox.Show("Thêm dữ liệu thành công");
+                tbHOTEN.Text = "";
+                ngSinh.Text = "";
+                tbCMND.Text = "";
+                tbDIACHI.Text = "";
+                ngVL.Text = "";
+                tbMK.Password = "";
+                tbGmail.Text = "";
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
             }
         }
 
@@ -153,5 +154,10 @@ namespace SalesManager
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
         }
 
+        private void tbCMND_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
     }
 }

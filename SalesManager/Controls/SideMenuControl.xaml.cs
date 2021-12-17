@@ -63,7 +63,6 @@ namespace SalesManager
             BrushConverter bc = new BrushConverter();
             ThemHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             DanhSachNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
-            ThemSuaNV_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThongKe_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
@@ -202,13 +201,6 @@ namespace SalesManager
             BrushConverter bc = new BrushConverter();
             DanhSachNV_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
-        }
-        private void ThemNV_Click(object sender, RoutedEventArgs e)
-        {
-            ResetColor();
-            BrushConverter bc = new BrushConverter();
-            ThemSuaNV_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThemNhanVien;
         }
         private void ThongKeDT_Click(object sender, RoutedEventArgs e)
         {

@@ -43,7 +43,7 @@ namespace SalesManager
         {
             var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             sqlConn.Open();
-            var sqlCommand = new SqlCommand("SELECT MAHD,NGHOADON,TRIGIA FROM HOADON WHERE MANV='" + manv+"'", sqlConn);
+            var sqlCommand = new SqlCommand("SELECT MAHD,NGHOADON,TRIGIA FROM HOADON WHERE MANV='" + manv + "'", sqlConn);
             var reader = sqlCommand.ExecuteReader();
             List<HOADON> items = new List<HOADON>();
             while (reader.Read())
@@ -59,7 +59,7 @@ namespace SalesManager
         {
             var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             sqlConn.Open();
-            var sqlCommand = new SqlCommand("SELECT * FROM NHANVIEN WHERE MANV= '" + manv+ "'", sqlConn);
+            var sqlCommand = new SqlCommand("SELECT * FROM NHANVIEN WHERE MANV= '" + manv + "'", sqlConn);
             var reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
@@ -110,17 +110,22 @@ namespace SalesManager
 
         private void XoaNV_Click(object sender, RoutedEventArgs e)
         {
-            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-            sqlConn.Open();
-            var sqlCommand = new SqlCommand("DELETE FROM HOADON WHERE MANV=" + manv, sqlConn);
-            sqlCommand.ExecuteNonQuery();
-            sqlCommand.Dispose();
+            if (manv == "NVQL")
+            { MessageBox.Show("Không được xóa nhân viên quản lý!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error); }
+            else
+            {
+                var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                sqlConn.Open();
+                var sqlCommand = new SqlCommand("DELETE FROM HOADON WHERE MANV='" + manv + "'", sqlConn);
+                sqlCommand.ExecuteNonQuery();
+                sqlCommand.Dispose();
 
-            sqlCommand.CommandText = "DELETE FROM NHANVIEN WHERE MANV=" + manv;
-            sqlCommand.ExecuteNonQuery();
-            sqlCommand.Dispose();
-            sqlConn.Close();
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
+                sqlCommand.CommandText = "DELETE FROM NHANVIEN WHERE MANV='" + manv + "'";
+                sqlCommand.ExecuteNonQuery();
+                sqlCommand.Dispose();
+                sqlConn.Close();
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DanhSachNhanVien;
+            }
         }
 
         void LoadListNam()
