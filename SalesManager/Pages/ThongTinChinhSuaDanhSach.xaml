@@ -27,67 +27,67 @@
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Margin="20 10 5 10">
-                    <Label
-                Content = "MÃ HÀNG:"
+                    <TextBlock
+                Text = "MÃ HÀNG:"
                 HorizontalAlignment = "Left"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "22"
                 Foreground = "#FF1DB7A4"
-                    Margin=" 3"
+                    Margin="3,15,0,5" Height="25"
                 />
-                    <Label
-                Content = "MÃ LÔ:"
+                    <TextBlock
+                Text = "MÃ LÔ:"
                 HorizontalAlignment = "Left"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "22"
                 Foreground = "#FF1DB7A4"
-                    Margin=" 3"
+                    Margin="3,8,0,8" Height="23"
                 />
-                    <Label
-                Content = "TÊN HÀNG:"
+                    <TextBlock
+                Text = "TÊN HÀNG:"
                 HorizontalAlignment = "Left"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "22"
                 Foreground = "#FF1DB7A4"
-                    Margin=" 3"
+                    Margin=" 3 8 0 5"
                 />
-                    <Label
-                Content = "NGÀY NHẬP:"
+                    <TextBlock
+                Text = "NGÀY NHẬP:"
                 HorizontalAlignment = "Left"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "22"
                 Foreground = "#FF1DB7A4"
-                    Margin=" 3"
+                    Margin=" 3 8 0 8"
                />
-                    <Label
-                Content = "HẠN SỬ DỤNG:"
+                    <TextBlock
+                Text = "HẠN SỬ DỤNG:"
                 HorizontalAlignment = "Left"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "22"
                 Foreground = "#FF1DB7A4"
-                    Margin=" 3"
+                    Margin="3,8,0,5" Height="25"
                 />
-                    <Label
-                Content = "SỐ LƯỢNG:"
+                    <TextBlock
+                Text = "SỐ LƯỢNG:"
                 HorizontalAlignment = "Left"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "22"
                 Foreground = "#FF1DB7A4"
-                    Margin=" 3"
+                    Margin=" 3 8"
                 />
-                    <Label
-                Content = "ĐƠN VỊ TÍNH:"
+                    <TextBlock
+                Text = "ĐƠN VỊ TÍNH:"
                 HorizontalAlignment = "Left"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "22"
                 Foreground = "#FF1DB7A4"
-                    Margin=" 3"
+                    Margin=" 3 8"
                 />
 
-                    <Label
-                Content = "ĐƠN GIÁ:"
+                    <TextBlock
+                Text = "ĐƠN GIÁ:"
                 HorizontalAlignment = "Left"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "22"
                 Foreground = "#FF1DB7A4"
                     Margin=" 3"
@@ -142,7 +142,7 @@
                     <TextBox x:Name = "GIA"
                     VerticalAlignment = "Top"
                     FontSize = "22"
-                         Margin=" 1"/>
+                         Margin=" 1" GotFocus="GIA_GotFocus" LostFocus="GIA_LostFocus"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -155,7 +155,7 @@
             <Button
                 Content = "LƯU" Grid.Column="0"
                 HorizontalAlignment = "Center"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "20"
                 Foreground = "White"
                  Width = "200" Click = "suathongtin" />
@@ -163,14 +163,14 @@
             <Button
                 Content = "TRỞ LẠI" Grid.Column="1"
                 HorizontalAlignment = "Center"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "20"
                 Foreground = "White"
                  Click = "trolai" Width="200" />
             <Button
                 Content = "XÓA" Grid.Column="2"
                 HorizontalAlignment = "Center"
-                FontWeight = "Bold"
+                FontFamily="{StaticResource MyriadBold}"
                 FontSize = "20"
                 Foreground = "White"
                  Width = "200" Click = "xoathongtin" />

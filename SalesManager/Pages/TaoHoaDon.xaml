@@ -135,14 +135,14 @@
                     Width="140" Height="40" Margin="0,10" Click="Xoa_Click"/>
 
             </Grid>
-            <ListView x:Name="HangMua" Height="317" HorizontalAlignment="Center" FontSize="16"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="1100">
+            <ListView x:Name="HangMua" Height="317" HorizontalAlignment="Center" FontSize="20"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="1100">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT}" Width="100"/>
                         <GridViewColumn Header="Tên hàng" DisplayMemberBinding="{Binding TenHang}" Width="400"/>
                         <GridViewColumn Header="SL" DisplayMemberBinding="{Binding SoLuong}" Width="150"/>
-                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding DonGia}" Width="200"/>
-                        <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding ThanhTien}" Width="200"/>
+                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding DonGia,StringFormat='#,##0'}" Width="200"/>
+                        <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding ThanhTien,StringFormat='#,##0'}" Width="200"/>
                     </GridView>
                 </ListView.View>
             </ListView>

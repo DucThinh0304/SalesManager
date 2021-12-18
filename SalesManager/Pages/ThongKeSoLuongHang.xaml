@@ -88,8 +88,8 @@
                         <GridViewColumn Header = "Tên Hàng" DisplayMemberBinding = "{Binding TENHANG}" Width = "290"></GridViewColumn>
                         <GridViewColumn Header = "Số Lượng" DisplayMemberBinding = "{Binding SOLUONG}" Width = "100"></GridViewColumn>
                         <GridViewColumn Header = "HSD" DisplayMemberBinding = "{Binding HSD}" Width = "110"></GridViewColumn>
-                        <GridViewColumn Header = "Giá" DisplayMemberBinding = "{Binding GIA}" Width = "125"></GridViewColumn>
-                        <GridViewColumn Header = "Tổng Giá" DisplayMemberBinding = "{Binding TONGGIA}" Width = "135"></GridViewColumn>
+                        <GridViewColumn Header = "Giá" DisplayMemberBinding = "{Binding GIA, StringFormat='#,##0'}" Width = "125"></GridViewColumn>
+                        <GridViewColumn Header = "Tổng Giá" DisplayMemberBinding = "{Binding TONGGIA, StringFormat='#,##0'}" Width = "135"></GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

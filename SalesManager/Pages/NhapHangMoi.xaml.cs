@@ -23,6 +23,7 @@ namespace SalesManager
     public partial class NhapHangMoi : BasePage
     {
         public static string MaNV, CMND;
+        string valueDonGia;
         public NhapHangMoi()
         {
             InitializeComponent();
@@ -61,7 +62,7 @@ namespace SalesManager
 
         private void Check_DonGia(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+.,");
+            Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
@@ -71,7 +72,7 @@ namespace SalesManager
                 MessageBox.Show("Vui lòng nhập đủ thông tin", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else if (HSD.SelectedDate < NgayNhapHang.SelectedDate) MessageBox.Show("Hạn sử dụng phải lớn hơn ngày nhập", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else if (Convert.ToInt32(textSL.Text) == 0) MessageBox.Show("Số lượng hàng nhập phải lớn hơn 0", "", MessageBoxButton.OK, MessageBoxImage.Error);
-            else if (Convert.ToInt32(textDonGia.Text) <= 100) MessageBox.Show("Giá mặt hàng phải lớn hơn 100 đồng", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            else if (Convert.ToInt64(valueDonGia) <= 100) MessageBox.Show("Giá mặt hàng phải lớn hơn 100 đồng", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
                 var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -111,7 +112,7 @@ namespace SalesManager
                     sqlCommand.Parameters.Add("@SOLUONG", System.Data.SqlDbType.Int);
                     sqlCommand.Parameters["@SOLUONG"].Value = Convert.ToInt32(textSL.Text);
                     sqlCommand.Parameters.Add("@DONGIA", System.Data.SqlDbType.Money);
-                    sqlCommand.Parameters["@DONGIA"].Value = Convert.ToInt32(textDonGia.Text);
+                    sqlCommand.Parameters["@DONGIA"].Value = Convert.ToInt32(valueDonGia);
                     sqlCommand.Parameters.Add("@MANV", System.Data.SqlDbType.VarChar);
                     sqlCommand.Parameters["@MANV"].Value = MaNV;
                     sqlCommand.ExecuteNonQuery();
@@ -155,6 +156,28 @@ namespace SalesManager
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void textDonGia_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                textDonGia.MaxLength = 13;
+                valueDonGia = textDonGia.Text;
+                textDonGia.Text = string.Format("{0:#,##0}" + " VND", double.Parse(textDonGia.Text));
+            }
+            catch
+            {
+                textDonGia.MaxLength = 7;
+                valueDonGia = "";
+                textDonGia.Text = "";
+            }
+        }
+
+        private void textDonGia_GotFocus(object sender, RoutedEventArgs e)
+        {
+            textDonGia.MaxLength = 7;
+            textDonGia.Text = valueDonGia;
         }
 
         private void TroVe_Click(object sender, RoutedEventArgs e)

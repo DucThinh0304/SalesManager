@@ -25,6 +25,7 @@ namespace SalesManager
     {       
         public static string mahang = "";
         public static int malo;
+        string value;
         public ThongTinChinhSuaDanhSach()
         {
             
@@ -66,6 +67,8 @@ namespace SalesManager
             DONVI.Items.Add("Kg");
             DONVI.Items.Add("Lốc");
             DONVI.Items.Add("Chục");
+            value = GIA.Text;
+            GIA.Text = string.Format("{0:#,##0}" + " VND", double.Parse(GIA.Text));
         }
         private void trolai(object sender, RoutedEventArgs e)
         {
@@ -128,12 +131,36 @@ namespace SalesManager
 
                 cmd = new SqlCommand("UPDATE NHAPHANG SET DONGIA = @DONGIA WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
                 cmd.Parameters.Add("@DONGIA", System.Data.SqlDbType.Money);
-                cmd.Parameters["@DONGIA"].Value = Convert.ToInt32(GIA.Text);
+                cmd.Parameters["@DONGIA"].Value = Convert.ToInt32(value);
+                dr = cmd.ExecuteReader();
                 dr.Close();
+                
 
                 con.Close();
                 MessageBox.Show("Sửa thông tin thành công!");
                 ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeSoLuongHang;
+            }
+        }
+
+        private void GIA_GotFocus(object sender, RoutedEventArgs e)
+        {
+            GIA.MaxLength = 7;
+            GIA.Text = value;
+        }
+
+        private void GIA_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                GIA.MaxLength = 13;
+                value = GIA.Text;
+                GIA.Text = string.Format("{0:#,##0}" + " VND", double.Parse(GIA.Text));
+            }
+            catch
+            {
+                GIA.MaxLength = 7;
+                value = "";
+                GIA.Text = "";
             }
         }
     }

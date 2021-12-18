@@ -26,6 +26,8 @@ namespace SalesManager
     public partial class XuatHoaDon : BasePage
     {
         public static string MaHoaDon;
+        string valueKhachDua;
+        long sum = 0;
         public XuatHoaDon()
         {
             InitializeComponent();
@@ -76,9 +78,8 @@ namespace SalesManager
                 HangMua.Items.Add(new TaoHoaDon.MatHang() { TenHang = _TenHang, DonGia = _DonGia, STT = HangMua.Items.Count + 1, SoLuong = SoLuong[i], ThanhTien = SoLuong[i] * _DonGia });
                 dr.Close();
             }
-            long sum = 0;
             for (int i = 0; i < TongTien.Count; i++) sum += TongTien[i];
-            ThanhTien.Text = Convert.ToString(sum);
+            ThanhTien.Text = string.Format("{0:#,##0}" + " VND", double.Parse(sum.ToString()));
         }
 
         private void KhachDua_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -89,8 +90,12 @@ namespace SalesManager
 
         private void KhachDua_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (KhachDua.Text == "") ThoiLai.Text = Convert.ToString(0 - Convert.ToInt32(ThanhTien.Text));
-            else ThoiLai.Text = Convert.ToString(Convert.ToInt32(KhachDua.Text) - Convert.ToInt32(ThanhTien.Text));
+            if (KhachDua.Text.Contains("VND") == false)
+            {
+                valueKhachDua = KhachDua.Text;
+                if (KhachDua.Text == "") ThoiLai.Text = string.Format("{0:#,##0}" + " VND", double.Parse(Convert.ToString(0 - sum)));
+                else ThoiLai.Text = string.Format("{0:#,##0}" + " VND", double.Parse(Convert.ToString(Convert.ToInt32(valueKhachDua) - sum)));
+            }
         }
 
         private void TroVe_Click(object sender, RoutedEventArgs e)
@@ -100,10 +105,12 @@ namespace SalesManager
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (KhachDua.Text == "" || Convert.ToInt32(ThoiLai.Text) < 0)
+            
+            if (KhachDua.Text == "" || ThoiLai.Text.Contains("-") == true )
                 MessageBox.Show("Vui lòng kiểm tra lại giá trị tiền khách trả", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
+                InHoaDon_Button.Visibility = Visibility.Hidden;
                 RenderTargetBitmap bmp = new RenderTargetBitmap((int)this.ActualWidth, (int)this.ActualHeight, 96, 96, PixelFormats.Pbgra32);
                 bmp.Render(this);
                 PngBitmapEncoder encoder = new PngBitmapEncoder();
@@ -119,6 +126,28 @@ namespace SalesManager
                 }
                 MessageBox.Show("In hóa đơn thành công");
                 ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoHoaDon;
+            }
+        }
+
+        private void KhachDua_GotFocus(object sender, RoutedEventArgs e)
+        {
+            KhachDua.MaxLength = 8;
+            KhachDua.Text = valueKhachDua;
+        }
+
+        private void KhachDua_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                KhachDua.MaxLength = 14;
+                valueKhachDua = KhachDua.Text;
+                KhachDua.Text = string.Format("{0:#,##0}" + " VND", double.Parse(KhachDua.Text));
+            }
+            catch
+            {
+                KhachDua.MaxLength = 9;
+                valueKhachDua = "";
+                KhachDua.Text = "";
             }
         }
     }

@@ -144,7 +144,7 @@ namespace SalesManager
                 {
                     Sum += item.TONGGIA;
                 }
-                TongTien_TextBlock.Text = Sum.ToString();
+                TongTien_TextBlock.Text = string.Format("{0:#,##0}", double.Parse(Sum.ToString())); 
                 reader.Close();
                 sqlConn.Close();
             }

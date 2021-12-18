@@ -116,7 +116,14 @@ namespace SalesManager
             string ML = Convert.ToString(list[i].MaLo);
             var sqlCommand = new SqlCommand("UPDATE NHAPHANG SET SOLUONG = SOLUONG  + " + SL + " WHERE MALO = " + ML + " AND MAHANG = '" + MH + "'", sqlConn);
             sqlCommand.ExecuteNonQuery();
-            ThanhTien.Text = Convert.ToString(Convert.ToInt32(ThanhTien.Text) - list[i].ThanhTien);
+            string a = ThanhTien.Text;
+            string b = string.Empty;
+            for (int j = 0; j < a.Length; j++)
+            {
+                if (Char.IsDigit(a[j]))
+                    b += a[j];
+            }
+            ThanhTien.Text = string.Format("{0:#,##0}" + " VND", double.Parse(Convert.ToString(Convert.ToInt32(b) - list[i].ThanhTien)));
             list.RemoveAt(i);
             for (i = 0; i < list.Count; i++) 
             {
@@ -153,7 +160,13 @@ namespace SalesManager
             if (ThanhTien.Text == "0") MessageBox.Show("Không thể tạo hóa đơn rỗng", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
-
+                string a = ThanhTien.Text;
+                string b = string.Empty;
+                for (int i = 0; i < a.Length; i++)
+                {
+                    if (Char.IsDigit(a[i]))
+                        b += a[i];
+                }
                 string MaHD = "HD";
                 MaHD += DateTime.Now.Day.ToString();
                 MaHD += DateTime.Now.Month.ToString();
@@ -176,7 +189,7 @@ namespace SalesManager
                 sqlCommand.CommandText = "INSERT INTO HOADON VALUES ('" +
                                           MaHD + "',@NGHOADON,'" +
                                           MaNV + "'," +
-                                          ThanhTien.Text + ")";
+                                          b + ")";
                 sqlCommand.Parameters.Add("@NGHOADON", System.Data.SqlDbType.SmallDateTime);
                 sqlCommand.Parameters["@NGHOADON"].Value = NgayHD;
                 sqlCommand.ExecuteNonQuery();
@@ -276,7 +289,14 @@ namespace SalesManager
                     comMaLo.Text = "";
                     TextTenHang.Content = "";
                     comMaLo.Items.Clear();
-                    ThanhTien.Text = Convert.ToString(Convert.ToInt32(ThanhTien.Text) + tmp.ThanhTien);
+                    string a = ThanhTien.Text;
+                    string b = string.Empty;
+                    for (int i = 0; i < a.Length; i++)
+                    {
+                        if (Char.IsDigit(a[i]))
+                            b += a[i];
+                    }
+                    ThanhTien.Text = string.Format("{0:#,##0}" + " VND", double.Parse(Convert.ToString(Convert.ToInt32(b) + tmp.ThanhTien)));
                 }
             }
         }

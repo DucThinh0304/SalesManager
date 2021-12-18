@@ -102,6 +102,13 @@ namespace SalesManager
         private void Staff_Click(object sender, RoutedEventArgs e)
         {
             ResetColor();
+            Staff_Button.Foreground = Brushes.DarkSlateBlue;
+            Staff_Button.FontSize = 50;
+            Manager_Button.Foreground = Brushes.White;
+            Manager_Button.FontSize = 30;
+            BrushConverter brush = new BrushConverter();
+            Setting_Button.Foreground = (Brush)brush.ConvertFrom("#0c6991");
+            Setting_Button.FontSize = 30;
             this.Staff.Visibility = Visibility.Visible;
             this.Manager.Visibility = Visibility.Hidden;
             this.Setting.Visibility = Visibility.Hidden;
@@ -188,6 +195,13 @@ namespace SalesManager
             }
             else
             {
+                Manager_Button.Foreground = Brushes.DarkSlateBlue;
+                Manager_Button.FontSize = 50;
+                Staff_Button.Foreground = Brushes.White;
+                Staff_Button.FontSize = 30;
+                BrushConverter brush = new BrushConverter();
+                Setting_Button.Foreground = (Brush)brush.ConvertFrom("#0c6991");
+                Setting_Button.FontSize = 30;
                 ResetColor();
                 this.Manager.Visibility = Visibility.Visible;
                 this.Staff.Visibility = Visibility.Hidden;
@@ -214,9 +228,18 @@ namespace SalesManager
         #region Setting Component
         private void Setting_Click(object sender, RoutedEventArgs e)
         {
+            ResetColor();
+            Manager_Button.Foreground = Brushes.White;
+            Manager_Button.FontSize = 30;
+            Staff_Button.Foreground = Brushes.White;
+            Staff_Button.FontSize = 30;
+            BrushConverter brush = new BrushConverter();
+            Setting_Button.Foreground = (Brush)brush.ConvertFrom("#024a69");
+            Setting_Button.FontSize = 75;
             this.Staff.Visibility = Visibility.Hidden;
             this.Manager.Visibility = Visibility.Hidden;
             this.Setting.Visibility = Visibility.Visible;
+
         }
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
@@ -229,7 +252,6 @@ namespace SalesManager
             BrushConverter bc = new BrushConverter();
             SuaMatKhau_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.TaoMaNhanVien;
-
         }
         private void ThongTinCuaHang_Click(object sender, RoutedEventArgs e)
         {
@@ -240,6 +262,6 @@ namespace SalesManager
         }
         #endregion
 
-        
     }
 }
+

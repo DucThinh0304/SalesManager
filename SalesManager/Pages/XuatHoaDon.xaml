@@ -8,9 +8,11 @@
       d:DesignHeight="450" d:DesignWidth="900"
       Title="XuatHoaDon">
 
+    <Border Background="White">
     <Grid>
         <Button 
                 Content="In hóa đơn"
+                x:Name="InHoaDon_Button"
                 Foreground="{StaticResource ForegroundLightBrush}"
                 FontSize="20"
                 HorizontalAlignment="Right"
@@ -89,14 +91,14 @@
                     FontSize="20" Height="24" Margin="0,5,0,5" Width="200" Grid.ColumnSpan="1"/>
 
             </Grid>
-            <ListView x:Name="HangMua" Height="204" HorizontalAlignment="Center" FontSize="16" Margin="46,0" VerticalAlignment="Top" VerticalContentAlignment="Center">
+            <ListView x:Name="HangMua" Height="204" HorizontalAlignment="Center" FontSize="20" Margin="46,0" VerticalAlignment="Top" VerticalContentAlignment="Center">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT}" Width="100"/>
                         <GridViewColumn Header="Tên hàng" DisplayMemberBinding="{Binding TenHang}" Width="250"/>
                         <GridViewColumn Header="SL" DisplayMemberBinding="{Binding SoLuong}" Width="100"/>
-                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding DonGia}" Width="170"/>
-                        <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding ThanhTien}" Width="170"/>
+                        <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding DonGia,StringFormat='#,##0'}" Width="170"/>
+                        <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding ThanhTien, StringFormat='#,##0'}" Width="170"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -141,6 +143,8 @@
                     Grid.Column="2"
                     TextWrapping="Wrap"
                     Text=""
+                    GotFocus="KhachDua_GotFocus"
+                    LostFocus="KhachDua_LostFocus"
                     VerticalAlignment="Center"
                     FontSize="20" Height="32" Margin="34.2,0,0,8" Width="188" PreviewTextInput="KhachDua_PreviewTextInput" Grid.ColumnSpan="2" TextChanged="KhachDua_TextChanged"/>
             </Grid>
@@ -167,4 +171,5 @@
             </Grid>
         </StackPanel>
     </Grid>
+    </Border>
 </local:BasePage>

@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SalesManager"
       mc:Ignorable="d" 
+      xml:lang="vi-VN"
       d:DesignHeight="800" d:DesignWidth="1200"
       Title="NhapHangMoi">
 
@@ -129,6 +130,7 @@
                 <TextBox x:Name="textSL" 
                     Grid.ColumnSpan="2"
                     Grid.Column="2"
+                    MaxLength="4"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Height="39"
@@ -148,6 +150,7 @@
                     Grid.Column="1"
                     TextWrapping="Wrap"
                     Text="Đơn giá"
+                    
                     VerticalAlignment="Center"
                     FontSize="24" Margin="23.6,14,0,14.6" Foreground="#FF1DB7A4"
                     />
@@ -159,7 +162,8 @@
                     Height="39"
                     TextWrapping="Wrap"
                     FontSize="24"
-                    Width="520" Margin="0,4,0,14.6" PreviewTextInput="Check_DonGia"/>
+                    MaxLength="9"
+                    Width="520" Margin="0,4,0,14.6" PreviewTextInput="Check_DonGia" LostFocus="textDonGia_LostFocus" GotFocus="textDonGia_GotFocus"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
