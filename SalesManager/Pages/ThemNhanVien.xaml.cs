@@ -83,6 +83,7 @@ namespace SalesManager
         {
 
             if (tbHOTEN.Text == "" || ngSinh.Text == "" || tbCMND.Text == "" || tbDIACHI.Text == "" || ngVL.Text == "" || tbMK.Password == "" || tbRMK.Password == "" || tbGmail.Text == "") MessageBox.Show("Vui lòng nhập đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+            else if (ngVL.SelectedDate < ngSinh.SelectedDate) MessageBox.Show("Ngày sinh phải nhỏ hơn ngày vào làm", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else if (tbMK.Password != tbRMK.Password) MessageBox.Show("Mật khẩu nhập lại không chính xác. Vui lòng thử lại!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
             else if (flag2 == false) MessageBox.Show("Vui lòng kiểm tra lại CMND!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
             else

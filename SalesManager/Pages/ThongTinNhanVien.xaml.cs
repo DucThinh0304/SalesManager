@@ -113,6 +113,7 @@ namespace SalesManager
             if (manv == "NVQL")
             { MessageBox.Show("Không được xóa nhân viên quản lý!", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error); }
             else
+            if (MessageBox.Show("Bạn có chắc muốn xóa nhân viên này???", "CÂU HỎI", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();

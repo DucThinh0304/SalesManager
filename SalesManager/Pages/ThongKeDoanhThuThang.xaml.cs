@@ -114,7 +114,7 @@ namespace SalesManager.Pages
         {
             var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             sqlConn.Open();
-            var sqlCommand = new SqlCommand("SELECT TRIGIA FROM HOADON WHERE YEAR(NGHOADON)=2021", sqlConn);
+            var sqlCommand = new SqlCommand("SELECT TRIGIA FROM HOADON WHERE YEAR(NGHOADON)=2021 AND MONTH(NGHOADON)='"+thang+"'", sqlConn);
             var reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
