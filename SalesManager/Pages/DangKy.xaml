@@ -169,7 +169,7 @@
                                Margin="50,5,10,15"
                                FontSize="22" 
                                Grid.Row="2"></TextBlock>
-                    <PasswordBox Margin="166,-4,50,15"
+                    <PasswordBox Margin="166,0,50,15"
                                   FontSize="22" 
                                  x:Name="MatKhau"/>
 
@@ -182,7 +182,7 @@
                     <TextBlock Text="Nhập lại mật khẩu:"
                                Margin="50,5,10,15"
                                FontSize="22" Grid.ColumnSpan="2"/>
-                    <PasswordBox Margin="177,-4,50,15"
+                    <PasswordBox Margin="177,0,50,15"
                                   FontSize="22" 
                                  x:Name="XNMatKhau" Grid.Column="1"/>
                 </Grid>

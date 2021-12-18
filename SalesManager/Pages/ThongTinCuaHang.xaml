@@ -45,7 +45,7 @@
                     Height="40"
                     TextWrapping="Wrap"
                     FontSize="24"
-                    IsEnabled="False" Margin="0,9,50,9" />
+                    IsEnabled="False" Margin="0,4,50,9" />
             </Grid>
             <Grid Height="58">
                 <Grid.ColumnDefinitions>

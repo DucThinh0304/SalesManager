@@ -103,7 +103,8 @@ namespace SalesManager
             else
             {
                 SqlConnection sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-
+                try
+                {
                     string MatKhauMaHoa = Encrypt(MatKhau.Password);
                     sqlConn.Open();
                     var sqlCommand = new SqlCommand("INSERT INTO NHANVIEN (MANV,HOTEN,NGSINH,CMND,DIACHI,NGVAOLAM,MATKHAU,GMAIL) VALUES " + "(@MANV,@HOTEN,@NGSINH,@CMND,@DIACHI,@NGVAOLAM,@MATKHAU,@GMAIL)", sqlConn);
@@ -122,7 +123,7 @@ namespace SalesManager
                     sqlCommand.Parameters.Add("@MATKHAU", System.Data.SqlDbType.NVarChar);
                     sqlCommand.Parameters["@MATKHAU"].Value = MatKhauMaHoa;
                     sqlCommand.Parameters.Add("@GMAIL", System.Data.SqlDbType.VarChar);
-                    sqlCommand.Parameters["@GMAIL"].Value = Gmail.Text+"@gmail.com";
+                    sqlCommand.Parameters["@GMAIL"].Value = Gmail.Text + "@gmail.com";
                     sqlCommand.ExecuteNonQuery();
                     sqlCommand.Dispose();
                     sqlConn.Close();
@@ -141,10 +142,14 @@ namespace SalesManager
                     sqlConn.Close();
                     MessageBox.Show("Tạo tài khoản thành công.");
                     ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.DangNhap;
-               
-                
-
-        }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi kết nối dữ liệu!!!");
+                    sqlConn.Close();
+                    return;
+                }
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
