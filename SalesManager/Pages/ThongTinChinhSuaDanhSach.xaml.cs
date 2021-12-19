@@ -122,12 +122,9 @@ namespace SalesManager
                 cmd = new SqlCommand("UPDATE LOAIHANG SET DVT = @DVT WHERE MAHANG='" + mahang + "'", con);
                 cmd.Parameters.Add("@DVT", System.Data.SqlDbType.NVarChar);
                 cmd.Parameters["@DVT"].Value = DONVI.Text;
+                dr = cmd.ExecuteReader();
                 dr.Close();
 
-                cmd = new SqlCommand("UPDATE NHAPHANG SET SOLUONG = @SOLUONG WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
-                cmd.Parameters.Add("@SOLUONG", System.Data.SqlDbType.Int);
-                cmd.Parameters["@SOLUONG"].Value = Convert.ToInt32(SL.Text);
-                dr.Close();
 
                 cmd = new SqlCommand("UPDATE NHAPHANG SET DONGIA = @DONGIA WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
                 cmd.Parameters.Add("@DONGIA", System.Data.SqlDbType.Money);

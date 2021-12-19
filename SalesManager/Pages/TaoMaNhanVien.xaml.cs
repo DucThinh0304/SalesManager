@@ -42,7 +42,7 @@ namespace SalesManager
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongTinNhanVien;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
         }
         public static string Encrypt(string toEncrypt)
         {

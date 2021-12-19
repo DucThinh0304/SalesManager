@@ -129,6 +129,7 @@
                             Margin=" 1"
                     />
                     <TextBox x:Name = "SL"
+                             IsReadOnly="True"
                     VerticalAlignment = "Top"
                 FontSize = "22"
                          Margin=" 1"
