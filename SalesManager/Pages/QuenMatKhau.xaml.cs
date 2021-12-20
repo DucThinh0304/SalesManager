@@ -135,14 +135,14 @@ namespace SalesManager
             }
             Random Ran = new Random();
             MaXacNhan = Ran.Next(100000, 999999).ToString();
-            MailMessage Mess = new MailMessage("bihubihu2002@gmail.com", Gmail.Text + "@gmail.com", "[QUẢN LÍ BÁN HÀNG]", "Mã xác nhận: " + MaXacNhan);
+            MailMessage Mess = new MailMessage("quanlibanhangnhom5@gmail.com", Gmail.Text + "@gmail.com", "[QUẢN LÍ BÁN HÀNG]", "Mã xác nhận: " + MaXacNhan);
             Mess.BodyEncoding = System.Text.Encoding.UTF8;
             Mess.SubjectEncoding = System.Text.Encoding.UTF8;
             Mess.IsBodyHtml = true;
-            Mess.Sender = new MailAddress("bihubihu2002@gmail.com", "QUANLIBANHANG");
+            Mess.Sender = new MailAddress("quanlibanhangnhom5@gmail.com", "QUANLIBANHANG");
             SmtpClient Client = new SmtpClient("smtp.gmail.com", 587);
             Client.EnableSsl = true;
-            Client.Credentials = new NetworkCredential("bihubihu2002@gmail.com", "dungcomadua2");
+            Client.Credentials = new NetworkCredential("quanlibanhangnhom5@gmail.com", "Quanlibanhangnhom5*");
             try
             {
                 Client.Send(Mess);
