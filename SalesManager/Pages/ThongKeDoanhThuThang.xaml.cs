@@ -37,11 +37,6 @@ namespace SalesManager.Pages
         public ThongKeDoanhThuThang()
         {
             InitializeComponent();
-            ColorConverter brush = new ColorConverter();
-            RadialGradientBrush radialGradientBrush = new RadialGradientBrush();
-            radialGradientBrush.GradientStops.Add(new GradientStop((Color)brush.ConvertFrom("#99ddff"), 0.0));
-            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
-            Title.Background = radialGradientBrush;
             DataContext = this;
             loadDTThang();
             tb_Title.Text = "THỐNG KÊ DOANH THU THÁNG " + thang + " NĂM " + nam;

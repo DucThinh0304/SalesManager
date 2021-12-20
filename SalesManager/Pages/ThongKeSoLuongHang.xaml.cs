@@ -29,11 +29,6 @@ namespace SalesManager
         public ThongKeSoLuongHang()
         {
             InitializeComponent();
-            ColorConverter brush = new ColorConverter();
-            RadialGradientBrush radialGradientBrush = new RadialGradientBrush();
-            radialGradientBrush.GradientStops.Add(new GradientStop((Color)brush.ConvertFrom("#99ddff"), 0.0));
-            radialGradientBrush.GradientStops.Add(new GradientStop(Colors.Transparent, 1));
-            Title.Background = radialGradientBrush;
             SapXep_ComboBox.SelectedIndex = 0;
             SapXepTheo_ComboBox.SelectedIndex = 0;
             SapXep_ComboBox.SelectionChanged += SapXep_ComboBox_SelectionChanged;

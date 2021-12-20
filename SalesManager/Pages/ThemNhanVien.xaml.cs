@@ -125,11 +125,16 @@ namespace SalesManager
 
         private void kiemtra2_Click(object sender, RoutedEventArgs e)
         {
+            bool flag = true;
+            if (tbCMND.Text == "")
+            {
+                MessageBox.Show("Vui lòng không để trống ô CMND");
+                flag = false;
+            }
             var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             sqlConn.Open();
             var sqlCommand = new SqlCommand("SELECT CMND FROM NHANVIEN", sqlConn);
             var reader = sqlCommand.ExecuteReader();
-            bool flag = true;
             while (reader.Read())
             {
                 if (reader.GetString(0) == tbCMND.Text)
