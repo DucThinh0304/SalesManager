@@ -43,8 +43,8 @@ namespace SalesManager
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                NGAY.Text = dr.GetDateTime(0).ToString("MM/dd/yyyy");
-                HAN.Text = dr.GetDateTime(1).ToString("MM/dd/yyyy");
+                NGAY.Text = dr.GetDateTime(0).ToString("dd/MM/yyyy");
+                HAN.Text = dr.GetDateTime(1).ToString("dd/MM/yyyy");
                 SL.Text = dr.GetInt32(2).ToString();
                 GIA.Text = Convert.ToInt32(dr.GetDecimal(3)).ToString();
             }

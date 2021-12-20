@@ -127,7 +127,7 @@
                     <DatePicker x:Name = "HAN"
                     VerticalAlignment = "Top"
                 FontSize = "22"
-                            Margin=" 1"
+                            Margin=" 1 0 350 0 "
                     />
                     <TextBox x:Name = "SL"
                              IsReadOnly="True"
