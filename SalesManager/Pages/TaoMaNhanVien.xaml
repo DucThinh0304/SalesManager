@@ -12,12 +12,12 @@
         
         <TextBlock 
                 x:Name="Title"
-                Text="SỬA MẬT KHẨU" 
+                Text=" SỬA MẬT KHẨU" 
                 HorizontalAlignment="Center" 
                 FontFamily="{StaticResource MyriadBold}" 
                 FontSize="40" 
                 Foreground="{StaticResource TitleBrush}"
-                Margin="332,20,332,729"  />
+                Margin="327,20,314.4,650" Width="309"  />
         <Grid Margin="0 125 0 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2.3*"/>
