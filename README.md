@@ -12,11 +12,13 @@
  - Nâng cao tính chính xác và bảo mật trong kinh doanh, quản lý thông tin nhân viên.
 - Danh sách chức năng:
 
-  - Tiếp nhận, quản lý các đại lý.
-  - Quản lý hàng hóa.
-  - Quản lý xuất, nhập hàng hóa.
-  - Quản lý hóa đơn xuất, nhập kho, hóa đơn mua bán.
-  - Thống kê báo cáo.
+ - Quản lý tài khoản
+ - Quản lý nhân viên
+ - Quản lý hàng hóa
+ - Quản lý doanh thu
+ - Quản lý kinh doanh
+ - Quản lý báo cáo
+ - Quản lý thông tin khác
 ## Hướng dẫn cài đặt phần mềm
 - Sử dụng hệ quản trị cơ sở dữ liệu SQL Server Management, tiến hành chạy file DOANLTTQ_QUANLYHANGHOA.sql để tạo database.
 - Thay đổi tên data source bằng tên server của SQL Server của máy cài đặt tại file App.config (dòng 8). (./SalesManager/SalesManager/App.config)
