@@ -7,18 +7,14 @@
 - Đối tương: các cửa hàng tạp hóa quy mô vừa và nhỏ.
 
 - Mục tiêu:
- 
- - Giảm thiểu số lượng công việc thủ công, tiết kiệm thời gian công sức.
- - Nâng cao tính chính xác và bảo mật trong kinh doanh, quản lý thông tin nhân viên.
+  -	Giảm thiểu số lượng công việc thủ công, tiết kiệm thời gian công sức.
+  -	Nâng cao tính chính xác và bảo mật trong kinh doanh, quản lý thông tin nhân viên
 - Danh sách chức năng:
-
- - Quản lý tài khoản
- - Quản lý nhân viên
- - Quản lý hàng hóa
- - Quản lý doanh thu
- - Quản lý kinh doanh
- - Quản lý báo cáo
- - Quản lý thông tin khác
+  - Quản lý hàng hoá
+  - Quản lý kinh doanh
+  - Quản lý nhân viên
+  - Quản lý hóa đơn xuất, nhập kho, hóa đơn mua bán.
+  - Thống kê báo cáo.
 ## Hướng dẫn cài đặt phần mềm
 - Sử dụng hệ quản trị cơ sở dữ liệu SQL Server Management, tiến hành chạy file DOANLTTQ_QUANLYHANGHOA.sql để tạo database.
 - Thay đổi tên data source bằng tên server của SQL Server của máy cài đặt tại file App.config (dòng 8). (./SalesManager/SalesManager/App.config)
