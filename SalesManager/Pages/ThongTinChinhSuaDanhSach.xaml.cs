@@ -37,9 +37,10 @@ namespace SalesManager
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
+            string dvt = "" ;
             MAHG.Text = mahang;
             MALOO.Text = malo.ToString();
-            var cmd = new SqlCommand("SELECT  NGNHAP, HANSD, SOLUONG, DONGIA  FROM NHAPHANG WHERE MAHANG='" + mahang + "' AND MALO= '" + malo + "'", con);
+            var cmd = new SqlCommand("SELECT  NGNHAP, HANSD, SOLUONG, DONGIA, DVT FROM NHAPHANG, LOAIHANG WHERE NHAPHANG.MAHANG='" + mahang + "' AND MALO= '" + malo + "' AND NHAPHANG.MAHANG = LOAIHANG.MAHANG", con);
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -47,6 +48,7 @@ namespace SalesManager
                 HAN.Text = dr.GetDateTime(1).ToString("dd/MM/yyyy");
                 SL.Text = dr.GetInt32(2).ToString();
                 GIA.Text = Convert.ToInt32(dr.GetDecimal(3)).ToString();
+                dvt = dr.GetString(4);
             }
             dr.Close();
             cmd = new SqlCommand("SELECT TENHANG,DVT FROM LOAIHANG WHERE MAHANG='" + mahang + "'", con);
@@ -57,12 +59,10 @@ namespace SalesManager
                 DONVI.Text= dr.GetString(1);
             }
             dr.Close();
-            DONVI.Items.Add("Cái");
-            DONVI.Items.Add("Kg");
-            DONVI.Items.Add("Lốc");
-            DONVI.Items.Add("Chục");
+            
             value = GIA.Text;
             GIA.Text = string.Format("{0:#,##0}" + " VND", double.Parse(GIA.Text));
+            DONVI.SelectedItem = DONVI.Items.OfType<ComboBoxItem>().FirstOrDefault(x => x.Content.ToString() == dvt);
         }
         private void trolai(object sender, RoutedEventArgs e)
         {

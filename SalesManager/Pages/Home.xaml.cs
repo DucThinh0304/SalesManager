@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Threading;
+using System.IO;
 
 namespace SalesManager
 {
@@ -28,8 +29,20 @@ namespace SalesManager
         public Home()
         {
             InitializeComponent();
+            
             NotificationControl.listNotification.Clear();
-
+            int sl = 10;
+            try
+            {
+                using (var sr = new StreamReader("Temp.txt"))
+                {
+                    sl = Convert.ToInt32(sr.ReadToEnd());
+                }
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
             TaoMaNhanVien.cmnd = CMND;
@@ -53,7 +66,7 @@ namespace SalesManager
             var reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
-                if (reader.GetInt32(0) < 10 && reader.GetInt32(0) != 0)
+                if (reader.GetInt32(0) < sl && reader.GetInt32(0) != 0)
                 {
                     var newItem = new Border();
                     newItem.Tag = true;

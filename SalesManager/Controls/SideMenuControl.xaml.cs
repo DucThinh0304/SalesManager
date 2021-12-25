@@ -33,6 +33,19 @@ namespace SalesManager
         public SideMenuControl()
         {
             InitializeComponent();
+            string Manv = "";
+            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            var sqlCommand = new SqlCommand($"SELECT MANV FROM NHANVIEN WHERE CMND = " + Home.CMND, sqlConn);
+            var reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                Manv = reader.GetString(0);
+            }
+            if (Manv != "NVQL")
+            {
+                Staff_Click(null, null);
+            }
             NotificationControl.listNotification.CollectionChanged += ListNotification_CollectionChanged;
             if (NotificationCheck == true)
             {
@@ -43,10 +56,10 @@ namespace SalesManager
                 this.CoThongBao.Visibility = Visibility.Hidden;
             }
             Count = NotificationControl.listNotification.Count;
-            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+             sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             sqlConn.Open();
-            var sqlCommand = new SqlCommand($"DELETE FROM NHAPHANG WHERE HANSD < GETDATE()", sqlConn);
-            var reader = sqlCommand.ExecuteReader();
+             sqlCommand = new SqlCommand($"DELETE FROM NHAPHANG WHERE HANSD < GETDATE()", sqlConn);
+             reader = sqlCommand.ExecuteReader();
         }
         #endregion
 
@@ -66,9 +79,11 @@ namespace SalesManager
             ThongKe_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            ThongKeSoLuongHang_Button1.Background = (Brush)bc.ConvertFrom("#00BCD4");
             HangDaBan_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             SuaMatKhau_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThongTinCuaHang_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
+            ThongKeLaiSuat_Button.Background = (Brush)bc.ConvertFrom("#00BCD4");
             ThemLoaiHangMoi_Button.Visibility = Visibility.Collapsed;
             ThemLoaiHangDaCo_Button.Visibility = Visibility.Collapsed;
             ShowThemHangContent = false;
@@ -157,7 +172,16 @@ namespace SalesManager
             ResetColor();
             BrushConverter bc = new BrushConverter();
             ThongKeSoLuongHang_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ThongKeSoLuongHang_Button1.Background = (Brush)bc.ConvertFrom("#0A5E5A");
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeSoLuongHang;
+        }
+        private void SuaHoaDon_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            BrushConverter bc = new BrushConverter();
+            TaoHoaDon_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.SuaHoaDon;
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.VisualOff;
         }
 
         private void TaoHoaDon_Click(object sender, RoutedEventArgs e)
@@ -262,6 +286,13 @@ namespace SalesManager
         }
         #endregion
 
+        private void ThongKeLaiSuat_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ResetColor();
+            BrushConverter bc = new BrushConverter();
+            ThongKeLaiSuat_Button.Background = (Brush)bc.ConvertFrom("#0A5E5A");
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.ThongKeLaiSuat;
+        }
     }
 }
 

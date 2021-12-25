@@ -104,6 +104,7 @@ namespace SalesManager
                         NhapHangMoi.CMND = CMND.Text;
                         Home.CMND = CMND.Text;
                         TaoHoaDon.CMND = CMND.Text;
+                        SuaHoaDon.CMND = CMND.Text;
                         ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
                         ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
                     }

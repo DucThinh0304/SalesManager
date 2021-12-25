@@ -297,7 +297,22 @@
                     <Run x:Name="Usr" Foreground="{StaticResource TitleBrush}" FontFamily="{StaticResource MyriadBold}" TextDecorations="Underline"></Run>
                 </TextBlock>
             </Border>
-            
+            <Image Source="/Images/Logo/icon-large.png" Width="360"></Image>
+            <TextBlock x:Name="TextBlock2" 
+                       FontSize="30"
+                       TextWrapping="Wrap"
+                       Text="Địa chỉ: Hậu Mỹ Trinh, Cái Bè, Tiền Giang"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" Grid.Column="0" Foreground="#107367"
+                       Margin="20 150 20 0">
+            </TextBlock>
+            <TextBlock x:Name="TextBlock3" 
+                       FontSize="30"
+                       TextWrapping="Wrap"
+                       Text="Số điện thoại: 0327550110 "
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center" Grid.Column="0" Margin="20 10 20 0" Foreground="#107367">
+            </TextBlock>
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Border Background="{StaticResource WordBlueBrush}" 

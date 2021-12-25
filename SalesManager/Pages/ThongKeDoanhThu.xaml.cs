@@ -18,7 +18,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using LiveCharts;
 using LiveCharts.Wpf;
-using System.ComponentModel;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 
@@ -48,7 +47,8 @@ namespace SalesManager
             double  S1 = 0, S2 = 0, S3 = 0, S4 = 0, S5 = 0, S6 = 0, S7 = 0, S8 = 0, S9 = 0, S10 = 0, S11 = 0, S12 = 0;
             string thang = "";
             S = TongDT(S);
-            tb_tongDT.Text = S.ToString() + " VND";
+            tb_tongDT.Text = string.Format("{0:#,##0}" + " VND", S);
+            tb_Lai.Text = string.Format("{0:#,##0}" + " VND", S-S/1.05);
             S1 = TongDTthang(S1, thang = "1");
             S2 = TongDTthang(S2, thang = "2");
             S3 = TongDTthang(S3, thang = "3");

@@ -32,6 +32,7 @@
                         <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeLeftArrowIcon}" Click="Button_Click"/>
                         <TextBlock Text="  Thông Báo" FontSize="20" FontFamily="{StaticResource MyriadBold}" 
                                    Foreground="{StaticResource ForegroundLightBrush}" VerticalAlignment="Center"/>
+                        <Button  Margin="50 0 0 0" Foreground="{StaticResource WordDarkBlueBrush}" Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeCogIcon}" Click="Setting_Click" x:Name="Setting_Button"/>
                     </StackPanel>
                 </Grid>
                 <ContentPresenter Grid.Row="1" />

@@ -140,7 +140,12 @@
                     VerticalAlignment = "Top"
                FontSize = "22"
                           Margin=" 1"
-                    />
+                    >
+                        <ComboBoxItem Content="Cái"/>
+                        <ComboBoxItem Content="Kg"/>
+                        <ComboBoxItem Content="Lốc"/>
+                        <ComboBoxItem Content="Chục"/>
+                    </ComboBox>
                     <TextBox x:Name = "GIA"
                     VerticalAlignment = "Top"
                     FontSize = "22"

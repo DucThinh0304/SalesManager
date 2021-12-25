@@ -18,7 +18,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using LiveCharts;
 using LiveCharts.Wpf;
-using System.ComponentModel;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 
@@ -47,7 +46,8 @@ namespace SalesManager.Pages
             double S1 = 0, S2 = 0, S3 = 0, S4 = 0, S5 = 0, S6 = 0, S7 = 0, S8 = 0, S9 = 0, S10 = 0, S11 = 0, S12 = 0, S13 = 0, S14 = 0, S15 = 0, S16 = 0, S17 = 0, S18 = 0, S19 = 0, S20 = 0, S21 = 0, S22 = 0, S23 = 0, S24 = 0, S25 = 0, S26 = 0, S27 = 0, S28 = 0, S29 = 0, S30 = 0, S31 = 0;
             string ngay = "";
             S = TongDT(S);
-            tb_tongDT.Text = S.ToString() + " VND";
+            tb_tongDT.Text = string.Format("{0:#,##0}" + " VND", S);
+            tb_tongLai.Text = string.Format("{0:#,##0}" + " VND", S - S/1.05); 
             S1 = TongDTngay(S1, ngay = "1");
             S2 = TongDTngay(S2, ngay = "2");
             S3 = TongDTngay(S3, ngay = "3");

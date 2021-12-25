@@ -63,6 +63,14 @@ namespace SalesManager
                     return new HangDaBan();
                 case ApplicationPage.ChonThang:
                     return new ChonThang();
+                case ApplicationPage.CaiDatThongBao:
+                    return new CaiDatThongBao();
+                case ApplicationPage.SuaHoaDon:
+                    return new SuaHoaDon();
+                case ApplicationPage.ThongKeLaiSuat:
+                    return new ThongKeLaiSuat();
+                case ApplicationPage.CTHD:
+                    return new CTHD();
                 default:
                     Debugger.Break();
                     return null;

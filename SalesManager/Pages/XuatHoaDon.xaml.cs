@@ -73,7 +73,7 @@ namespace SalesManager
                 dr.Close();
                 cmd.CommandText = "SELECT DONGIA FROM NHAPHANG WHERE MAHANG = '" + MaHang[i] + "' AND MALO = '" + Convert.ToString(MaLo[i]) + "'";
                 dr = cmd.ExecuteReader();
-                if (dr.Read()) _DonGia = Convert.ToInt32(dr.GetValue(0));
+                if (dr.Read()) _DonGia = Convert.ToInt32(Convert.ToInt32(dr.GetValue(0))*1.05);
                 TongTien.Add(SoLuong[i] * _DonGia);
                 HangMua.Items.Add(new TaoHoaDon.MatHang() { TenHang = _TenHang, DonGia = _DonGia, STT = HangMua.Items.Count + 1, SoLuong = SoLuong[i], ThanhTien = SoLuong[i] * _DonGia });
                 dr.Close();

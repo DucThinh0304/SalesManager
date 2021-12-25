@@ -107,8 +107,14 @@
     </Compile>
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\CaiDatThongBao.xaml.cs">
+      <DependentUpon>CaiDatThongBao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ChonThang.xaml.cs">
       <DependentUpon>ChonThang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CTHD.xaml.cs">
+      <DependentUpon>CTHD.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DangKy.xaml.cs">
       <DependentUpon>DangKy.xaml</DependentUpon>
@@ -137,6 +143,9 @@
     <Compile Include="Pages\QuenMatKhau.xaml.cs">
       <DependentUpon>QuenMatKhau.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SuaHoaDon.xaml.cs">
+      <DependentUpon>SuaHoaDon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SuaNhanVien.xaml.cs">
       <DependentUpon>SuaNhanVien.xaml</DependentUpon>
     </Compile>
@@ -151,6 +160,9 @@
     </Compile>
     <Compile Include="Pages\ThongKeDoanhThuThang.xaml.cs">
       <DependentUpon>ThongKeDoanhThuThang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ThongKeLaiSuat.xaml.cs">
+      <DependentUpon>ThongKeLaiSuat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ThongKeSoLuongHang.xaml.cs">
       <DependentUpon>ThongKeSoLuongHang.xaml</DependentUpon>
@@ -200,7 +212,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\CaiDatThongBao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ChonThang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CTHD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -240,6 +260,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\SuaHoaDon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SuaNhanVien.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -257,6 +281,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ThongKeDoanhThuThang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ThongKeLaiSuat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -356,6 +384,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\DOANLTTQ_QUANLYHANGHOA.sql" />
+    <None Include="Temp.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Resource Include="icon-small.ico" />
     <Resource Include="Images\Logo\HomeScreen.png" />
     <Resource Include="Images\Logo\Triangle.png" />

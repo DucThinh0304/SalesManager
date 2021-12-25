@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace SalesManager
 {
@@ -42,6 +43,10 @@ namespace SalesManager
             ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
         }
         public static ObservableCollection<Border> listNotification = new ObservableCollection<Border>();
+        private void Setting_Click(object sender, RoutedEventArgs e)
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.CaiDatThongBao;
+        }
 
     }
 }

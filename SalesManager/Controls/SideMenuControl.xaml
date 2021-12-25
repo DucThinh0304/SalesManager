@@ -31,8 +31,8 @@
                     <!-- Main buttons -->
                     <StackPanel Orientation="Horizontal">
                         <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeHomeIcon}" Click="Home_Click" />
-                        <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeManagerIcon}" Click="Manager_Click" x:Name="Manager_Button"/>
-                        <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeStaffIcon}" Click="Staff_Click" x:Name="Staff_Button" FontSize="50" Foreground="DarkSlateBlue"/>
+                        <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeManagerIcon}" Click="Manager_Click" x:Name="Manager_Button" FontSize="50" Foreground="DarkSlateBlue"/>
+                        <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeStaffIcon}" Click="Staff_Click" x:Name="Staff_Button" />
                         <Button Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeBellIcon}" Click="Notification_Click" x:Name="Notification_Button"/>
                     </StackPanel>
 
@@ -41,20 +41,26 @@
                     <Button Grid.Column="2" Foreground="{StaticResource WordDarkBlueBrush}" Style="{StaticResource IconButton}" Content="{StaticResource FontAwesomeCogIcon}" Click="Setting_Click" x:Name="Setting_Button"/>
                 </Grid>
                 <ContentPresenter Grid.Row="1" />
-                <StackPanel Grid.Row="1" x:Name="Staff">
+                <StackPanel Grid.Row="1" x:Name="Staff" Visibility="Hidden">
                     <TextBlock x:Name="Staff_TextBlock" Text="Nhân Viên" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
+                    
+                    <Button x:Name= "ThongKeSoLuongHang_Button" Height="50" FontSize="20" Content="Thống Kê Lượng Hàng" Click="ThongKeSoLuongHang_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+
+                    <Button x:Name= "TaoHoaDon_Button"  Height="50" FontSize="20"  Content="Tạo Hóa Đơn" Click="TaoHoaDon_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <Button x:Name = "SuaHoaDon_Button"  Height = "50" FontSize = "20"  Content = "Sửa Hóa Đơn" Click = "SuaHoaDon_Click"  Foreground = "{StaticResource ForegroundLightBrush}" BorderThickness = "0" />
+                </StackPanel>
+                <StackPanel Grid.Row="1" x:Name="Manager" >
+                    <TextBlock x:Name="Manager_TextBlock" Text="Chủ Cửa Hàng" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
+                    <Button x:Name= "ThongKeSoLuongHang_Button1" Height="50" FontSize="20" Content="Thống Kê Lượng Hàng" Click="ThongKeSoLuongHang_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <Button x:Name= "TaoHoaDon_Button1"  Height="50" FontSize="20"  Content="Tạo Hóa Đơn" Click="TaoHoaDon_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <Button x:Name = "SuaHoaDon_Button1"  Height = "50" FontSize = "20"  Content = "Sửa Hóa Đơn" Click = "SuaHoaDon_Click"  Foreground = "{StaticResource ForegroundLightBrush}" BorderThickness = "0" />
                     <Button x:Name= "ThemHang_Button" Height="50" FontSize="20" Content="Thêm Hàng" Click="ThemHang_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                     <Button x:Name= "ThemLoaiHangMoi_Button" Height="35" FontSize="18" Content="Thêm Loại Hàng Mới" Click="ThemLoaiHangMoi_Click" Foreground="{StaticResource ForegroundLightBrush}" Background="{StaticResource WordBlueBrush}" BorderThickness="0" Visibility="Collapsed"/>
                     <Button x:Name= "ThemLoaiHangDaCo_Button" Height="35" FontSize="18" Content="Thêm Loại Hàng Đã Có" Click="ThemLoaiHangDaCo_Click" Foreground="{StaticResource ForegroundLightBrush}" Background="{StaticResource WordBlueBrush}" BorderThickness="0" Visibility="Collapsed"/>
-                    <Button x:Name= "ThongKeSoLuongHang_Button" Height="50" FontSize="20" Content="Thống Kê Lượng Hàng" Click="ThongKeSoLuongHang_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
-
-                    <Button x:Name= "TaoHoaDon_Button"  Height="50" FontSize="20"  Content="Tạo hóa đơn" Click="TaoHoaDon_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
-                    <Button x:Name= "HangDaBan_Button" Height="50" FontSize="20" Content="Lượng Hàng Đã Bán" Click="HangDaBan_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
-                </StackPanel>
-                <StackPanel Grid.Row="1" x:Name="Manager" Visibility="Hidden">
-                    <TextBlock x:Name="Manager_TextBlock" Text="Chủ Cửa Hàng" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>
                     <Button x:Name= "DanhSachNV_Button"  Height="50" FontSize="20"  Content="Danh Sách Nhân Viên" Click="DSNV_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                     <Button x:Name= "ThongKe_Button"  Height="50" FontSize="20"  Content="Thống Kê Doanh Thu" Click="ThongKeDT_Click"  Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <Button x:Name= "ThongKeLaiSuat_Button" Height="50" FontSize="20" Content="Thống Kê Lãi Suất" Click="ThongKeLaiSuat_Button_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
+                    <Button x:Name= "HangDaBan_Button" Height="50" FontSize="20" Content="Lượng Hàng Đã Bán" Click="HangDaBan_Click" Foreground="{StaticResource ForegroundLightBrush}" BorderThickness="0"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1" x:Name="Setting" Visibility="Hidden">
                     <TextBlock x:Name="Setting_TextBlock" Text="Cài Đặt" FontSize="{StaticResource FontSizeLarge }" FontFamily="{StaticResource MyriadBold}" HorizontalAlignment="Center" Foreground="{StaticResource StaffBrush}"/>

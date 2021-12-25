@@ -20,10 +20,11 @@ namespace SalesManager
     /// <summary>
     /// Interaction logic for TaoHoaDon.xaml
     /// </summary>
-    public partial class TaoHoaDon : BasePage
+    public partial class SuaHoaDon : BasePage
     {
         public static string MaNV, CMND;
         private int STT = 0;
+        int sum = 0;
         public class MatHang
         {
             public int STT { get; set; }
@@ -34,8 +35,14 @@ namespace SalesManager
             public int ThanhTien { get; set; }
             public int MaLo { get; set; }
         }
+        public struct CTHD
+        {
+            public string MaHang;
+            public int MaLo;
+            public int SoLuong;
+        }
         public List<MatHang> list = new List<MatHang>();
-        public TaoHoaDon()
+        public SuaHoaDon()
         {
             InitializeComponent();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -47,7 +54,14 @@ namespace SalesManager
                 comMaHang.Items.Add(dr.GetString(0));
             }
             dr.Close();
-            var cmd2 = new SqlCommand("SELECT MANV FROM NHANVIEN WHERE CMND = " + CMND, con);
+            cmd = new SqlCommand("SELECT MAHD FROM HOADON", con);
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                comMaHD.Items.Add(dr.GetString(0));
+            }
+            dr.Close();
+            var cmd2 = new SqlCommand("SELECT MANV FROM NHANVIEN WHERE CMND = '" + CMND + "'", con);
             var dr2 = cmd2.ExecuteReader();
             while (dr2.Read())
             {
@@ -120,34 +134,27 @@ namespace SalesManager
             }
             ThanhTien.Text = string.Format("{0:#,##0}" + " VND", double.Parse(Convert.ToString(Convert.ToInt32(b) - list[i].ThanhTien)));
             list.RemoveAt(i);
-            for (i = 0; i < list.Count; i++) 
+            for (i = 0; i < list.Count; i++)
             {
                 list[i].STT = i + 1;
             }
             HangMua.Items.Clear();
-            for (i=0; i<list.Count; i++)
+            for (i = 0; i < list.Count; i++)
             {
                 MatHang tmp = list[i];
                 HangMua.Items.Add(new MatHang() { STT = tmp.STT, DonGia = tmp.DonGia, SoLuong = tmp.SoLuong, TenHang = tmp.TenHang, ThanhTien = tmp.ThanhTien });
-            }    
+            }
             STT--;
         }
 
         private void TroVe_Click(object sender, RoutedEventArgs e)
         {
-            for (int i=0; i<list.Count; i++)
+            var t = MessageBox.Show("Thay đổi chưa lưu, bạn có muốn thoát?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (t == MessageBoxResult.Yes)
             {
-                var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-                sqlConn.Open();
-                string SL = Convert.ToString(list[i].SoLuong);
-                string MH = list[i].MH;
-                string ML = Convert.ToString(list[i].MaLo);
-                var sqlCommand = new SqlCommand("UPDATE NHAPHANG SET SOLUONG = SOLUONG  + " + SL + " WHERE MALO = " + ML + " AND MAHANG = '" + MH + "'", sqlConn);
-                sqlCommand.ExecuteNonQuery();
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
+                ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
             }
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Home;
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).SideMenu = ApplicationPage.SideMenuControl;
-
         }
 
         private void TaoHoaDon_Click(object sender, RoutedEventArgs e)
@@ -162,25 +169,14 @@ namespace SalesManager
                     if (Char.IsDigit(a[i]))
                         b += a[i];
                 }
-                string MaHD = "HD";
-                MaHD += DateTime.Now.Day.ToString();
-                MaHD += DateTime.Now.Month.ToString();
-                MaHD += DateTime.Now.Year.ToString();
-                DateTime NgayHD = DateTime.Now;
+                string MaHD = comMaHD.Text;
                 var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                 sqlConn.Open();
-                int SoHD = 0;
-                var sqlCommand = new SqlCommand("SELECT COUNT(*) FROM HOADON WHERE " +
-                                                "YEAR(NGHOADON) = "+DateTime.Now.Year.ToString() +
-                                                " AND MONTH(NGHOADON) = "+DateTime.Now.Month.ToString() +
-                                                " AND DAY(NGHOADON) = "+DateTime.Now.Day.ToString(), sqlConn);
-                var reader = sqlCommand.ExecuteReader();
-                while (reader.Read())
-                {
-                    SoHD = reader.GetInt32(0);
-                }
-                MaHD += (SoHD + 1).ToString();
-                reader.Close();
+                var sqlCommand = new SqlCommand("DELETE FROM CTHD WHERE MAHD = '" + MaHD + "'", sqlConn);
+                sqlCommand.ExecuteNonQuery();
+                sqlCommand = new SqlCommand("DELETE FROM HOADON WHERE MAHD = '" + MaHD + "'", sqlConn);
+                sqlCommand.ExecuteNonQuery();
+                DateTime NgayHD = DateTime.Now;
                 sqlCommand.CommandText = "INSERT INTO HOADON VALUES ('" +
                                           MaHD + "',@NGHOADON,'" +
                                           MaNV + "'," +
@@ -219,9 +215,78 @@ namespace SalesManager
             }
         }
 
+        private void comMaHD_DropDownClosed(object sender, EventArgs e)
+        {
+            comMaLo.Items.Clear();
+            HangMua.Items.Clear();
+            var sqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            sqlConn.Open();
+            var sqlCommand = new SqlCommand("SELECT MAHD FROM HOADON", sqlConn);
+            var reader = sqlCommand.ExecuteReader();
+            bool flag = false;
+            while (reader.Read())
+            {
+                if (reader.GetString(0) == comMaHD.Text)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            reader.Close();
+            if (flag)
+            {
+                sqlCommand = new SqlCommand("SELECT MAHANG, MALO, SOLUONG FROM CTHD WHERE MAHD = '" + comMaHD.Text + "'", sqlConn);
+                reader = sqlCommand.ExecuteReader();
+                int t = 0;
+                List<CTHD> listCTHD = new List<CTHD>();
+                while (reader.Read())
+                {
+                    CTHD tmp = new CTHD();
+                    tmp.MaHang = reader.GetString(0);
+                    tmp.MaLo = reader.GetInt32(1);
+                    tmp.SoLuong = reader.GetInt32(2);
+                    listCTHD.Add(tmp);
+                }
+                reader.Close();
+                while (t < listCTHD.Count)
+                {
+                    MatHang tmp = new MatHang();
+                    tmp.STT = t + 1;
+                    string mahang = listCTHD[t].MaHang;
+                    int malo = listCTHD[t].MaLo;
+                    tmp.MaLo = malo;
+                    tmp.MH = mahang;
+                    tmp.SoLuong = listCTHD[t].SoLuong;
+                    var cmd = new SqlCommand("SELECT TENHANG FROM LOAIHANG WHERE MAHANG = '" + mahang + "'", sqlConn);
+                    var rd = cmd.ExecuteReader();
+                    if (rd.Read()) tmp.TenHang = rd.GetString(0);
+                    rd.Close();
+                    cmd = new SqlCommand("SELECT DONGIA FROM NHAPHANG WHERE MAHANG = '" + mahang + "' AND MALO = " + malo.ToString(), sqlConn);
+                    rd = cmd.ExecuteReader();
+                    if (rd.Read())
+                    {
+                        tmp.DonGia = Convert.ToInt32(Convert.ToInt32(rd.GetDecimal(0)) * 1.05);
+                    }
+                    tmp.ThanhTien = tmp.SoLuong * tmp.DonGia;
+                    sum += tmp.ThanhTien;
+                    ThanhTien.Text = Convert.ToString(sum);
+                    rd.Close();
+                    list.Add(tmp);
+                    t++;
+                    HangMua.Items.Add(new MatHang() { STT = tmp.STT, DonGia = tmp.DonGia, SoLuong = tmp.SoLuong, TenHang = tmp.TenHang, ThanhTien = tmp.ThanhTien });
+                }
+                ThanhTien.Text = string.Format("{0:#,##0}" + " VND", ThanhTien.Text);
+            }
+        }
+
+        private void comMHD_TextInput(object sender, TextCompositionEventArgs e)
+        {
+
+        }
+
         private void NhapHang_Click(object sender, RoutedEventArgs e)
         {
-            if (comMaHang.Text == "" || textSL.Text == "" || comMaLo.SelectedIndex == -1) 
+            if (comMaHang.Text == "" || textSL.Text == "" || comMaLo.SelectedIndex == -1)
                 MessageBox.Show("Vui lòng nhập đủ thông tin", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else if (Convert.ToInt32(textSL.Text) == 0) MessageBox.Show("Số lượng hàng nhập phải lớn hơn 0", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else
@@ -243,7 +308,7 @@ namespace SalesManager
                 if (!flag) MessageBox.Show("Mã hàng không tồn tại trong hệ thống!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 else
                 {
-                    sqlCommand = new SqlCommand("SELECT SOLUONG FROM NHAPHANG WHERE MALO = " + comMaLo.Text + " AND MAHANG = '" +comMaHang.Text +"'", sqlConn);
+                    sqlCommand = new SqlCommand("SELECT SOLUONG FROM NHAPHANG WHERE MALO = " + comMaLo.Text + " AND MAHANG = '" + comMaHang.Text + "'", sqlConn);
                     reader = sqlCommand.ExecuteReader();
                     if (reader.Read())
                     {
@@ -273,7 +338,7 @@ namespace SalesManager
                     }
                     tmp.ThanhTien = tmp.SoLuong * tmp.DonGia;
                     STT++;
-                    tmp.STT = STT;
+                    tmp.STT = HangMua.Items.Count + 1;
                     tmp.MaLo = Convert.ToInt32(comMaLo.Text);
                     tmp.MH = comMaHang.Text;
                     reader.Close();
